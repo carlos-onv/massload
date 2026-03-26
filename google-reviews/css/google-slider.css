@@ -1,0 +1,192 @@
+/* Google Testimonials Slider Styles */
+
+.google-testimonials-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.google-testimonials-wrapper .ti-widget {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Slider horizontal container */
+.google-testimonials-wrapper .ti-reviews-container {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  gap: 20px;
+}
+
+/* Cada review card */
+.google-testimonials-wrapper .ti-review-item {
+  min-width: 350px;
+  max-width: 350px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform 0.3s ease;
+}
+
+.google-testimonials-wrapper .ti-review-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Header con foto y nombre */
+.google-testimonials-wrapper .ti-review-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.google-testimonials-wrapper .ti-profile-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.google-testimonials-wrapper .ti-profile-details {
+  flex: 1;
+}
+
+.google-testimonials-wrapper .ti-profile-name {
+  font-weight: 600;
+  font-size: 16px;
+  color: #1a1a1a;
+  margin: 0 0 4px 0;
+}
+
+.google-testimonials-wrapper .ti-profile-company {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+/* Estrellas */
+.google-testimonials-wrapper .ti-rating {
+  display: flex;
+  gap: 4px;
+  margin: 8px 0;
+}
+
+.google-testimonials-wrapper .ti-star {
+  width: 18px;
+  height: 18px;
+  fill: #ffc107;
+}
+
+/* Contenido del review */
+.google-testimonials-wrapper .ti-review-content {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+} /* Navegación del slider */
+.google-testimonials-wrapper .ti-slider-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.google-testimonials-wrapper .ti-slider-arrow {
+  background: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 20px;
+}
+
+.google-testimonials-wrapper .ti-slider-arrow:hover {
+  background: #3367d6;
+}
+
+.google-testimonials-wrapper .ti-slider-arrow:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Dots de navegación */
+.google-testimonials-wrapper .ti-slider-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.google-testimonials-wrapper .ti-slider-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ddd;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.google-testimonials-wrapper .ti-slider-dot.active {
+  background: #4285f4;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .google-testimonials-wrapper .ti-review-item {
+    min-width: 280px;
+    max-width: 280px;
+    padding: 16px;
+  }
+
+  .google-testimonials-wrapper .ti-profile-img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .google-testimonials-wrapper .ti-profile-name {
+    font-size: 14px;
+  }
+
+  .google-testimonials-wrapper .ti-review-content {
+    font-size: 13px;
+  }
+}
+
+/* Animación de entrada */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.google-testimonials-wrapper .ti-review-item {
+  animation: slideIn 0.5s ease-out;
+}
+
+/* Estilos para integración con Elfsight */
+.google-testimonials-wrapper
+  .elfsight-app-9d3f4d84-9767-4ffe-9516-bfe35333b1dd {
+  width: 100%;
+}

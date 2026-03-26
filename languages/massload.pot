@@ -1,0 +1,2194 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Massload\n"
+"POT-Creation-Date: 2021-01-16 03:35+0800\n"
+"PO-Revision-Date: 2017-05-17 15:33+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: style.css\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: 404.php:19
+msgid "Oops!"
+msgstr ""
+
+#: 404.php:20
+msgid "That page can’t be found."
+msgstr ""
+
+#: 404.php:21
+msgid "Back Home"
+msgstr ""
+
+#: application-case_studies.php:26 single-case_study_21_Jul_20.php:23
+msgid "CASE STUDIES"
+msgstr ""
+
+#: application-case_studies.php:45
+#, php-format
+msgid "%1$sApplication: %2$sMining%3$s%4$s"
+msgstr ""
+
+#: application-case_studies.php:52
+msgid "Underground Surge Bin"
+msgstr ""
+
+#: application-case_studies.php:59
+msgid "What is Lorem Ipsum?"
+msgstr ""
+
+#: application-case_studies.php:60
+msgid ""
+"It was popularised in the 1960s with the release of Letraset sheets "
+"containing Lorem Ipsum passages, and more recently with desktop publishing "
+"software like Aldus PageMaker including versions of Lorem Ipsum."
+msgstr ""
+
+#: application-case_studies.php:61
+msgid "Where does it come from?"
+msgstr ""
+
+#: application-case_studies.php:62 application-case_studies.php:70
+msgid ""
+"Contrary to popular belief, Lorem Ipsum is not simply random text. It has "
+"roots in a piece of classical Latin literature from 45 BC, making it over "
+"2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney "
+"College in Virginia, looked up one of the more obscure Latin words, "
+"consectetur, from a Lorem Ipsum passage, and going through the cites of the "
+"word in classical literature, discovered the undoubtable source."
+msgstr ""
+
+#: application-case_studies.php:64
+msgid "It was popularised in the 1960s with the release"
+msgstr ""
+
+#: application-case_studies.php:65
+msgid "Galley of type and scrambled"
+msgstr ""
+
+#: application-case_studies.php:66
+msgid "Electronic typesetting, remaining essentially"
+msgstr ""
+
+#: application-case_studies.php:67
+msgid "Various versions have evolved over the years, sometimes"
+msgstr ""
+
+#: application-case_studies.php:68
+msgid ""
+"There are many variations of passages of Lorem Ipsum available, but the "
+"majority"
+msgstr ""
+
+#: application-case_studies.php:75
+msgid " PREVIOUS"
+msgstr ""
+
+#: application-case_studies.php:79
+msgid "NEXT "
+msgstr ""
+
+#: application-case_studies.php:88 archive.php:76
+#: inc/templates/widgets/advance-search.php:5
+#: inc/templates/widgets/recent-posts.php:7 inc/templates/widgets/tags.php:8
+msgid "Search"
+msgstr ""
+
+#: application-case_studies.php:98
+msgid "Mining"
+msgstr ""
+
+#: application-case_studies.php:99
+msgid "Product 1"
+msgstr ""
+
+#: application-case_studies.php:100
+msgid "Product 2"
+msgstr ""
+
+#: application-case_studies.php:107 application-case_studies.php:108
+#: application-case_studies.php:109 application-case_studies.php:110
+msgid ""
+"Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+msgstr ""
+
+#: application-case_studies.php:124 components/search/product-search.php:95
+#: components/search/product-search.php:103 functions.php:671
+#: products_child.php:220 products_child.php:634 products_parent.php:98
+#: single-case_study.php:239 single-case_study_21_Jul_20.php:94
+msgid "Applications"
+msgstr ""
+
+#: application-case_studies.php:149 applications.php:153 applications.php:157
+#: functions.php:360 functions/meta-products.php:18 single-case_study.php:257
+#: single-case_study_21_Jul_20.php:115
+msgid "Products"
+msgstr ""
+
+#: application_products.php:84
+msgid "FILTER PRODUCTS"
+msgstr ""
+
+#: application_products.php:255 parent-products-template.php:196
+#: parentproducts.php:124
+msgid "Request A"
+msgstr ""
+
+#: application_products.php:255 parent-products-template.php:196
+#: parentproducts.php:124
+msgid "Solution"
+msgstr ""
+
+#: application_products.php:271 parent-products-template.php:201
+#: parentproducts.php:129 products_child.php:689 products_parent.php:125
+#: single-applications.php:205
+#, php-format
+msgid ""
+"%1$sSubmitting this form will %2$snot%3$s add you to any email distribution "
+"lists.%4$s"
+msgstr ""
+
+#: applications.php:148
+msgid "View Application"
+msgstr ""
+
+#: applications.php:163 applications.php:167
+#: components/search/product-search.php:99
+#: components/search/product-search.php:107 products_parent.php:99
+msgid "Case studies"
+msgstr ""
+
+#: applications.php:215 case-studies.php:217 single-case_study.php:285
+#, php-format
+msgid "%1$s%2$sRequest A%3$s Case Study%4$s"
+msgstr ""
+
+#: applications.php:228 case-studies.php:230 single-case_study.php:298
+#, php-format
+msgid ""
+"%1$sRequesting a case study will %2$snot%3$s add you to any email "
+"distribution lists.%4$s"
+msgstr ""
+
+#: career.php:103
+msgid "Apply Now"
+msgstr ""
+
+#: case-studies.php:147 components/post/content-none.php:28
+#: components/search/basic-search.php:51
+#: components/search/product-search.php:130 date.php:118
+#: inc/ajax/methods.php:521 resources.php:148
+#: taxonomy-casestudy_categories.php:150 taxonomy-resources_categories.php:148
+#: taxonomy-resources_tags.php:150 taxonomy.php:159
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: case-studies.php:170 single-case_study.php:177
+msgid "Search Case Studies"
+msgstr ""
+
+#: components/post/content-none.php:14
+msgid "Nothing Found"
+msgstr ""
+
+#: components/post/content-none.php:21
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: components/post/content-none.php:34
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#: components/search/basic-search.php:8
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: components/search/product-search.php:25
+#, php-format
+msgid "Product Results for: %s"
+msgstr ""
+
+#: components/search/product-search.php:87 products_parent.php:97
+msgid "VIEW PRODUCT"
+msgstr ""
+
+#: contact-template.php:42
+msgid "Phone:"
+msgstr ""
+
+#: contact-template.php:46
+msgid "E-Mail:"
+msgstr ""
+
+#: content.php:32
+msgctxt "Used between list items, there is a space after the comma."
+msgid ", "
+msgstr ""
+
+#: content.php:69
+#, php-format
+msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: content.php:74
+msgid "Pages:"
+msgstr ""
+
+#: content.php:252
+msgid "Leave a comment"
+msgstr ""
+
+#: content.php:252
+msgid "1 Comment"
+msgstr ""
+
+#: content.php:252
+msgid "% Comments"
+msgstr ""
+
+#: content.php:256
+msgid "Edit"
+msgstr ""
+
+#: date.php:139
+msgid "Filter Archive"
+msgstr ""
+
+#: date.php:144 inc/templates/widgets/advance-search.php:20 resources.php:177
+#: single-resources.php:175 single.php:144
+#: taxonomy-casestudy_categories.php:176 taxonomy-resources_categories.php:174
+#: taxonomy-resources_tags.php:176 taxonomy.php:185
+msgid "SEARCH BY CATEGORY"
+msgstr ""
+
+#: functions.php:72 functions/theme-menu.php:14
+msgid "Main Menu"
+msgstr ""
+
+#: functions.php:74
+msgid "Products Menu"
+msgstr ""
+
+#: functions.php:76
+msgid "Footer One"
+msgstr ""
+
+#: functions.php:78
+msgid "Footer Two"
+msgstr ""
+
+#: functions.php:80
+msgid "Footer Three"
+msgstr ""
+
+#: functions.php:362 theme-options/theme-options.php:168
+msgid "Product"
+msgstr ""
+
+#: functions.php:404
+msgid "Products Categories"
+msgstr ""
+
+#: functions.php:438
+msgid "Parent Categories"
+msgstr ""
+
+#: functions.php:591 functions.php:593 products_child.php:223 staxonomy.php:19
+msgid "Case Studies"
+msgstr ""
+
+#: functions.php:629 inc/post-types/resources.php:71
+msgid "Tags"
+msgstr ""
+
+#: functions.php:673
+msgid "Application"
+msgstr ""
+
+#: functions.php:753
+msgid "learnmore"
+msgstr ""
+
+#: functions.php:762
+msgid "Sorry, there are no news to display"
+msgstr ""
+
+#: functions/meta-functions.php:17
+msgid "All"
+msgstr ""
+
+#: functions/meta-functions.php:32
+msgid "-- Select --"
+msgstr ""
+
+#: functions/meta-functions.php:35
+msgid "- Muffin Slider -"
+msgstr ""
+
+#: functions/meta-functions.php:306 functions/meta-functions.php:888
+#: functions/meta-functions.php:1170 functions/meta-functions.php:1414
+#: functions/meta-functions.php:1604
+msgid "Background Image"
+msgstr ""
+
+#: functions/meta-functions.php:312
+msgid "Background Image position"
+msgstr ""
+
+#: functions/meta-functions.php:313
+msgid "This option can be used only with your custom image selected above."
+msgstr ""
+
+#: functions/meta-functions.php:329
+msgid "Background Color"
+msgstr ""
+
+#: functions/meta-functions.php:330
+msgid ""
+"Use color name (eg. \"gray\") or hex (eg. \"#808080\").<br /><br />Leave "
+"this field blank if you want to use transparent background."
+msgstr ""
+
+#: functions/meta-functions.php:338
+msgid "Layout"
+msgstr ""
+
+#: functions/meta-functions.php:339
+msgid "Select layout for this section"
+msgstr ""
+
+#: functions/meta-functions.php:340
+msgid ""
+"<strong>Notice:</strong> Sidebar for section will show <strong>only</strong> "
+"if you set Full Width Page Layout in Page Options below Content Builder."
+msgstr ""
+
+#: functions/meta-functions.php:352
+msgid "Sidebar"
+msgstr ""
+
+#: functions/meta-functions.php:353
+msgid "Select sidebar for this section"
+msgstr ""
+
+#: functions/meta-functions.php:360
+msgid "Padding Top"
+msgstr ""
+
+#: functions/meta-functions.php:361
+msgid "Section Padding Top"
+msgstr ""
+
+#: functions/meta-functions.php:362 functions/meta-functions.php:372
+#: functions/meta-functions.php:994 functions/meta-functions.php:1341
+#: functions/meta-functions.php:2545 functions/meta-functions.php:2554
+msgid "px"
+msgstr ""
+
+#: functions/meta-functions.php:370
+msgid "Padding Bottom"
+msgstr ""
+
+#: functions/meta-functions.php:371
+msgid "Section Padding Bottom"
+msgstr ""
+
+#: functions/meta-functions.php:380 functions/meta-functions.php:445
+#: functions/meta-functions.php:789 functions/meta-functions.php:968
+#: functions/meta-functions.php:1006 functions/meta-functions.php:1088
+#: functions/meta-functions.php:1480 functions/meta-functions.php:1688
+#: functions/meta-functions.php:2067 functions/meta-functions.php:2406
+msgid "Style"
+msgstr ""
+
+#: functions/meta-functions.php:381
+msgid "Predefined styles for section"
+msgstr ""
+
+#: functions/meta-functions.php:382
+msgid "For more advanced styles please use Custom CSS field below."
+msgstr ""
+
+#: functions/meta-functions.php:396
+msgid "Custom CSS classes"
+msgstr ""
+
+#: functions/meta-functions.php:397
+msgid ""
+"Multiple classes should be separated with SPACE.<br />For sections with "
+"centered text you can use class: <strong>center</strong>"
+msgstr ""
+
+#: functions/meta-functions.php:403
+msgid "Custom ID"
+msgstr ""
+
+#: functions/meta-functions.php:404
+msgid ""
+"Use this option to create One Page sites.<br /><br />For example: Your "
+"Custom ID is <strong>offer</strong> and you want to open this section, "
+"please use link: <strong>your-url/#offer-2</strong>"
+msgstr ""
+
+#: functions/meta-functions.php:416 functions/meta-functions.php:429
+msgid "Accordion"
+msgstr ""
+
+#: functions/meta-functions.php:423 functions/meta-functions.php:478
+#: functions/meta-functions.php:622 functions/meta-functions.php:664
+#: functions/meta-functions.php:751 functions/meta-functions.php:823
+#: functions/meta-functions.php:857 functions/meta-functions.php:958
+#: functions/meta-functions.php:1046 functions/meta-functions.php:1113
+#: functions/meta-functions.php:1145 functions/meta-functions.php:1184
+#: functions/meta-functions.php:1226 functions/meta-functions.php:1400
+#: functions/meta-functions.php:1453 functions/meta-functions.php:1590
+#: functions/meta-functions.php:1634 functions/meta-functions.php:1719
+#: functions/meta-functions.php:1784 functions/meta-functions.php:2004
+#: functions/meta-functions.php:2096 functions/meta-functions.php:2126
+#: functions/meta-functions.php:2207 functions/meta-functions.php:2238
+#: functions/meta-functions.php:2350 functions/meta-functions.php:2388
+#: functions/meta-functions.php:2497 functions/meta-functions.php:2572
+#: theme-options/fields/tabs/field_tabs.php:34
+#: theme-options/fields/tabs/field_tabs.php:45
+msgid "Title"
+msgstr ""
+
+#: functions/meta-functions.php:430
+msgid "Manage accordion tabs."
+msgstr ""
+
+#: functions/meta-functions.php:431 functions/meta-functions.php:1121
+#: functions/meta-functions.php:2396 functions/meta-functions.php:2469
+msgid "You can use Drag & Drop to set the order."
+msgstr ""
+
+#: functions/meta-functions.php:437 functions/meta-functions.php:1128
+msgid "Open First"
+msgstr ""
+
+#: functions/meta-functions.php:438 functions/meta-functions.php:1129
+msgid "Open first tab at start."
+msgstr ""
+
+#: functions/meta-functions.php:458
+msgid "Article box"
+msgstr ""
+
+#: functions/meta-functions.php:465 functions/meta-functions.php:945
+#: functions/meta-functions.php:1247 functions/meta-functions.php:1307
+#: functions/meta-functions.php:1314 functions/meta-functions.php:1447
+#: functions/meta-functions.php:1790 functions/meta-functions.php:2120
+#: functions/meta-functions.php:2344 functions/meta-functions.php:2485
+msgid "Image"
+msgstr ""
+
+#: functions/meta-functions.php:466
+msgid "Featured Image"
+msgstr ""
+
+#: functions/meta-functions.php:472 functions/meta-functions.php:1069
+#: functions/meta-functions.php:2491
+msgid "Slogan"
+msgstr ""
+
+#: functions/meta-functions.php:484 functions/meta-functions.php:530
+#: functions/meta-functions.php:685 functions/meta-functions.php:1275
+#: functions/meta-functions.php:1367 functions/meta-functions.php:1465
+#: functions/meta-functions.php:1802 functions/meta-functions.php:2053
+#: functions/meta-functions.php:2356 functions/meta-functions.php:2503
+#: functions/meta-slide.php:114
+msgid "Link"
+msgstr ""
+
+#: functions/meta-functions.php:491 functions/meta-functions.php:538
+#: functions/meta-functions.php:698 functions/meta-functions.php:1282
+#: functions/meta-functions.php:1375 functions/meta-functions.php:1472
+#: functions/meta-functions.php:1808 functions/meta-functions.php:2174
+#: functions/meta-functions.php:2363 functions/meta-functions.php:2510
+msgid "Open in new window"
+msgstr ""
+
+#: functions/meta-functions.php:492 functions/meta-functions.php:540
+#: functions/meta-functions.php:699 functions/meta-functions.php:1283
+#: functions/meta-functions.php:1376 functions/meta-functions.php:1473
+#: functions/meta-functions.php:1809 functions/meta-functions.php:2175
+#: functions/meta-functions.php:2364 functions/meta-functions.php:2511
+msgid "Adds a target=\"_blank\" attribute to the link."
+msgstr ""
+
+#: functions/meta-functions.php:498 functions/meta-functions.php:706
+#: functions/meta-functions.php:839 functions/meta-functions.php:894
+#: functions/meta-functions.php:975 functions/meta-functions.php:1095
+#: functions/meta-functions.php:1208 functions/meta-functions.php:1289
+#: functions/meta-functions.php:1382 functions/meta-functions.php:1420
+#: functions/meta-functions.php:1492 functions/meta-functions.php:1610
+#: functions/meta-functions.php:1695 functions/meta-functions.php:1816
+#: functions/meta-functions.php:2078 functions/meta-functions.php:2182
+#: functions/meta-functions.php:2220 functions/meta-functions.php:2370
+#: functions/meta-functions.php:2517
+msgid "Animation"
+msgstr ""
+
+#: functions/meta-functions.php:499 functions/meta-functions.php:707
+#: functions/meta-functions.php:840 functions/meta-functions.php:895
+#: functions/meta-functions.php:976 functions/meta-functions.php:1096
+#: functions/meta-functions.php:1209 functions/meta-functions.php:1290
+#: functions/meta-functions.php:1383 functions/meta-functions.php:1421
+#: functions/meta-functions.php:1493 functions/meta-functions.php:1611
+#: functions/meta-functions.php:1696 functions/meta-functions.php:1817
+#: functions/meta-functions.php:2079 functions/meta-functions.php:2183
+#: functions/meta-functions.php:2221 functions/meta-functions.php:2371
+#: functions/meta-functions.php:2518
+msgid "Entrance animation"
+msgstr ""
+
+#: functions/meta-functions.php:509 functions/meta-functions.php:1744
+msgid "Blockquote"
+msgstr ""
+
+#: functions/meta-functions.php:516 functions/meta-functions.php:679
+#: functions/meta-functions.php:805 functions/meta-functions.php:1076
+#: functions/meta-functions.php:1152 functions/meta-functions.php:1190
+#: functions/meta-functions.php:1232 functions/meta-functions.php:1406
+#: functions/meta-functions.php:1459 functions/meta-functions.php:1596
+#: functions/meta-functions.php:1653 functions/meta-functions.php:1738
+#: functions/meta-functions.php:1796 functions/meta-functions.php:2038
+#: functions/meta-functions.php:2102 functions/meta-functions.php:2132
+#: functions/meta-functions.php:2213
+#: theme-options/fields/tabs/field_tabs.php:36
+#: theme-options/fields/tabs/field_tabs.php:47
+msgid "Content"
+msgstr ""
+
+#: functions/meta-functions.php:517
+msgid "Blockquote content."
+msgstr ""
+
+#: functions/meta-functions.php:518 functions/meta-functions.php:864
+#: functions/meta-functions.php:1407 functions/meta-functions.php:1550
+#: functions/meta-functions.php:1597 functions/meta-functions.php:2039
+msgid "HTML tags allowed."
+msgstr ""
+
+#: functions/meta-functions.php:524
+msgid "Author"
+msgstr ""
+
+#: functions/meta-functions.php:531
+msgid "Link to company page."
+msgstr ""
+
+#: functions/meta-functions.php:539
+msgid "Open link in a new window."
+msgstr ""
+
+#: functions/meta-functions.php:551
+msgid ""
+"Classic - transparent background<br />Modern - with background color set in "
+"Theme Options"
+msgstr ""
+
+#: functions/meta-functions.php:560
+msgid "Blog"
+msgstr ""
+
+#: functions/meta-functions.php:567 functions/meta-functions.php:628
+#: functions/meta-functions.php:1834 functions/meta-functions.php:1907
+#: functions/meta-functions.php:1959 functions/meta-functions.php:2244
+#: inc/wp-table/related-tags.php:11
+msgid "Count"
+msgstr ""
+
+#: functions/meta-functions.php:568 functions/meta-functions.php:629
+#: functions/meta-functions.php:2245
+msgid "Number of posts to show"
+msgstr ""
+
+#: functions/meta-functions.php:576 functions/meta-functions.php:638
+#: functions/meta-functions.php:777 functions/meta-functions.php:1572
+#: functions/meta-functions.php:1842 functions/meta-functions.php:1915
+#: functions/meta-functions.php:1968 functions/meta-functions.php:2254
+#: functions/meta-functions.php:2308 functions/meta-functions.php:2431
+msgid "Category"
+msgstr ""
+
+#: functions/meta-functions.php:578 functions/meta-functions.php:640
+msgid "Select posts category"
+msgstr ""
+
+#: functions/meta-functions.php:597
+msgid "Show Read More link"
+msgstr ""
+
+#: functions/meta-functions.php:605
+msgid "Show Pagination"
+msgstr ""
+
+#: functions/meta-functions.php:606 functions/meta-functions.php:1891
+msgid ""
+"<strong>Notice:</strong> Pagination will <strong>not</strong> work if you "
+"put item on Homepage of WordPress Multilangual Site."
+msgstr ""
+
+#: functions/meta-functions.php:615
+msgid "Blog Slider"
+msgstr ""
+
+#: functions/meta-functions.php:630 functions/meta-functions.php:1960
+#: functions/meta-functions.php:2246
+msgid ""
+"We <strong>do not</strong> recommend use more than 10 items, because site "
+"will be working slowly."
+msgstr ""
+
+#: functions/meta-functions.php:647
+msgid "Show Read More button"
+msgstr ""
+
+#: functions/meta-functions.php:657
+msgid "Call to Action"
+msgstr ""
+
+#: functions/meta-functions.php:670 functions/meta-functions.php:928
+#: functions/meta-functions.php:1060 functions/meta-functions.php:1238
+#: functions/meta-functions.php:1438
+msgid "Icon"
+msgstr ""
+
+#: functions/meta-functions.php:671
+msgid "Font Icon, eg. <strong>icon-lamp</strong>"
+msgstr ""
+
+#: functions/meta-functions.php:691
+msgid "Class"
+msgstr ""
+
+#: functions/meta-functions.php:692
+msgid "This option is useful when you want to use PrettyPhoto (prettyphoto)."
+msgstr ""
+
+#: functions/meta-functions.php:717
+msgid "Chart"
+msgstr ""
+
+#: functions/meta-functions.php:724
+msgid "Percent"
+msgstr ""
+
+#: functions/meta-functions.php:725
+msgid "Number between 0-100"
+msgstr ""
+
+#: functions/meta-functions.php:731
+msgid "Chart Label"
+msgstr ""
+
+#: functions/meta-functions.php:737
+msgid "Chart Icon"
+msgstr ""
+
+#: functions/meta-functions.php:738 functions/meta-functions.php:929
+#: functions/meta-functions.php:1061 functions/meta-functions.php:1239
+#: functions/meta-functions.php:1439
+msgid "Font Icon, eg. <strong> icon-lamp</strong>"
+msgstr ""
+
+#: functions/meta-functions.php:745
+msgid "Chart Image"
+msgstr ""
+
+#: functions/meta-functions.php:760
+msgid "Clients"
+msgstr ""
+
+#: functions/meta-functions.php:767
+msgid "Items in Row"
+msgstr ""
+
+#: functions/meta-functions.php:768
+msgid "Number of items in row"
+msgstr ""
+
+#: functions/meta-functions.php:769
+msgid "Recommended number: 3-6"
+msgstr ""
+
+#: functions/meta-functions.php:779
+msgid "Select the client post category."
+msgstr ""
+
+#: functions/meta-functions.php:798
+msgid "Code"
+msgstr ""
+
+#: functions/meta-functions.php:816
+msgid "Column"
+msgstr ""
+
+#: functions/meta-functions.php:824 functions/meta-functions.php:1146
+#: functions/meta-functions.php:2573
+msgid ""
+"This field is used as an Item Label in admin panel only and shows after page "
+"update."
+msgstr ""
+
+#: functions/meta-functions.php:830
+msgid "Column content"
+msgstr ""
+
+#: functions/meta-functions.php:831
+msgid "Shortcodes and HTML tags allowed."
+msgstr ""
+
+#: functions/meta-functions.php:850
+msgid "Contact Box"
+msgstr ""
+
+#: functions/meta-functions.php:863
+msgid "Address"
+msgstr ""
+
+#: functions/meta-functions.php:870
+msgid "Telephone"
+msgstr ""
+
+#: functions/meta-functions.php:876
+msgid "Email"
+msgstr ""
+
+#: functions/meta-functions.php:882
+msgid "WWW"
+msgstr ""
+
+#: functions/meta-functions.php:905
+msgid "Content WP"
+msgstr ""
+
+#: functions/meta-functions.php:912
+msgid ""
+"Adding this Item will show Content from WordPress Editor above Page Options. "
+"You can use it only once per page. Please also remember to turn on \"Hide "
+"The Content\" option."
+msgstr ""
+
+#: functions/meta-functions.php:921
+msgid "Counter"
+msgstr ""
+
+#: functions/meta-functions.php:937
+msgid "Icon Color"
+msgstr ""
+
+#: functions/meta-functions.php:938
+msgid "Use color name (eg. \"blue\") or hex (eg. \"#2991D6\")."
+msgstr ""
+
+#: functions/meta-functions.php:946
+msgid "If you upload an image, icon will not show."
+msgstr ""
+
+#: functions/meta-functions.php:952 functions/meta-functions.php:1177
+#: functions/meta-functions.php:2200
+msgid "Number"
+msgstr ""
+
+#: functions/meta-functions.php:986
+msgid "Divider"
+msgstr ""
+
+#: functions/meta-functions.php:993
+msgid "Divider height"
+msgstr ""
+
+#: functions/meta-functions.php:1018 functions/meta-functions.php:1197
+msgid "Line"
+msgstr ""
+
+#: functions/meta-functions.php:1019 functions/meta-functions.php:1030
+msgid "This option can be used <strong>only</strong> with Style: Default."
+msgstr ""
+
+#: functions/meta-functions.php:1029
+msgid "Theme Color"
+msgstr ""
+
+#: functions/meta-functions.php:1039
+msgid "Fancy Heading"
+msgstr ""
+
+#: functions/meta-functions.php:1053
+msgid "Use H1 tag"
+msgstr ""
+
+#: functions/meta-functions.php:1054
+msgid "Wrap title into H1 instead of H2"
+msgstr ""
+
+#: functions/meta-functions.php:1062
+msgid "Icon Style only"
+msgstr ""
+
+#: functions/meta-functions.php:1070
+msgid "Line Style only"
+msgstr ""
+
+#: functions/meta-functions.php:1089
+msgid "Some fields above work on selected styles."
+msgstr ""
+
+#: functions/meta-functions.php:1106 functions/meta-functions.php:1119
+msgid "FAQ"
+msgstr ""
+
+#: functions/meta-functions.php:1120
+msgid "Manage FAQ tabs."
+msgstr ""
+
+#: functions/meta-functions.php:1138
+msgid "Feature List"
+msgstr ""
+
+#: functions/meta-functions.php:1153
+msgid ""
+"Please use <strong>[item icon=\"\" title=\"\" link=\"\"]</strong> shortcodes "
+"here."
+msgstr ""
+
+#: functions/meta-functions.php:1163
+msgid "How It Works"
+msgstr ""
+
+#: functions/meta-functions.php:1171
+msgid "Recommended: Square Image with transparent background."
+msgstr ""
+
+#: functions/meta-functions.php:1198
+msgid "Show right connecting line"
+msgstr ""
+
+#: functions/meta-functions.php:1219
+msgid "Icon Box"
+msgstr ""
+
+#: functions/meta-functions.php:1257
+msgid "Icon Position"
+msgstr ""
+
+#: functions/meta-functions.php:1264 functions/meta-functions.php:1321
+#: functions/meta-functions.php:2162
+msgid "Border"
+msgstr ""
+
+#: functions/meta-functions.php:1265 functions/meta-functions.php:2163
+msgid "Show right border"
+msgstr ""
+
+#: functions/meta-functions.php:1297
+msgid "Custom CSS classes for link"
+msgstr ""
+
+#: functions/meta-functions.php:1298
+msgid ""
+"This option is useful when you want to use PrettyPhoto (prettyphoto) or "
+"Scroll (scroll)."
+msgstr ""
+
+#: functions/meta-functions.php:1322
+msgid "Show Image Border"
+msgstr ""
+
+#: functions/meta-functions.php:1328
+msgid "Align"
+msgstr ""
+
+#: functions/meta-functions.php:1340
+msgid "Margin Top"
+msgstr ""
+
+#: functions/meta-functions.php:1348
+msgid "Alternate Text"
+msgstr ""
+
+#: functions/meta-functions.php:1354
+msgid "Caption"
+msgstr ""
+
+#: functions/meta-functions.php:1360
+msgid "Zoomed image"
+msgstr ""
+
+#: functions/meta-functions.php:1361
+msgid "This image will be opened in lightbox."
+msgstr ""
+
+#: functions/meta-functions.php:1368 functions/meta-functions.php:1466
+msgid ""
+"This link will work only if you leave the above \"Zoomed image\" field empty."
+msgstr ""
+
+#: functions/meta-functions.php:1393
+msgid "Info Box"
+msgstr ""
+
+#: functions/meta-functions.php:1431
+msgid "List"
+msgstr ""
+
+#: functions/meta-functions.php:1503
+msgid "Map"
+msgstr ""
+
+#: functions/meta-functions.php:1510
+msgid "Google Maps Lat"
+msgstr ""
+
+#: functions/meta-functions.php:1512 functions/meta-functions.php:1520
+msgid "The map will appear only if this field is filled correctly."
+msgstr ""
+
+#: functions/meta-functions.php:1518
+msgid "Google Maps Lng"
+msgstr ""
+
+#: functions/meta-functions.php:1526
+msgid "Zoom"
+msgstr ""
+
+#: functions/meta-functions.php:1534 functions/meta-functions.php:2553
+msgid "Height"
+msgstr ""
+
+#: functions/meta-functions.php:1542
+msgid "Address Box Title"
+msgstr ""
+
+#: functions/meta-functions.php:1549
+msgid "Address Box Content"
+msgstr ""
+
+#: functions/meta-functions.php:1559
+msgid "Offer"
+msgstr ""
+
+#: functions/meta-functions.php:1566
+msgid ""
+"This item can only be used on pages <strong>Without Sidebar</strong>.<br /"
+">Please also set Section Style to <strong>Full Width</strong> and use one "
+"Item in one Section."
+msgstr ""
+
+#: functions/meta-functions.php:1574
+msgid "Select the offer post category."
+msgstr ""
+
+#: functions/meta-functions.php:1583
+msgid "Opening Hours"
+msgstr ""
+
+#: functions/meta-functions.php:1621
+msgid "Our Team"
+msgstr ""
+
+#: functions/meta-functions.php:1628 functions/meta-functions.php:1713
+#: functions/meta-slide.php:65
+msgid "Photo"
+msgstr ""
+
+#: functions/meta-functions.php:1635 functions/meta-functions.php:1720
+msgid "Will also be used as the image alternative text"
+msgstr ""
+
+#: functions/meta-functions.php:1641 functions/meta-functions.php:1726
+#: functions/meta-functions.php:2032
+msgid "Subtitle"
+msgstr ""
+
+#: functions/meta-functions.php:1647 functions/meta-functions.php:1732
+msgid "Phone"
+msgstr ""
+
+#: functions/meta-functions.php:1659 functions/meta-functions.php:1750
+msgid "E-mail"
+msgstr ""
+
+#: functions/meta-functions.php:1665 functions/meta-functions.php:1756
+msgid "Facebook"
+msgstr ""
+
+#: functions/meta-functions.php:1671 functions/meta-functions.php:1762
+msgid "Twitter"
+msgstr ""
+
+#: functions/meta-functions.php:1677 functions/meta-functions.php:1768
+msgid "LinkedIn"
+msgstr ""
+
+#: functions/meta-functions.php:1706
+msgid "Our Team List"
+msgstr ""
+
+#: functions/meta-functions.php:1777
+msgid "Photo Box"
+msgstr ""
+
+#: functions/meta-functions.php:1827
+msgid "Portfolio"
+msgstr ""
+
+#: functions/meta-functions.php:1844 functions/meta-functions.php:1917
+#: functions/meta-functions.php:1970
+msgid "Select the portfolio post category."
+msgstr ""
+
+#: functions/meta-functions.php:1863 functions/meta-functions.php:1923
+#: functions/meta-functions.php:1976 functions/meta-functions.php:2262
+#: functions/meta-functions.php:2316 functions/meta-functions.php:2439
+msgid "Order by"
+msgstr ""
+
+#: functions/meta-functions.php:1864 functions/meta-functions.php:1924
+#: functions/meta-functions.php:1977
+msgid "Portfolio items order by column."
+msgstr ""
+
+#: functions/meta-functions.php:1877 functions/meta-functions.php:1937
+#: functions/meta-functions.php:1985 functions/meta-functions.php:2271
+#: functions/meta-functions.php:2325 functions/meta-functions.php:2448
+#: functions/meta-slide.php:68
+msgid "Order"
+msgstr ""
+
+#: functions/meta-functions.php:1878 functions/meta-functions.php:1938
+#: functions/meta-functions.php:1986
+msgid "Portfolio items order."
+msgstr ""
+
+#: functions/meta-functions.php:1890
+msgid "Show pagination"
+msgstr ""
+
+#: functions/meta-functions.php:1900
+msgid "Portfolio Grid"
+msgstr ""
+
+#: functions/meta-functions.php:1952
+msgid "Portfolio Slider"
+msgstr ""
+
+#: functions/meta-functions.php:1997
+msgid "Pricing Item"
+msgstr ""
+
+#: functions/meta-functions.php:2005
+msgid "Pricing item title"
+msgstr ""
+
+#: functions/meta-functions.php:2011
+msgid "Price"
+msgstr ""
+
+#: functions/meta-functions.php:2018
+msgid "Currency"
+msgstr ""
+
+#: functions/meta-functions.php:2025
+msgid "Period"
+msgstr ""
+
+#: functions/meta-functions.php:2046
+msgid "Link title"
+msgstr ""
+
+#: functions/meta-functions.php:2047 functions/meta-functions.php:2054
+msgid "Link will appear only if this field will be filled."
+msgstr ""
+
+#: functions/meta-functions.php:2060
+msgid "Featured"
+msgstr ""
+
+#: functions/meta-functions.php:2089
+msgid "Progress Bars"
+msgstr ""
+
+#: functions/meta-functions.php:2103
+msgid ""
+"Please use <strong>[bar title=\"Title\" value=\"50\"]</strong> shortcodes "
+"here."
+msgstr ""
+
+#: functions/meta-functions.php:2113
+msgid "Promo Box"
+msgstr ""
+
+#: functions/meta-functions.php:2138
+msgid "Button Text"
+msgstr ""
+
+#: functions/meta-functions.php:2144
+msgid "Button Link"
+msgstr ""
+
+#: functions/meta-functions.php:2151
+msgid "Image position"
+msgstr ""
+
+#: functions/meta-functions.php:2193
+msgid "Quick Fact"
+msgstr ""
+
+#: functions/meta-functions.php:2231
+msgid "Shop Slider"
+msgstr ""
+
+#: functions/meta-functions.php:2256
+msgid "Select the products category"
+msgstr ""
+
+#: functions/meta-functions.php:2263 functions/meta-functions.php:2317
+msgid "Slides order by column"
+msgstr ""
+
+#: functions/meta-functions.php:2272 functions/meta-functions.php:2326
+msgid "Slides order"
+msgstr ""
+
+#: functions/meta-functions.php:2283
+msgid "Sidebar Widget"
+msgstr ""
+
+#: functions/meta-functions.php:2290
+msgid "Select Sidebar"
+msgstr ""
+
+#: functions/meta-functions.php:2291
+msgid ""
+"1. Create Sidebar in Theme Options > Getting Started > Sidebars.<br />2. Add "
+"Widget.<br />3. Select your sidebar."
+msgstr ""
+
+#: functions/meta-functions.php:2301
+msgid "Slider"
+msgstr ""
+
+#: functions/meta-functions.php:2310
+msgid "Select the slides category"
+msgstr ""
+
+#: functions/meta-functions.php:2337
+msgid "Sliding Box"
+msgstr ""
+
+#: functions/meta-functions.php:2381 functions/meta-functions.php:2394
+msgid "Tabs"
+msgstr ""
+
+#: functions/meta-functions.php:2395
+msgid ""
+"To add an <strong>icon</strong> in Title field, please use the following "
+"code:<br/><br/>&lt;i class=\" icon-lamp\"&gt;&lt;/i&gt; Tab Title"
+msgstr ""
+
+#: functions/meta-functions.php:2407
+msgid "Vertical tabs works only for column widths: 1/2, 3/4 & 1/1"
+msgstr ""
+
+#: functions/meta-functions.php:2413
+msgid "Unique ID [optional]"
+msgstr ""
+
+#: functions/meta-functions.php:2414
+msgid "Allowed characters: \"a-z\" \"-\" \"_\""
+msgstr ""
+
+#: functions/meta-functions.php:2415
+msgid ""
+"Use this option if you want to open specified tab from link.<br />For "
+"example: Your Unique ID is <strong>offer</strong> and you want to open 2nd "
+"tab, please use link: <strong>your-url/#offer-2</strong>"
+msgstr ""
+
+#: functions/meta-functions.php:2424
+msgid "Testimonials"
+msgstr ""
+
+#: functions/meta-functions.php:2433
+msgid "Select the testimonial post category."
+msgstr ""
+
+#: functions/meta-functions.php:2440
+msgid "Testimonials order by column."
+msgstr ""
+
+#: functions/meta-functions.php:2449
+msgid "Testimonials order."
+msgstr ""
+
+#: functions/meta-functions.php:2460 functions/meta-functions.php:2467
+msgid "Timeline"
+msgstr ""
+
+#: functions/meta-functions.php:2468
+msgid ""
+"Please add <strong>date</strong> wrapped into <strong>span</strong> tag in "
+"Title field.<br/><br/>&lt;span&gt;2013&lt;/span&gt;Event Title"
+msgstr ""
+
+#: functions/meta-functions.php:2478
+msgid "Trailer Box"
+msgstr ""
+
+#: functions/meta-functions.php:2528
+msgid "Video"
+msgstr ""
+
+#: functions/meta-functions.php:2535
+msgid "Video ID"
+msgstr ""
+
+#: functions/meta-functions.php:2536
+msgid "YouTube or Vimeo"
+msgstr ""
+
+#: functions/meta-functions.php:2537
+msgid ""
+"It`s placed in every YouTube & Vimeo video, for example:<br /><br /"
+"><b>YouTube:</b> http://www.youtube.com/watch?v=<u>WoJhnRczeNg</u><br /"
+"><b>Vimeo:</b> http://vimeo.com/<u>62954028</u>"
+msgstr ""
+
+#: functions/meta-functions.php:2544
+msgid "Width"
+msgstr ""
+
+#: functions/meta-functions.php:2565 functions/meta-functions.php:2579
+msgid "Visual Editor"
+msgstr ""
+
+#: functions/meta-news.php:18 functions/meta-news.php:19
+msgid "News"
+msgstr ""
+
+#: functions/meta-news.php:20 functions/meta-products.php:20
+#: functions/meta-slide.php:20
+msgid "Add New"
+msgstr ""
+
+#: functions/meta-news.php:21
+msgid "Add New News"
+msgstr ""
+
+#: functions/meta-news.php:22
+msgid "Edit News"
+msgstr ""
+
+#: functions/meta-news.php:23
+msgid "New News"
+msgstr ""
+
+#: functions/meta-news.php:24
+msgid "View News"
+msgstr ""
+
+#: functions/meta-news.php:25
+msgid "Search News"
+msgstr ""
+
+#: functions/meta-news.php:26
+msgid "No News found"
+msgstr ""
+
+#: functions/meta-news.php:27
+msgid "No News found in Trash"
+msgstr ""
+
+#: functions/meta-news.php:49
+msgid "News Categories"
+msgstr ""
+
+#: functions/meta-news.php:50
+msgid "News Category"
+msgstr ""
+
+#: functions/meta-news.php:66 functions/meta-products.php:65
+msgid "Thumbnail"
+msgstr ""
+
+#: functions/meta-news.php:67 functions/meta-products.php:66
+#: functions/meta-slide.php:67 inc/post-types/resources.php:45
+msgid "Categories"
+msgstr ""
+
+#: functions/meta-products.php:19
+msgid "Products Item"
+msgstr ""
+
+#: functions/meta-products.php:21
+msgid "Add New Item"
+msgstr ""
+
+#: functions/meta-products.php:22
+msgid "Edit Item"
+msgstr ""
+
+#: functions/meta-products.php:23
+msgid "New Item"
+msgstr ""
+
+#: functions/meta-products.php:24
+msgid "View Item"
+msgstr ""
+
+#: functions/meta-products.php:25
+msgid "Search Products Items"
+msgstr ""
+
+#: functions/meta-products.php:26
+msgid "No items found"
+msgstr ""
+
+#: functions/meta-products.php:27
+msgid "No items found in Trash"
+msgstr ""
+
+#: functions/meta-products.php:48
+msgid "Products categories"
+msgstr ""
+
+#: functions/meta-products.php:49
+msgid "Products category"
+msgstr ""
+
+#: functions/meta-slide.php:18
+msgid "Slides"
+msgstr ""
+
+#: functions/meta-slide.php:19
+msgid "Slide"
+msgstr ""
+
+#: functions/meta-slide.php:21
+msgid "Add New Slide"
+msgstr ""
+
+#: functions/meta-slide.php:22
+msgid "Edit Slide"
+msgstr ""
+
+#: functions/meta-slide.php:23
+msgid "New Slide"
+msgstr ""
+
+#: functions/meta-slide.php:24
+msgid "View Slides"
+msgstr ""
+
+#: functions/meta-slide.php:25
+msgid "Search Slides"
+msgstr ""
+
+#: functions/meta-slide.php:26
+msgid "No slides found"
+msgstr ""
+
+#: functions/meta-slide.php:27
+msgid "No slides found in Trash"
+msgstr ""
+
+#: functions/meta-slide.php:49
+msgid "Slide categories"
+msgstr ""
+
+#: functions/meta-slide.php:50
+msgid "Slide category"
+msgstr ""
+
+#: functions/meta-slide.php:105
+msgid "Slide Options"
+msgstr ""
+
+#: functions/theme-functions.php:152
+msgid "Prev page"
+msgstr ""
+
+#: functions/theme-functions.php:153
+msgid "Next page"
+msgstr ""
+
+#: functions/theme-functions.php:226
+#, php-format
+msgid "View all posts filed under %s"
+msgstr ""
+
+#: functions/theme-functions.php:282 inc/templates/snippets/breadcrumbs.php:123
+#: inc/templates/snippets/breadcrumbs.php:245
+msgid "Home"
+msgstr ""
+
+#: functions/theme-functions.php:291
+msgid "Archive by category"
+msgstr ""
+
+#: functions/theme-functions.php:651
+msgid "comment"
+msgstr ""
+
+#: functions/theme-functions.php:652
+msgid "comments"
+msgstr ""
+
+#: functions/theme-functions.php:653
+msgid "comments off"
+msgstr ""
+
+#: functions/theme-functions.php:771
+msgid "Install Required Plugins"
+msgstr ""
+
+#: functions/theme-functions.php:772
+msgid "Install Plugins"
+msgstr ""
+
+#: functions/theme-functions.php:773
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: functions/theme-functions.php:774
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: functions/theme-functions.php:775
+#, php-format
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions/theme-functions.php:776
+#, php-format
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions/theme-functions.php:777
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to install the %s plugin. "
+"Contact the administrator of this site for help on getting the plugin "
+"installed."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to install the %s "
+"plugins. Contact the administrator of this site for help on getting the "
+"plugins installed."
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions/theme-functions.php:778
+#, php-format
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions/theme-functions.php:779
+#, php-format
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions/theme-functions.php:780
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to activate the %s "
+"plugin. Contact the administrator of this site for help on getting the "
+"plugin activated."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to activate the %s "
+"plugins. Contact the administrator of this site for help on getting the "
+"plugins activated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions/theme-functions.php:781
+#, php-format
+msgid ""
+"The following plugin needs to be updated to its latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgid_plural ""
+"The following plugins need to be updated to their latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions/theme-functions.php:782
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to update the %s plugin. "
+"Contact the administrator of this site for help on getting the plugin "
+"updated."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to update the %s plugins. "
+"Contact the administrator of this site for help on getting the plugins "
+"updated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions/theme-functions.php:783
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions/theme-functions.php:784
+msgid "Activate installed plugin"
+msgid_plural "Activate installed plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions/theme-functions.php:785
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: functions/theme-functions.php:786
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: functions/theme-functions.php:787
+#, php-format
+msgid "All plugins installed and activated successfully. %s"
+msgstr ""
+
+#: functions/theme-menu.php:15
+msgid "Quick Menu"
+msgstr ""
+
+#: functions/widget-functions.php:21
+msgid "Page area"
+msgstr ""
+
+#: functions/widget-functions.php:23
+msgid "Appears in the Page section of the site."
+msgstr ""
+
+#: inc/ajax/methods.php:314 inc/ajax/methods.php:329
+#: inc/templates/widgets/advance-search.php:189
+#: inc/templates/widgets/advance-search.php:201
+#: inc/templates/widgets/advance-search.php:208
+msgid "Select Filter By"
+msgstr ""
+
+#. Template Name of the plugin/theme
+#: inc/post-types/resources.php:11
+msgid "Resources"
+msgstr ""
+
+#: inc/post-types/resources.php:13
+msgid "Resource"
+msgstr ""
+
+#: inc/taxonomies/centralize-tags.php:13 inc/taxonomies/centralize-tags.php:23
+msgid "Related Tags"
+msgstr ""
+
+#: inc/taxonomies/centralize-tags.php:14
+msgid "Related Tag"
+msgstr ""
+
+#: inc/taxonomies/centralize-tags.php:15
+msgid "Search Tags"
+msgstr ""
+
+#: inc/taxonomies/centralize-tags.php:16
+msgid "All Tags"
+msgstr ""
+
+#: inc/taxonomies/centralize-tags.php:17
+msgid "Parent Tag"
+msgstr ""
+
+#: inc/taxonomies/centralize-tags.php:18
+msgid "Parent Tag:"
+msgstr ""
+
+#: inc/taxonomies/centralize-tags.php:19
+msgid "Edit Tag"
+msgstr ""
+
+#: inc/taxonomies/centralize-tags.php:20
+msgid "Update tag"
+msgstr ""
+
+#: inc/taxonomies/centralize-tags.php:21
+msgid "Add New Tag"
+msgstr ""
+
+#: inc/taxonomies/centralize-tags.php:22
+msgid "New Tag"
+msgstr ""
+
+#: inc/templates/pagination.php:27
+msgid "Prev"
+msgstr ""
+
+#: inc/templates/pagination.php:28
+msgid "Next "
+msgstr ""
+
+#: inc/templates/snippets/breadcrumbs.php:269
+msgid "Author Archive "
+msgstr ""
+
+#: inc/templates/snippets/breadcrumbs.php:276
+msgid "Blog Archives "
+msgstr ""
+
+#: inc/templates/snippets/breadcrumbs.php:280
+msgid "Search Results "
+msgstr ""
+
+#: inc/templates/snippets/breadcrumbs.php:300 single-resources.php:197
+#: single.php:166
+msgid "Archive"
+msgstr ""
+
+#: inc/templates/snippets/sticky-toolbar.php:12
+msgid "Contact Us"
+msgstr ""
+
+#: inc/templates/widgets/advance-search.php:7
+msgid "KEYWORD"
+msgstr ""
+
+#: inc/templates/widgets/recent-posts.php:24
+msgid "Recently Added"
+msgstr ""
+
+#: inc/templates/widgets/tags.php:26
+msgid "Popular Tags"
+msgstr ""
+
+#: inc/wp-table/related-tags.php:10
+msgid "Page Type"
+msgstr ""
+
+#: index.php:90 resources.php:172 single-resources.php:171
+msgid "Search Resources"
+msgstr ""
+
+#: page-front.php:107 parent-products-template.php:136
+msgid "PRODUCTS"
+msgstr ""
+
+#: page-front.php:215
+#, php-format
+msgid "%1$s%2$sIndustrial%3$s Applications%4$s"
+msgstr ""
+
+#: page-front.php:292
+msgid "View More"
+msgstr ""
+
+#: page-front.php:301 page-front.php:431
+msgid "Sorry, there are no application to display"
+msgstr ""
+
+#: page-front.php:418
+msgid "Read More"
+msgstr ""
+
+#: parent-products-template.php:38
+msgid "PRODUCT SEARCH"
+msgstr ""
+
+#: products_child.php:213
+msgid "Media Gallery"
+msgstr ""
+
+#: products_child.php:216
+msgid "Specifications"
+msgstr ""
+
+#: products_child.php:233
+msgid "Highlights"
+msgstr ""
+
+#: products_child.php:356
+msgid "Images"
+msgstr ""
+
+#: products_child.php:380
+msgid "Videos"
+msgstr ""
+
+#: products_child.php:464
+#, php-format
+msgid "%1$s%2$sPRODUCT%3$s SPECIFICATIONS%4$s"
+msgstr ""
+
+#: products_child.php:482
+msgid " Specifications "
+msgstr ""
+
+#: products_child.php:490
+msgid " Options "
+msgstr ""
+
+#: products_child.php:498
+msgid " Documents "
+msgstr ""
+
+#: products_child.php:570
+msgid " Brochure: "
+msgstr ""
+
+#: products_child.php:651
+#, php-format
+msgid "%1$sCase %2$sStudies%3$s%4$s"
+msgstr ""
+
+#: products_child.php:681
+#, php-format
+msgid "%1$s%2$sRequest A%3$s Quote%4$s"
+msgstr ""
+
+#: products_parent.php:118 single-applications.php:198
+#, php-format
+msgid "%1$s%2$sRequest A%3$s Solution%4$s"
+msgstr ""
+
+#: services.php:194
+#, php-format
+msgid "%1$s%2$sMake a Request%3$s for Service%4$s"
+msgstr ""
+
+#: services.php:200
+msgid ""
+"Before sending any product to our factory, contact us to receive a Returned "
+"Material Authorisation number to ensure the product is correctly received "
+"and processed."
+msgstr ""
+
+#: single-applications.php:103
+msgid "View Related Products"
+msgstr ""
+
+#: single-case_study.php:86
+msgid "Application:"
+msgstr ""
+
+#: single-case_study.php:111 single-resources.php:110 single.php:79
+msgid "TAGS"
+msgstr ""
+
+#: single-case_study.php:149 single-case_study_21_Jul_20.php:72
+#: single-resources.php:145 single.php:114
+msgid "PREVIOUS"
+msgstr ""
+
+#: single-case_study.php:162 single-case_study_21_Jul_20.php:82
+#: single-resources.php:157 single.php:126
+msgid "NEXT"
+msgstr ""
+
+#: single-case_study_21_Jul_20.php:77
+msgid "Share Post"
+msgstr ""
+
+#. Template Name of the plugin/theme
+#: single-case_study_21_Jul_20.php:152
+msgid "Casestudies"
+msgstr ""
+
+#: single-resources.php:95 single.php:64
+msgid "CATEGORIES"
+msgstr ""
+
+#: single.php:24
+msgid "Blogs"
+msgstr ""
+
+#: single.php:140
+msgid "Search Blogs"
+msgstr ""
+
+#: taxonomy-casestudy_categories.php:171 taxonomy-resources_categories.php:169
+#: taxonomy-resources_tags.php:171
+msgid "Search "
+msgstr ""
+
+#: taxonomy.php:180
+msgid "Search Related Tags"
+msgstr ""
+
+#: theme-options/fields/font_select/field_font_select.php:26
+msgid "System"
+msgstr ""
+
+#: theme-options/fields/font_select/field_font_select.php:34
+msgid "Custom (uploaded below)"
+msgstr ""
+
+#: theme-options/fields/font_select/field_font_select.php:42
+msgid "Popular Google Fonts"
+msgstr ""
+
+#: theme-options/fields/font_select/field_font_select.php:49
+msgid "Google Fonts"
+msgstr ""
+
+#: theme-options/fields/pages_select/field_pages_select.php:23
+msgid "-- select --"
+msgstr ""
+
+#: theme-options/fields/upload/field_upload.php:29
+msgid "Browse"
+msgstr ""
+
+#: theme-options/fields/upload/field_upload.php:30
+msgid "Remove Upload"
+msgstr ""
+
+#: theme-options/options.php:42 theme-options/options.php:44
+msgid "Theme Options"
+msgstr ""
+
+#: theme-options/options.php:464 theme-options/options.php:474
+msgid "Save Changes"
+msgstr ""
+
+#: theme-options/options.php:473
+msgid "Reset to Defaults"
+msgstr ""
+
+#: theme-options/theme-options.php:42 theme-options/theme-options_old.php:42
+msgid "Getting started"
+msgstr ""
+
+#: theme-options/theme-options.php:59 theme-options/theme-options_old.php:60
+msgid "Header"
+msgstr ""
+
+#: theme-options/theme-options.php:65 theme-options/theme-options_old.php:66
+msgid "Main Logo"
+msgstr ""
+
+#: theme-options/theme-options.php:71
+msgid "Print Logo"
+msgstr ""
+
+#: theme-options/theme-options.php:77 theme-options/theme-options_old.php:72
+msgid "Toll Free"
+msgstr ""
+
+#: theme-options/theme-options.php:78 theme-options/theme-options_old.php:73
+msgid "Toll Free Label"
+msgstr ""
+
+#: theme-options/theme-options.php:84 theme-options/theme-options.php:85
+#: theme-options/theme-options_old.php:79
+#: theme-options/theme-options_old.php:80
+msgid "Toll Free Number"
+msgstr ""
+
+#: theme-options/theme-options.php:91 theme-options/theme-options_old.php:86
+msgid "International Label"
+msgstr ""
+
+#: theme-options/theme-options.php:92 theme-options/theme-options_old.php:87
+msgid "International Label Text"
+msgstr ""
+
+#: theme-options/theme-options.php:98 theme-options/theme-options.php:99
+#: theme-options/theme-options_old.php:93
+#: theme-options/theme-options_old.php:94
+msgid "International Number"
+msgstr ""
+
+#: theme-options/theme-options.php:105 theme-options/theme-options_old.php:100
+msgid "Fax Label"
+msgstr ""
+
+#: theme-options/theme-options.php:106 theme-options/theme-options_old.php:101
+msgid "Fax Label Text"
+msgstr ""
+
+#: theme-options/theme-options.php:112 theme-options/theme-options_old.php:107
+msgid "Fax Number"
+msgstr ""
+
+#: theme-options/theme-options.php:118 theme-options/theme-options_old.php:113
+msgid "Contact Mail"
+msgstr ""
+
+#: theme-options/theme-options.php:119 theme-options/theme-options_old.php:114
+msgid "Enter You Mail ID"
+msgstr ""
+
+#: theme-options/theme-options.php:125 theme-options/theme-options_old.php:120
+msgid "Call Icon"
+msgstr ""
+
+#: theme-options/theme-options.php:131 theme-options/theme-options_old.php:126
+msgid "Call Text"
+msgstr ""
+
+#: theme-options/theme-options.php:137 theme-options/theme-options_old.php:132
+msgid "Call Number"
+msgstr ""
+
+#: theme-options/theme-options.php:143 theme-options/theme-options_old.php:138
+msgid "Get Quote Button Text"
+msgstr ""
+
+#: theme-options/theme-options.php:149 theme-options/theme-options_old.php:144
+msgid "Get Quote Button Link"
+msgstr ""
+
+#: theme-options/theme-options.php:155 theme-options/theme-options_old.php:150
+msgid "English Icon"
+msgstr ""
+
+#: theme-options/theme-options.php:161 theme-options/theme-options_old.php:156
+msgid "Canada Icon"
+msgstr ""
+
+#: theme-options/theme-options.php:174
+msgid "Banner Main Text"
+msgstr ""
+
+#: theme-options/theme-options.php:180
+msgid "Banner Main Link"
+msgstr ""
+
+#: theme-options/theme-options.php:186
+msgid "Filter Products Title"
+msgstr ""
+
+#: theme-options/theme-options.php:192
+msgid "Request a Quote Form Title"
+msgstr ""
+
+#: theme-options/theme-options.php:198
+msgid "Request a Quote Form Sub Title"
+msgstr ""
+
+#: theme-options/theme-options.php:206
+msgid "Case Study"
+msgstr ""
+
+#: theme-options/theme-options.php:212
+msgid "Main Case Study Title"
+msgstr ""
+
+#: theme-options/theme-options.php:218
+msgid "Previous Text"
+msgstr ""
+
+#: theme-options/theme-options.php:224
+msgid "Next Text"
+msgstr ""
+
+#: theme-options/theme-options.php:230
+msgid "Search Title"
+msgstr ""
+
+#: theme-options/theme-options.php:236
+msgid "Tag Title"
+msgstr ""
+
+#: theme-options/theme-options.php:242
+msgid "Recent Title"
+msgstr ""
+
+#: theme-options/theme-options.php:248
+msgid "Application Title"
+msgstr ""
+
+#: theme-options/theme-options.php:254
+msgid "Product Title"
+msgstr ""
+
+#: theme-options/theme-options.php:260
+msgid "Case Study Form Title"
+msgstr ""
+
+#: theme-options/theme-options.php:266
+msgid "Case Study Form Sub Title"
+msgstr ""
+
+#: theme-options/theme-options.php:274 theme-options/theme-options_old.php:163
+msgid "Footer"
+msgstr ""
+
+#: theme-options/theme-options.php:280 theme-options/theme-options_old.php:169
+msgid "Placeholder"
+msgstr ""
+
+#: theme-options/theme-options.php:286 theme-options/theme-options_old.php:175
+msgid "Footer Logo"
+msgstr ""
+
+#: theme-options/theme-options.php:292 theme-options/theme-options_old.php:181
+msgid "Footer Description"
+msgstr ""
+
+#: theme-options/theme-options.php:298 theme-options/theme-options_old.php:187
+msgid "Certification Image"
+msgstr ""
+
+#: theme-options/theme-options.php:304 theme-options/theme-options_old.php:193
+msgid "Footer Title1"
+msgstr ""
+
+#: theme-options/theme-options.php:310 theme-options/theme-options_old.php:199
+msgid "Footer Title2"
+msgstr ""
+
+#: theme-options/theme-options.php:316 theme-options/theme-options_old.php:205
+msgid "Footer Title3"
+msgstr ""
+
+#: theme-options/theme-options.php:322 theme-options/theme-options_old.php:211
+msgid "Footer Title4"
+msgstr ""
+
+#: theme-options/theme-options.php:328 theme-options/theme-options_old.php:217
+msgid "Facebook Link"
+msgstr ""
+
+#: theme-options/theme-options.php:329 theme-options/theme-options_old.php:218
+msgid "Enter your Facebook Link"
+msgstr ""
+
+#: theme-options/theme-options.php:335 theme-options/theme-options_old.php:224
+msgid "Youtube Link"
+msgstr ""
+
+#: theme-options/theme-options.php:336 theme-options/theme-options_old.php:225
+msgid "Enter your Youtube Link"
+msgstr ""
+
+#: theme-options/theme-options.php:342 theme-options/theme-options_old.php:231
+msgid "LinkedIn Link"
+msgstr ""
+
+#: theme-options/theme-options.php:343 theme-options/theme-options_old.php:232
+msgid "Enter your LinkedIn link"
+msgstr ""
+
+#: theme-options/theme-options.php:349 theme-options/theme-options_old.php:238
+msgid "Footer Copyright"
+msgstr ""
+
+#: theme-options/theme-options.php:350 theme-options/theme-options_old.php:239
+msgid "please enter your copyrights."
+msgstr ""
+
+#: theme-options/validation/color/validation_color.php:15
+msgid "This field must be a valid color value."
+msgstr ""
+
+#: theme-options/validation/email/validation_email.php:15
+msgid "You must provide a valid email for this option."
+msgstr ""
+
+#: theme-options/validation/no_html/validation_no_html.php:15
+msgid ""
+"You must not enter any HTML in this field, all HTML tags have been removed."
+msgstr ""
+
+#: theme-options/validation/no_special_chars/validation_no_special_chars.php:15
+msgid ""
+"You must not enter any special characters in this field, all special "
+"characters have been removed."
+msgstr ""
+
+#: theme-options/validation/numeric/validation_numeric.php:15
+msgid "You must provide a numerical value for this option."
+msgstr ""
+
+#: theme-options/validation/url/validation_url.php:15
+msgid "You must provide a valid URL for this option."
+msgstr ""
+
+#. Theme Name of the plugin/theme
+msgid "Massload"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Massload Team"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Application Products"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Child Product"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Our Services"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Parent Products"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Application Casestudy"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Contact Page"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Sitemap"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "OLD Parent Products"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Company & Values Template"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "applications"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Career Page"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Front Page"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Parent Product"
+msgstr ""
