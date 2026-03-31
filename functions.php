@@ -68,6 +68,10 @@ function core_setup()
     load_theme_textdomain('betheme', LANG_DIR);
     load_theme_textdomain('to-opts', LANG_DIR);
     load_theme_textdomain('massload', LANG_DIR);
+    add_theme_support('woocommerce');
+    add_theme_support('wc-product-gallery-zoom');
+    add_theme_support('wc-product-gallery-lightbox');
+    add_theme_support('wc-product-gallery-slider');
 }
 add_action('after_setup_theme', 'core_setup');
 
@@ -1028,4 +1032,110 @@ add_filter('wp_kses_allowed_html', 'allow_iframes_in_acf', 10, 2);
 
 /* Turn off the WordPress Admin Bar for all users */
 //add_filter('show_admin_bar', '__return_false');
+
+/**
+ * Related Products Source Toggle — sidebar meta box
+ */
+function massload_related_products_metabox() {
+    add_meta_box(
+        'massload_related_source',
+        'Related Products Source',
+        'massload_related_source_callback',
+        'product',
+        'side',
+        'default'
+    );
+}
+add_action('add_meta_boxes', 'massload_related_products_metabox');
+
+function massload_related_source_callback($post) {
+    wp_nonce_field('massload_related_source_nonce', 'massload_related_source_nonce_field');
+    $source = get_post_meta($post->ID, '_related_products_source', true);
+    if (empty($source)) $source = 'custom'; // default to ACF options
+    ?>
+    <style>
+        .massload-toggle { display:flex; gap:10px; margin:10px 0; }
+        .massload-toggle label {
+            flex:1; text-align:center; padding:8px 12px;
+            border:2px solid #ddd; border-radius:4px; cursor:pointer;
+            font-weight:600; font-size:12px; transition:all 0.2s;
+        }
+        .massload-toggle input { display:none; }
+        .massload-toggle input:checked + label {
+            border-color:#e30913; background:#e30913; color:#fff;
+        }
+        .massload-toggle label:hover { border-color:#e30913; }
+    </style>
+    <div class="massload-toggle">
+        <span>
+            <input type="radio" name="_related_products_source" id="rps_custom" value="custom" <?php checked($source, 'custom'); ?>>
+            <label for="rps_custom">Custom (ACF)</label>
+        </span>
+        <span>
+            <input type="radio" name="_related_products_source" id="rps_woo" value="woocommerce" <?php checked($source, 'woocommerce'); ?>>
+            <label for="rps_woo">WooCommerce</label>
+        </span>
+    </div>
+    <p class="description" style="margin-top:8px;">
+        <strong>Custom:</strong> Uses the ACF Options repeater.<br>
+        <strong>WooCommerce:</strong> Uses Linked Products → Upsells.
+    </p>
+    <?php
+}
+
+function massload_save_related_source($post_id) {
+    if (!isset($_POST['massload_related_source_nonce_field'])) return;
+    if (!wp_verify_nonce($_POST['massload_related_source_nonce_field'], 'massload_related_source_nonce')) return;
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+    if (!current_user_can('edit_post', $post_id)) return;
+
+    if (isset($_POST['_related_products_source'])) {
+        update_post_meta($post_id, '_related_products_source', sanitize_text_field($_POST['_related_products_source']));
+    }
+}
+add_action('save_post_product', 'massload_save_related_source');
+
+/**
+ * YITH Request a Quote — Save extra form fields and include in email
+ */
+function massload_ywraq_save_extra_fields($args) {
+    $extra_fields = ['rqa_last_name', 'rqa_phone', 'rqa_company', 'rqa_country', 'rqa_priority', 'rqa_source', 'rqa_send_copy', 'rqa_newsletter'];
+    foreach ($extra_fields as $field) {
+        if (isset($_POST[$field])) {
+            $args[$field] = sanitize_text_field($_POST[$field]);
+        }
+    }
+    return $args;
+}
+add_filter('ywraq_request_quote_args', 'massload_ywraq_save_extra_fields');
+
+function massload_ywraq_email_body($body, $args) {
+    $extra = '';
+    if (!empty($args['rqa_last_name']))  $extra .= '<br><strong>Last Name:</strong> ' . esc_html($args['rqa_last_name']);
+    if (!empty($args['rqa_phone']))      $extra .= '<br><strong>Phone:</strong> ' . esc_html($args['rqa_phone']);
+    if (!empty($args['rqa_company']))    $extra .= '<br><strong>Company:</strong> ' . esc_html($args['rqa_company']);
+    if (!empty($args['rqa_country']))    $extra .= '<br><strong>Country:</strong> ' . esc_html($args['rqa_country']);
+    if (!empty($args['rqa_priority']))   $extra .= '<br><strong>Priority:</strong> ' . esc_html($args['rqa_priority']);
+    if (!empty($args['rqa_source']))     $extra .= '<br><strong>How they heard about us:</strong> ' . esc_html($args['rqa_source']);
+    if (!empty($args['rqa_newsletter'])) $extra .= '<br><strong>Newsletter opt-in:</strong> Yes';
+
+    if (!empty($extra)) {
+        $body .= '<br><hr><h3>Additional Information</h3>' . $extra;
+    }
+    return $body;
+}
+add_filter('ywraq_request_quote_email_body', 'massload_ywraq_email_body', 10, 2);
+
+/**
+ * Send copy to customer if they checked the box
+ */
+function massload_ywraq_send_copy($args) {
+    if (!empty($args['rqa_send_copy']) && $args['rqa_send_copy'] === 'yes' && !empty($args['rqa_email'])) {
+        add_filter('ywraq_request_quote_email_headers', function($headers) use ($args) {
+            $headers[] = 'Cc: ' . sanitize_email($args['rqa_email']);
+            return $headers;
+        });
+    }
+}
+add_action('ywraq_process_request_quote', 'massload_ywraq_send_copy');
 ?>
