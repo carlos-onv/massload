@@ -8,16 +8,38 @@
  */
 
 $ywraq_current_user = array();
-if ( is_user_logged_in() ) {
-	$ywraq_current_user = get_user_by( 'id', get_current_user_id() );
+if (is_user_logged_in()) {
+	$ywraq_current_user = get_user_by('id', get_current_user_id());
 }
 
-$user_fname = ( ! empty( $ywraq_current_user ) ) ? $ywraq_current_user->first_name : '';
-$user_lname = ( ! empty( $ywraq_current_user ) ) ? $ywraq_current_user->last_name : '';
-$user_mail  = ( ! empty( $ywraq_current_user ) ) ? $ywraq_current_user->user_email : '';
+$user_fname = (!empty($ywraq_current_user)) ? $ywraq_current_user->first_name : '';
+$user_lname = (!empty($ywraq_current_user)) ? $ywraq_current_user->last_name : '';
+$user_mail = (!empty($ywraq_current_user)) ? $ywraq_current_user->user_email : '';
 ?>
 
 <style>
+	/* Quote Cart Table Styling */
+	#yith-ywrq-table-list thead th {
+		background-color: #000 !important;
+		color: #fff !important;
+		text-transform: uppercase;
+		font-weight: 700;
+		border: none;
+		padding: 15px;
+	}
+
+	#yith-ywrq-table-list .cart_item td {
+		vertical-align: middle;
+		border-bottom: 1px solid #eee;
+		padding: 15px;
+	}
+
+	#yith-ywrq-table-list .product-thumbnail img {
+		max-width: 80px;
+		height: auto;
+		border-radius: 4px;
+	}
+
 	.ywraq-mail-form-wrapper {
 		margin-top: 30px;
 	}
@@ -133,28 +155,37 @@ $user_mail  = ( ! empty( $ywraq_current_user ) ) ? $ywraq_current_user->user_ema
 </style>
 
 <div class="yith-ywraq-mail-form-wrapper ywraq-mail-form-wrapper">
-	<h3><?php esc_html_e( 'Complete Your Quote Request', 'massload' ); ?></h3>
+	<div class="heading-block text-center mb-4">
+		<h2 class="font-weight-normal"><span style="color:#e30913;">Request A</span> Solution</h2>
+		<p class="text-center mt-3" style="color:#303030;">Review the products in your Quote Cart above, and fill the
+			form below.</br>Our team will review your request and get back to you shortly.</p>
+	</div>
 
-	<form id="yith-ywraq-mail-form" name="yith-ywraq-mail-form" action="<?php echo esc_url( YITH_Request_Quote()->get_raq_page_url() ); ?>" method="post">
+
+	<form id="yith-ywraq-mail-form" name="yith-ywraq-mail-form"
+		action="<?php echo esc_url(YITH_Request_Quote()->get_raq_page_url()); ?>" method="post">
 
 		<div class="ywraq-form-grid">
 
 			<!-- First Name -->
 			<div class="form-field">
 				<label for="rqa-first-name">First Name <abbr class="required" title="required">*</abbr></label>
-				<input type="text" name="rqa_name" id="rqa-first-name" value="<?php echo esc_attr( $user_fname ); ?>" required>
+				<input type="text" name="rqa_name" id="rqa-first-name" value="<?php echo esc_attr($user_fname); ?>"
+					required>
 			</div>
 
 			<!-- Last Name -->
 			<div class="form-field">
 				<label for="rqa-last-name">Last Name <abbr class="required" title="required">*</abbr></label>
-				<input type="text" name="rqa_last_name" id="rqa-last-name" value="<?php echo esc_attr( $user_lname ); ?>" required>
+				<input type="text" name="rqa_last_name" id="rqa-last-name" value="<?php echo esc_attr($user_lname); ?>"
+					required>
 			</div>
 
 			<!-- Email -->
 			<div class="form-field">
 				<label for="rqa-email">Email <abbr class="required" title="required">*</abbr></label>
-				<input type="email" name="rqa_email" id="rqa-email" value="<?php echo esc_attr( $user_mail ); ?>" required>
+				<input type="email" name="rqa_email" id="rqa-email" value="<?php echo esc_attr($user_mail); ?>"
+					required>
 			</div>
 
 			<!-- Phone -->
@@ -176,8 +207,8 @@ $user_mail  = ( ! empty( $ywraq_current_user ) ) ? $ywraq_current_user->user_ema
 					<option value="">— Select Country —</option>
 					<?php
 					$countries = WC()->countries->get_countries();
-					foreach ( $countries as $code => $name ) {
-						echo '<option value="' . esc_attr( $name ) . '">' . esc_html( $name ) . '</option>';
+					foreach ($countries as $code => $name) {
+						echo '<option value="' . esc_attr($name) . '">' . esc_html($name) . '</option>';
 					}
 					?>
 				</select>
@@ -185,12 +216,15 @@ $user_mail  = ( ! empty( $ywraq_current_user ) ) ? $ywraq_current_user->user_ema
 
 			<!-- Priority -->
 			<div class="form-field">
-				<label for="rqa-priority">Please select your priority <abbr class="required" title="required">*</abbr></label>
+				<label for="rqa-priority">Please select your priority <abbr class="required"
+						title="required">*</abbr></label>
 				<select name="rqa_priority" id="rqa-priority" required>
 					<option value="">— Select Priority —</option>
 					<option value="I need a solution right away">I need a solution right away</option>
-					<option value="I need a solution within a month to two">I need a solution within a month to two</option>
-					<option value="I need a solution within 6 months or more">I need a solution within 6 months or more</option>
+					<option value="I need a solution within a month to two">I need a solution within a month to two
+					</option>
+					<option value="I need a solution within 6 months or more">I need a solution within 6 months or more
+					</option>
 					<option value="I just need budgetary pricing for now">I just need budgetary pricing for now</option>
 				</select>
 			</div>
@@ -234,7 +268,8 @@ $user_mail  = ( ! empty( $ywraq_current_user ) ) ? $ywraq_current_user->user_ema
 
 			<!-- Submit -->
 			<div class="ywraq-submit-row">
-				<input type="hidden" id="raq-mail-wpnonce" name="raq_mail_wpnonce" value="<?php echo esc_attr( wp_create_nonce( 'send-request-quote' ) ); ?>">
+				<input type="hidden" id="raq-mail-wpnonce" name="raq_mail_wpnonce"
+					value="<?php echo esc_attr(wp_create_nonce('send-request-quote')); ?>">
 				<input class="button raq-send-request" type="submit" value="SUBMIT REQUEST">
 			</div>
 

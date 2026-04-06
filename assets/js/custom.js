@@ -64,7 +64,7 @@ jQuery(document).ready(function($) {
     /**
      * Windows load
      */ 
-    $( window ).load( function() {
+    $( window ).on( 'load', function() {
         var $sticky_toolbar = $( '.st-sticky-share-buttons.st-left' );
         /**
          * Sticky Toolbar items

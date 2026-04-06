@@ -16,91 +16,7 @@ $acf_id = 'product_cat_' . $current_term->term_id;
 $banner_image = get_field('banner_image', $acf_id);
 ?>
 
-<style>
-    .category-banner-row {
-        display: flex;
-        align-items: center;
-        gap: 40px;
-        padding: 40px 0;
-    }
 
-    .category-banner-row .category-title-col {
-        flex: 0 0 40%;
-        max-width: 40%;
-    }
-
-    .category-banner-row .category-desc-col {
-        flex: 1;
-    }
-
-    .category-banner-row .mass-category-title {
-        margin: 0;
-        font-size: 36px;
-        font-weight: 700;
-        color: #333;
-        line-height: 1.2;
-    }
-
-    .category-banner-row .category-description p {
-        font-size: 16px;
-        line-height: 1.7;
-        color: #555;
-    }
-
-    .category-banner-row .category-description p:last-child {
-        margin-bottom: 0;
-    }
-
-    .breadcrumb-nav {
-        padding: 15px 20px;
-        margin: 0;
-        font-size: 14px;
-        font-weight: 400;
-        color: #777;
-    }
-
-    .breadcrumb-nav a {
-        color: #e30913;
-        text-decoration: none;
-    }
-
-    .breadcrumb-nav span {
-        color: #333;
-    }
-
-    .product-lisiting .container {
-        background-color: #f2f2f2;
-    }
-
-    #faqs-section {
-        margin-bottom: 20px;
-
-    }
-
-    #faqs-section .container {
-        background-color: #f2f2f2;
-        padding-top: 20px;
-    }
-
-    .faq summary h3 {
-        color: #000;
-        font-weight: 400;
-        margin-bottom: 10px;
-    }
-
-    @media (max-width: 768px) {
-        .category-banner-row {
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .category-banner-row .category-title-col {
-            flex: 0 0 100%;
-            max-width: 100%;
-            text-align: center;
-        }
-    }
-</style>
 
 <div id="pagebanner" class="pagebanner">
     <div class="inner-banner" style="background-color:#f1f2f1;">
@@ -173,72 +89,14 @@ $banner_image = get_field('banner_image', $acf_id);
                     endif;
                     ?>
 
-                    <style>
-                        span.theme-btn {
-                            font-size: 13px;
-                            background: #4c4c4c;
-                            display: inline-block;
-                            width: 33.333%;
-                            text-align: left;
-                            margin: 0;
-                            float: left;
-                            color: #d2d2d2;
-                            border: 1px solid #fff;
-                            font-family: "Roboto Condensed", sans-serif;
-                            padding: 13px 13px;
-                            transition: 0.3s ease;
-                        }
 
-                        span.theme-btn:hover {
-                            color: #d2d2d2;
-                        }
-
-                        /* Product grid: equal-height cards with image filling space */
-                        .product-block .row {
-                            display: flex;
-                            flex-wrap: wrap;
-                        }
-
-                        .product-block .row>[class*="col-"] {
-                            display: flex;
-                            margin-bottom: 30px;
-                        }
-
-                        .productblock.childProduct {
-                            display: flex;
-                            flex-direction: column;
-                            width: 100%;
-                        }
-
-                        .productblock.childProduct>a {
-                            flex: 1;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            overflow: hidden;
-                        }
-
-                        .productblock.childProduct>a img {
-                            width: 100%;
-                            height: 100%;
-                            object-fit: cover;
-                        }
-
-                        .productblock.childProduct .product-content {
-                            flex-shrink: 0;
-                        }
-
-                        .productblock.childProduct .productActions {
-                            flex-shrink: 0;
-                        }
-                    </style>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Solutions CTA Boxes -->
-    <section class="solutions-cta margin_bottom_40 margin_top_40">
+    <section class="solutions-cta mb-5 mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -253,36 +111,7 @@ $banner_image = get_field('banner_image', $acf_id);
                 </div>
             </div>
         </div>
-        <style>
-            .solutions-cta-box {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: #b0b0b0;
-                min-height: 180px;
-                text-decoration: none;
-                transition: background-color 0.3s ease, transform 0.2s ease;
-            }
 
-            .solutions-cta-box:hover {
-                background-color: #e30913;
-                transform: translateY(-2px);
-                text-decoration: none;
-            }
-
-            .solutions-cta-box span {
-                color: #fff;
-                font-size: 28px;
-                font-weight: 600;
-                letter-spacing: 0.5px;
-            }
-
-            @media (max-width: 768px) {
-                .solutions-cta .col-md-6 {
-                    margin-bottom: 15px;
-                }
-            }
-        </style>
     </section>
 
     <!-- 3. Testimonials -->
@@ -293,11 +122,11 @@ $banner_image = get_field('banner_image', $acf_id);
 
     if ($enable_testimonial == "Yes" && !empty($testimonial_shortcode)):
         ?>
-        <section class="text-center product-lisiting margin_bottom_80 margin_top_40">
+        <section class="text-center product-lisiting mb-5 mt-5">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <h2 class="margin_top_40"><?php echo esc_html($testimonial_area_title); ?></h2>
+                        <h2 class="mt-5"><?php echo esc_html($testimonial_area_title); ?></h2>
                         <div class="testimonial-block">
                             <?php echo do_shortcode($testimonial_shortcode); ?>
                         </div>
@@ -308,7 +137,7 @@ $banner_image = get_field('banner_image', $acf_id);
     <?php endif; ?>
 
     <!-- 4. Text Below Product Listing -->
-    <section class="product-lisiting">
+    <section class="product-category-how-it-work">
         <div class="container">
             <div class="col-xs-12">
                 <div style="font-weight: 400; text-align: left;">

@@ -362,21 +362,21 @@ function massload_body_class($classes)
 
 add_action('init', 'create_post_type');
 
-add_post_type_support('products', 'thumbnail');
+add_post_type_support('legacy-products', 'thumbnail');
 
 function create_post_type()
 {
 
     register_post_type(
-        'products',
+        'legacy-products',
 
         array(
 
             'labels' => array(
 
-                'name' => __('Products', 'massload'),
+                'name' => __('Legacy Products', 'massload'),
 
-                'singular_name' => __('Product', 'massload')
+                'singular_name' => __('Legacy Product', 'massload')
 
             ),
 
@@ -412,19 +412,19 @@ function products_taxonomy()
 
         'producttype',  //The name of the taxonomy. Name should be in slug form (must not contain capital letters or spaces). 
 
-        'products',        //post type name
+        'legacy-products',        //post type name
 
         array(
 
             'hierarchical' => true,
 
-            'label' => __('Products Categories', 'massload'),  //Display name
+            'label' => __('Legacy Products Categories', 'massload'),  //Display name
 
             'query_var' => true,
 
             'rewrite' => array(
 
-                'slug' => 'producttype', // This controls the base slug that will display before each term
+                'slug' => 'legacy-producttype', // This controls the base slug that will display before each term
 
                 'with_front' => false // Don't display the category base before 
 
@@ -446,19 +446,19 @@ function products_parent_taxonomy()
 
         'parenttaxonomy',  //The name of the taxonomy. Name should be in slug form (must not contain capital letters or spaces). 
 
-        'products',        //post type name
+        'legacy-products',        //post type name
 
         array(
 
             'hierarchical' => true,
 
-            'label' => __('Parent Categories', 'massload'),  //Display name
+            'label' => __('Legacy Parent Categories', 'massload'),  //Display name
 
             'query_var' => true,
 
             'rewrite' => array(
 
-                'slug' => 'parenttaxonomy', // This controls the base slug that will display before each term
+                'slug' => 'legacy-parenttaxonomy', // This controls the base slug that will display before each term
 
                 'with_front' => false // Don't display the category base before 
 
@@ -495,18 +495,22 @@ add_action('pre_get_posts', 'taxonomy_post_order');
 
 
 function filter_post_type_link($link, $post)
-
 {
-
-    if ($post->post_type != 'products')
-
+    // Handle WooCommerce Products
+    if ($post->post_type == 'product') {
+        if ($cats = get_the_terms($post->ID, 'product_cat')) {
+            $link = str_replace('%product_cat%', array_pop($cats)->slug, $link);
+        }
         return $link;
+    }
 
-
-
-    if ($cats = get_the_terms($post->ID, 'category'))
-
-        $link = str_replace('%category%', array_pop($cats)->slug, $link);
+    // Handle Legacy Products
+    if ($post->post_type == 'legacy-products') {
+        if ($cats = get_the_terms($post->ID, 'producttype')) {
+            $link = str_replace('%category%', array_pop($cats)->slug, $link);
+        }
+        return $link;
+    }
 
     return $link;
 }

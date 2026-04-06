@@ -12,19 +12,19 @@
  * --------------------------------------------------------------------------- */
 
 
-function mmi_products_post_type() 
+function mmi_legacy_products_post_type() 
 {
-	$products_item_slug = mmi_opts_get( 'products-slug', 'products' );
+	$products_item_slug = mmi_opts_get( 'products-slug', 'legacy-products' );
 	
 	$labels = array(
-		'name' 					=> __('Products','mmi-opts'),
-		'singular_name' 		=> __('Products Item','mmi-opts'),
+		'name' 					=> __('Legacy Products','mmi-opts'),
+		'singular_name' 		=> __('Legacy Products Item','mmi-opts'),
 		'add_new' 				=> __('Add New','mmi-opts'),
 		'add_new_item' 			=> __('Add New Item','mmi-opts'),
 		'edit_item' 			=> __('Edit Item','mmi-opts'),
 		'new_item' 				=> __('New Item','mmi-opts'),
 		'view_item' 			=> __('View Item','mmi-opts'),
-		'search_items' 			=> __('Search Products Items','mmi-opts'),
+		'search_items' 			=> __('Search Legacy Products Items','mmi-opts'),
 		'not_found' 			=> __('No items found','mmi-opts'),
 		'not_found_in_trash' 	=> __('No items found in Trash','mmi-opts'), 
 		'parent_item_colon' 	=> ''
@@ -39,21 +39,21 @@ function mmi_products_post_type()
 		'capability_type' 		=> 'post',
 		'hierarchical' 			=> false,
 		'menu_position' 		=> null,
-		'rewrite' 				=> array( 'slug' => $products_item_slug, 'with_front'=>true ),
+		'rewrite' 				=> array( 'slug' => 'legacy-products', 'with_front'=>true ),
 		'supports' 				=> array( 'editor', 'thumbnail', 'title'),
 	); 
 	  
-	register_post_type( 'products', $args );
+	register_post_type( 'legacy-products', $args );
 	
-	register_taxonomy( 'products-types', 'products', array(
+	register_taxonomy( 'legacy-products-types', 'legacy-products', array(
 		'hierarchical' 			=> true,
-		'label' 				=>  __('Products categories','mmi-opts'),
-		'singular_label' 		=>  __('Products category','mmi-opts'),
+		'label' 				=>  __('Legacy Products categories','mmi-opts'),
+		'singular_label' 		=>  __('Legacy Products category','mmi-opts'),
 		'rewrite'				=> true,
 		'query_var' 			=> true
 	));
 }
-add_action( 'init', 'mmi_products_post_type' );
+add_action( 'init', 'mmi_legacy_products_post_type' );
 
 
 /* ---------------------------------------------------------------------------

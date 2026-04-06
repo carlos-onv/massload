@@ -304,7 +304,7 @@ while (have_posts()):
             </div>
 
             <!-- SECTION 2: 2 COLUMNS (SLIDER & DESC/HIGHLIGHTS) -->
-            <div class="row margin_bottom_40">
+            <div class="row mb-5">
 
                 <!-- Column 1: Product Images Slider (ACF) -->
                 <div class="col-md-5 productImage-left">
@@ -411,7 +411,7 @@ while (have_posts()):
                     $product_details_title = get_field('product_details_title');
                     $product_details = get_field('product_details');
                     if (!empty($product_details)): ?>
-                        <div class="product-details margin_top_20">
+                        <div class="product-details mt-4">
                             <?php if (!empty($product_details_title)): ?>
                                 <div class="row product-details-title-wrap">
                                     <div class="col-md-12 inner-wrap">
@@ -462,7 +462,7 @@ while (have_posts()):
 
                     <!-- Product Highlights -->
                     <?php if (!empty($highlights_content) || !empty($product_print_image)) { ?>
-                        <div class="wwr-right red-title headingsecondary-block margin_top_40">
+                        <div class="wwr-right red-title headingsecondary-block mt-5">
                             <div class="wwr-right-inner1">
                                 <div class="product-highlights">
                                     <h2><?php esc_html_e('Highlights', 'massload'); ?></h2>
@@ -479,7 +479,7 @@ while (have_posts()):
                     <?php } ?>
 
                     <!-- Request Quote Button (YITH) -->
-                    <div class="margin_top_20 text-center yith-quote-btn-wrap">
+                    <div class="mt-4 text-center yith-quote-btn-wrap">
                         <?php
                         if (function_exists('yith_ywraq_render_button')) {
                             // Use YITH's native add-to-quote button
@@ -504,7 +504,7 @@ while (have_posts()):
 
         <!-- SECTION 3: PRODUCT SPECIFICATIONS -->
         <?php if (!empty($specifications) || !empty($document_content)): ?>
-            <section id="specifications-section" class="additional-info padding_top_40 margin_bottom_80 bg-light pt-5 pb-5">
+            <section id="specifications-section" class="additional-info mb-5 bg-light pt-5 pb-5">
                 <div class="container">
                     <div class="dark_blk text-center mb-4 heading-block">
                         <h2><span>PRODUCT</span> SPECIFICATIONS</h2>
@@ -606,7 +606,7 @@ while (have_posts()):
         ?>
 
         <?php if ($show_related): ?>
-            <section class="related-products margin_bottom_80 pt-5 pb-5">
+            <section class="related-products mb-5 pt-5 pb-5">
                 <div class="container">
                     <div class="text-center mb-5">
                         <h2 style="font-size:32px; font-weight:700; text-transform:uppercase;">RELATED <span
@@ -775,7 +775,7 @@ while (have_posts()):
 
         if ($enable_testimonial == "Yes" && !empty($testimonial_shortcode)):
             ?>
-            <section class="container product-section1 text-center product-lisiting margin_top_40 margin_bottom_80 pb-5">
+            <section class="container product-section1 text-center product-lisiting mt-5 mb-5 pb-5">
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <div class="heading-block mb-4">
@@ -790,13 +790,14 @@ while (have_posts()):
         <?php endif; ?>
 
         <!-- REQUEST A QUOTE (TARGET) -->
-        <section id="req-quote" class="quaote_blk  text-white pt-5 pb-5 margin_bottom_80">
+        <section id="req-quote" class="quaote_blk  text-white pt-5 pb-5 mb-5">
             <div class="container">
                 <div class="heading-block text-center mb-4">
                     <h2 class="font-weight-normal"><span style="color:#e30913;">Request A</span> Solution</h2>
                 </div>
                 <div class="theme_form  p-4 rounded shadow">
-                    <p class="text-center">Add the products you’re interested in to the Quote Cart, or describe your
+                    <p class="text-center" style="color:#303030 ;">Add the products you’re interested in to the Quote Cart,
+                        or describe your
                         application in the
                         form below. Our team will review your request and get back to you shortly</p>
                     <!-- Fallback Form injected dynamically -->
