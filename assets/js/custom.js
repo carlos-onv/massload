@@ -823,7 +823,70 @@ jQuery(document).ready(function($) {
 
     $("div.product-content.career_desc").height(career_descmaxHeight);
 
-
-
+    /* =========================================================================
+       MEGA MENU - BOTTOM BANNER INJECTION & MOBILE ACCORDION
+       ========================================================================= */
+       
+    // 1. Inject the Bottom Banner into the Products Mega Menu
+    // We target the primary Products sub-menu securely
+    var $productsSubMenu = $('.menubar .navbar-nav > li#menu-item-1271 > ul.sub-menu'); // Using generic ID if available
+    if (!$productsSubMenu.length) {
+        $productsSubMenu = $('.menubar .navbar-nav > li.menu-item-has-children').first().children('ul.sub-menu');
+    }
+    
+    var bannerHTML = '<div class="mega-menu-banner">' +
+        '<a href="#custom-load-cell" class="banner-red">Custom Load Cell</a>' +
+        '<div class="banner-dot-wrapper"><span class="banner-dot-separator"></span></div>' +
+        '<a href="#custom-tension-link" class="banner-red">Custom Tension Link</a>' +
+        '<div class="banner-dot-wrapper black-bg"><span class="banner-dot-separator"></span></div>' +
+        '<a href="#custom-load-pin" class="banner-black">Custom Load Pin</a>' +
+        '</div>';
+        
+    if ($productsSubMenu.length) {
+        $productsSubMenu.append(bannerHTML);
+    }
+    
+    // 2. Mobile Accordion Logic
+    if (window.innerWidth <= 991) {
+        // Target 2nd level headers inside the mega menu
+        var $level2Items = $('.menubar .navbar-nav > li > ul.sub-menu > li');
+        
+        $level2Items.each(function() {
+            var $thisLI = $(this);
+            var $level3Menu = $thisLI.children('ul.sub-menu');
+            
+            if ($level3Menu.length) {
+                // Prevent default jump behavior if header link is blind
+                var $anchor = $thisLI.children('a');
+                if ($anchor.attr('href') === '#' || $anchor.attr('href') === '') {
+                    $anchor.on('click', function(e) {
+                        e.preventDefault();
+                    });
+                }
+                $thisLI.append('<span class="mobile-menu-toggle">+</span>');
+            }
+        });
+        
+        // Setup click handler dynamically
+        $(document).on('click', '.mobile-menu-toggle', function(e) {
+            e.preventDefault();
+            var $toggleBtn = $(this);
+            var $targetSubMenu = $toggleBtn.siblings('ul.sub-menu');
+            
+            // Close other items (Accordion)
+            var $parentMenu = $toggleBtn.closest('ul.sub-menu');
+            $parentMenu.find('ul.sub-menu').not($targetSubMenu).slideUp(200);
+            $parentMenu.find('.mobile-menu-toggle').not($toggleBtn).text('+');
+            
+            // Toggle active content
+            $targetSubMenu.slideToggle(200, function() {
+                if ($targetSubMenu.is(':visible')) {
+                    $toggleBtn.text('-');
+                } else {
+                    $toggleBtn.text('+');
+                }
+            });
+        });
+    }
 
 });
