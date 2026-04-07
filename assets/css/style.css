@@ -6648,9 +6648,9 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
 
 @media all and (min-width: 992px) {
 
-  /* Override main nav structure for Products tab mega menu */
-  .menubar .navbar-nav>li.menu-item-has-children {
-    /*position: static !important;*/
+  /* Override main nav structure for Products mega menu ONLY */
+  .menubar .navbar-nav>li.products-mega-menu {
+    /*position: static !important; */
     /* Required to let mega menu span 100% width of container */
   }
 
@@ -6659,7 +6659,7 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
     max-width: 220px;
   }
 
-  .menubar .navbar-nav>li.menu-item-has-children>ul.sub-menu {
+  .menubar .navbar-nav>li.products-mega-menu>ul.sub-menu {
     /*left: 58%;*/
     /*transform: translateX(-50%);*/
     width: 95vw;
@@ -6673,22 +6673,22 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
     margin-top: 0px;
   }
 
-  /* When hovering over the parent, show the mega menu masonry layout */
-  .menubar .navbar-nav>li.menu-item-has-children:hover>ul.sub-menu {
+  /* When hovering over the Products parent, show the mega menu masonry layout */
+  .menubar .navbar-nav>li.products-mega-menu:hover>ul.sub-menu {
     display: block !important;
     column-count: 5;
     column-gap: 30px;
   }
 
-  .menubar .navbar-nav>li>ul.sub-menu>li {
+  .menubar .navbar-nav>li.products-mega-menu>ul.sub-menu>li {
     break-inside: avoid;
     page-break-inside: avoid;
     margin-bottom: 20px;
     /* Space between vertically stacked categories */
   }
 
-  /* 2nd Level Items (Column Headers) */
-  .menubar .navbar-nav>li>ul.sub-menu>li>a {
+  /* 2nd Level Items (Column Headers) - Products only */
+  .menubar .navbar-nav>li.products-mega-menu>ul.sub-menu>li>a {
     color: #e30913 !important;
     font-weight: 700 !important;
     text-transform: uppercase !important;
@@ -6701,18 +6701,18 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
     line-height: 1.2 !important;
   }
 
-  .menubar .navbar-nav>li>ul.sub-menu>li:hover>a {
+  .menubar .navbar-nav>li.products-mega-menu>ul.sub-menu>li:hover>a {
     background: transparent !important;
     color: #e30913 !important;
   }
 
   /* Reset pseudo underline for 2nd level headers */
-  .menubar .navbar-nav>li>ul.sub-menu>li>a:after {
+  .menubar .navbar-nav>li.products-mega-menu>ul.sub-menu>li>a:after {
     display: none !important;
   }
 
   /* 3rd Level Container (ul within columns) */
-  .menubar .navbar-nav>li>ul.sub-menu>li>ul.sub-menu {
+  .menubar .navbar-nav>li.products-mega-menu>ul.sub-menu>li>ul.sub-menu {
     position: static !important;
     display: block !important;
     background: transparent !important;
@@ -6723,7 +6723,7 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
   }
 
   /* 3rd Level Items (Links) */
-  .menubar .navbar-nav>li>ul.sub-menu>li>ul.sub-menu>li>a {
+  .menubar .navbar-nav>li.products-mega-menu>ul.sub-menu>li>ul.sub-menu>li>a {
     color: #555 !important;
     font-weight: 400 !important;
     text-transform: capitalize !important;
@@ -6739,7 +6739,7 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
   }
 
   /* 3rd Level Hover State */
-  .menubar .navbar-nav>li>ul.sub-menu>li>ul.sub-menu>li>a:hover {
+  .menubar .navbar-nav>li.products-mega-menu>ul.sub-menu>li>ul.sub-menu>li>a:hover {
     background: #e30913 !important;
     color: #fff !important;
 
@@ -6747,7 +6747,7 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
   }
 
   /* Reset pseudo underline for 3rd level links */
-  .menubar .navbar-nav>li>ul.sub-menu>li>ul.sub-menu>li>a:after {
+  .menubar .navbar-nav>li.products-mega-menu>ul.sub-menu>li>ul.sub-menu>li>a:after {
     display: none !important;
   }
 }

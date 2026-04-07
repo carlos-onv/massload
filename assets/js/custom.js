@@ -829,7 +829,7 @@ jQuery(document).ready(function($) {
        
     // 1. Inject the Bottom Banner into the Products Mega Menu
     // We target the primary Products sub-menu securely
-    var $productsSubMenu = $('.menubar .navbar-nav > li#menu-item-1271 > ul.sub-menu'); // Using generic ID if available
+    var $productsSubMenu = $('.menubar .navbar-nav > li.products-mega-menu > ul.sub-menu'); // Using generic ID if available
     if (!$productsSubMenu.length) {
         $productsSubMenu = $('.menubar .navbar-nav > li.menu-item-has-children').first().children('ul.sub-menu');
     }
