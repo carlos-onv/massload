@@ -873,7 +873,6 @@ jQuery(document).ready(function($) {
             var $toggleBtn = $(this);
             var $targetSubMenu = $toggleBtn.siblings('ul.sub-menu');
             
-            // Close other items (Accordion)
             var $parentMenu = $toggleBtn.closest('ul.sub-menu');
             $parentMenu.find('ul.sub-menu').not($targetSubMenu).slideUp(200);
             $parentMenu.find('.mobile-menu-toggle').not($toggleBtn).text('+');
