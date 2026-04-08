@@ -37,8 +37,13 @@ while (have_posts()):
 
         }
 
+        .slider {
+            background: transparent !important;
+        }
+
         .slider.common-thumb {
             margin-top: 15px;
+            padding-top: 10px;
         }
 
         .common-thumb .slick-slide {
@@ -55,7 +60,7 @@ while (have_posts()):
         .common-thumb .slick-slide:hover,
         .common-thumb .slick-slide.slick-current {
             opacity: 1;
-            border: 2px solid #e30913;
+            border: none;
         }
 
         .common-thumb img {
@@ -290,23 +295,89 @@ while (have_posts()):
             border-width: 12px 0 12px 18px;
             border-color: transparent transparent transparent #e30913;
         }
+
+        /* Titles */
+        .massload-title {
+            position: relative;
+        }
+
+        .massload-title:before {
+            content: "";
+            position: absolute;
+            background-color: #000;
+            height: 3px;
+            border-right: 25px solid #e30913;
+            max-width: 90px;
+            width: 100%;
+            left: 0;
+            right: 0;
+            margin: auto;
+            bottom: 0px;
+        }
     </style>
 
 
+    </div>
+    <!-- End Pageheader (opened in global header) if applicable, but usually closed there. Let's stick to the content structure -->
+
     <div id="pagecontent" class="pagecontent single-product-custom-layout">
-        <div class="container pt-100">
+        <!-- BREADCRUMBS (Top-Left) -->
+        <div class="row">
+            <div class="col-md-12">
+                <style>
+                    .core-breadcrumbs {
+                        margin-bottom: 30px;
+                        text-align: left;
+                        padding: 20px 0 0 20px;
+                    }
+
+                    .core-breadcrumbs ul {
+                        list-style: none;
+                        padding: 0;
+                        margin: 0;
+                        display: flex;
+                        justify-content: flex-start;
+                        flex-wrap: wrap;
+                    }
+
+                    .core-breadcrumbs li {
+                        font-size: 10px;
+                        text-transform: capitalize;
+                        font-weight: 400;
+                        color: #404040;
+                        letter-spacing: 0.5px;
+                    }
+
+                    .core-breadcrumbs li a {
+                        color: #404040 !important;
+                        text-decoration: none;
+                        border-bottom: none !important;
+                    }
+
+                    .core-breadcrumbs li.separator {
+                        margin: 0 2px;
+                        padding: 0 !important;
+                        color: #404040;
+                    }
+                </style>
+                <?php core_breadcrumbs(); ?>
+            </div>
+        </div>
+        <div class="container pt-3">
+
+
 
             <!-- SECTION 1: TITLE -->
             <div class="row mb-5">
                 <div class="col-md-12 text-center single-product-title">
-                    <?php 
-                        $custom_title = get_field('custom_title');
-                        $title = $custom_title ? $custom_title : get_the_title();
-                        $words = explode(' ', $title);
-                        if (count($words) > 0) {
-                            $words[0] = '<span style="color: #e30913;">' . $words[0] . '</span>';
-                            $title = implode(' ', $words);
-                        }
+                    <?php
+                    $custom_title = get_field('custom_title');
+                    $title = $custom_title ? $custom_title : get_the_title();
+                    $words = explode(' ', $title);
+                    if (count($words) > 0) {
+                        $words[0] = '<span style="color: #e30913;">' . $words[0] . '</span>';
+                        $title = implode(' ', $words);
+                    }
                     ?>
                     <h1><?php echo $title; ?></h1>
                 </div>
@@ -618,8 +689,8 @@ while (have_posts()):
             <section class="related-products mb-5 pt-5 pb-5">
                 <div class="container">
                     <div class="text-center mb-5">
-                        <h2 style="font-size:32px; font-weight:700; text-transform:uppercase;">RELATED <span
-                                style="text-decoration:underline; text-decoration-color:#e30913; text-underline-offset:8px;">PRODUCTS</span>
+                        <h2 class="massload-title" style="font-size:32px; font-weight:700; text-transform:uppercase;">RELATED
+                            <span style="text-underline-offset:8px;">PRODUCTS</span>
                         </h2>
                     </div>
 
@@ -798,29 +869,7 @@ while (have_posts()):
             </section>
         <?php endif; ?>
 
-        <!-- REQUEST A QUOTE (TARGET) -->
-        <section id="req-quote" class="quaote_blk  text-white pt-5 pb-5 mb-5">
-            <div class="container">
-                <div class="heading-block text-center mb-4">
-                    <h2 class="font-weight-normal"><span style="color:#e30913;">Request A</span> Solution</h2>
-                </div>
-                <div class="theme_form  p-4 rounded shadow">
-                    <p class="text-center" style="color:#303030 ;">Add the products you’re interested in to the Quote Cart,
-                        or describe your
-                        application in the
-                        form below. Our team will review your request and get back to you shortly</p>
-                    <!-- Fallback Form injected dynamically -->
-                    <script type='text/javascript'>
-                        var ss_form = { 'account': 'MzawMLEwMbUwBAA', 'formID': 'SzRPNjE1S7LQNTAyT9Y1STI21rVMSzLUNTdKNE8zSktNNjE3BwA' };
-                        ss_form.width = '100%';
-                        ss_form.domain = 'app-3QNNZZKOIE.marketingautomation.services';
-                        ss_form.hidden = { '_usePlaceholders': true };
-                    </script>
-                    <script type='text/javascript'
-                        src='https://koi-3QNNZZKOIE.marketingautomation.services/client/form.js?ver=2.0.1'></script>
-                </div>
-            </div>
-        </section>
+
 
     </div> <!-- End .pagecontent -->
 
