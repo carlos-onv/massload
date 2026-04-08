@@ -299,7 +299,16 @@ while (have_posts()):
             <!-- SECTION 1: TITLE -->
             <div class="row mb-5">
                 <div class="col-md-12 text-center single-product-title">
-                    <h1><?php the_title(); ?></h1>
+                    <?php 
+                        $custom_title = get_field('custom_title');
+                        $title = $custom_title ? $custom_title : get_the_title();
+                        $words = explode(' ', $title);
+                        if (count($words) > 0) {
+                            $words[0] = '<span style="color: #e30913;">' . $words[0] . '</span>';
+                            $title = implode(' ', $words);
+                        }
+                    ?>
+                    <h1><?php echo $title; ?></h1>
                 </div>
             </div>
 

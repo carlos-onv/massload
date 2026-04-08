@@ -162,6 +162,24 @@ function mmi_opts_setup(){
 				'type'		=> 'upload',
 				'title'		=> __('Canada Icon', 'mmi-opts'),
 			),
+
+			array(
+				'id'		=> 'show-call-cta',
+				'type'		=> 'select',
+				'title'		=> __('Show Call CTA', 'mmi-opts'),
+				'desc'		=> __('Enable or disable the Call button in the header.', 'mmi-opts'),
+				'options'	=> array( '1' => 'Yes', '0' => 'No' ),
+				'std'		=> '1',
+			),
+
+			array(
+				'id'		=> 'show-quote-cart-cta',
+				'type'		=> 'select',
+				'title'		=> __('Show Quote Cart CTA', 'mmi-opts'),
+				'desc'		=> __('Enable or disable the Quote Cart button in the header.', 'mmi-opts'),
+				'options'	=> array( '1' => 'Yes', '0' => 'No' ),
+				'std'		=> '0',
+			),
 		),
 	);
 
