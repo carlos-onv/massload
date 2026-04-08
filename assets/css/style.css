@@ -3790,8 +3790,8 @@ div.wpcf7-validation-errors {
 
 @media all and (max-width: 1550px) {
   .menubar .navbar-nav>li.nav-item {
-    padding-left: 15px !important;
-    padding-right: 15px !important;
+    /*padding-left: 15px !important;
+    padding-right: 15px !important;*/
   }
 
   a.navbar-brand {
@@ -5759,30 +5759,12 @@ a.navbar-brand img.forty_year_logo_header {
   margin-right: 12px !important;
 } */
 /* 7-8-2021 */
-@media all and (max-width: 1710px) {
-  .menubar .navbar-nav>li.nav-item {
-    padding-left: 0.8rem !important;
-    padding-right: 0.8rem !important;
-  }
 
-  .callquote a {
-    font-size: 20px !important;
-  }
-
-  .callquote i {
-    padding-right: 0;
-    font-size: 24px;
-  }
-
-  .side-buttons {
-    padding-left: 4px;
-  }
-}
 
 @media all and (max-width: 1550px) {
   .menubar .navbar-nav>li.nav-item {
-    padding-left: 0.6rem !important;
-    padding-right: 0.6rem !important;
+    /* padding-left: 0.6rem !important;
+    padding-right: 0.6rem !important;*/
   }
 }
 
@@ -6902,4 +6884,23 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
     display: none;
     /* Hide dot separator on mobile since items stack */
   }
+}
+
+/* Titles */
+.massload-title {
+  position: relative;
+}
+
+.massload-title:before {
+  content: "";
+  position: absolute;
+  background-color: #000;
+  height: 3px;
+  border-right: 25px solid #e30913;
+  max-width: 90px;
+  width: 100%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom: 0px;
 }

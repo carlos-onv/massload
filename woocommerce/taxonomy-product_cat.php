@@ -77,7 +77,7 @@ $banner_image = get_field('banner_image', $acf_id);
                                     </div>
                                     <div class="productActions">
                                         <a class="theme-btn"
-                                            href="<?php the_permalink(); ?>"><?php esc_html_e('VIEW PRODUCT', 'massload'); ?></a>
+                                            href="<?php the_permalink(); ?>"><?php esc_html_e('VIEW PRODUCTS', 'massload'); ?></a>
 
                                     </div>
                                 </div>
