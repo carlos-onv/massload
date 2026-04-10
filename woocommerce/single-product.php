@@ -560,6 +560,46 @@ while (have_posts()):
                 </style>
             </section>
         <?php endif; ?>
+        
+        <!-- SECTION 4.5: RELATED INDUSTRIES / APPLICATIONS -->
+        <?php
+        $associated_industries = get_field('associated_industries');
+        if ($associated_industries): ?>
+            <section class="related-industries mb-5 pt-5 pb-5 bg-light">
+                <div class="container">
+                    <div class="text-center mb-5">
+                        <h2 class="massload-title" style="font-size:32px; font-weight:700; text-transform:uppercase;">RELATED
+                            <span style="text-underline-offset:8px;">INDUSTRIES</span>
+                        </h2>
+                    </div>
+                    <div class="row justify-content-center">
+                        <?php foreach ($associated_industries as $industry): 
+                            $industry_id = $industry->ID;
+                            $industry_link = get_permalink($industry_id);
+                            $industry_name = get_the_title($industry_id);
+                            $industry_img = get_the_post_thumbnail_url($industry_id, 'medium');
+                            ?>
+                            <div class="col-md-3 mb-4">
+                                <div class="related-product-card industry-card">
+                                    <div class="related-product-img">
+                                        <a href="<?php echo esc_url($industry_link); ?>">
+                                            <img src="<?php echo esc_url($industry_img ?: CORE_DEFAULT_THUMBNAIL); ?>"
+                                                alt="<?php echo esc_attr($industry_name); ?>">
+                                        </a>
+                                    </div>
+                                    <div class="related-product-title">
+                                        <?php echo esc_html($industry_name); ?>
+                                    </div>
+                                    <a href="<?php echo esc_url($industry_link); ?>" class="related-product-link">
+                                        VIEW INDUSTRY <span>›</span>
+                                    </a>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </section>
+        <?php endif; ?>
 
         <!-- SECTION 5: TESTIMONIALS -->
         <?php

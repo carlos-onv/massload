@@ -8,6 +8,9 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
     // Resources Post Tyoe
     require get_template_directory() . '/inc/acf/post-types/resources.php';
 
+    // Product Post Type
+    require get_template_directory() . '/inc/acf/post-types/product.php';
+
 
     
     /**

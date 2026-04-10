@@ -102,7 +102,7 @@ $get_the_ID = get_the_ID();
                     $application_products_link = $application_products_link . '?parent_ids=' . $product_parents;
                 }
 
-                echo '<a class="case_study_btn com-btn" href="' . esc_url($application_products_link) . '" target="_self">';
+                echo '<a class="case_study_btn com-btn" href="' . get_permalink() . '#related-products" target="_self">';
                 echo __('View Related Products', 'massload');
                 echo '</a>';
                 ?>
@@ -210,10 +210,115 @@ $get_the_ID = get_the_ID();
 
         </div>
 
-        <!-- Testimonials -->
+
+        <!-- SECTION: RELATED PRODUCTS -->
         <?php
-        if(!isset($product_section)) { $product_section = ""; }
-        ?>
+        $current_app_id = get_the_ID();
+        $related_products_query = new WP_Query(array(
+            'post_type'      => 'product',
+            'posts_per_page' => -1,
+            'meta_query'     => array(
+                array(
+                    'key'     => 'associated_industries',
+                    'value'   => '"' . $current_app_id . '"',
+                    'compare' => 'LIKE',
+                )
+            )
+        ));
+
+        if ($related_products_query->have_posts()): ?>
+            <section id="related-products" class="related-products mb-5 pt-5 pb-5">
+                <div class="container">
+                    <div class="text-center mb-5">
+                        <h2 class="massload-title" style="font-size:32px; font-weight:700; text-transform:uppercase;">RELATED
+                            <span style="text-underline-offset:8px;">PRODUCTS</span>
+                        </h2>
+                    </div>
+
+                    <div class="row">
+                        <?php while ($related_products_query->have_posts()): $related_products_query->the_post(); 
+                            $product_url = get_permalink();
+                            $product_title = get_the_title();
+                            $product_img = get_the_post_thumbnail_url(get_the_ID(), 'medium');
+                            ?>
+                            <div class="col-md-3 mb-4">
+                                <div class="related-product-card">
+                                    <div class="related-product-img">
+                                        <a href="<?php echo esc_url($product_url); ?>">
+                                            <img src="<?php echo esc_url($product_img ?: wc_placeholder_img_src()); ?>"
+                                                alt="<?php echo esc_attr($product_title); ?>">
+                                        </a>
+                                    </div>
+                                    <div class="related-product-title">
+                                        <?php echo esc_html($product_title); ?>
+                                    </div>
+                                    <a href="<?php echo esc_url($product_url); ?>" class="related-product-link">
+                                        VIEW PRODUCT <span>›</span>
+                                    </a>
+                                </div>
+                            </div>
+                        <?php endwhile; wp_reset_postdata(); ?>
+                    </div>
+                </div>
+
+                <style>
+                    /* Reuse core styles for consistency */
+                    .related-product-card {
+                        background: #fff;
+                        overflow: hidden;
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        width: 100%;
+                        border: 1px solid #eee;
+                    }
+                    .related-product-img {
+                        height: 250px;
+                        overflow: hidden;
+                    }
+                    .related-product-img img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain; /* Better for product detail visibility */
+                        padding: 10px;
+                        transition: transform 0.3s ease;
+                    }
+                    .related-product-card:hover .related-product-img img {
+                        transform: scale(1.03);
+                    }
+                    .related-product-title {
+                        background: #000;
+                        color: #fff;
+                        font-size: 16px;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        padding: 12px 15px;
+                        min-height: 50px;
+                        display: flex;
+                        align-items: center;
+                    }
+                    .related-product-link {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        background: #4c4c4c;
+                        color: #ccc;
+                        font-size: 13px;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                        padding: 10px 15px;
+                        text-decoration: none;
+                        transition: background 0.3s ease;
+                        letter-spacing: 0.5px;
+                    }
+                    .related-product-link:hover {
+                        background: #333;
+                        color: #fff;
+                        text-decoration: none;
+                    }
+                </style>
+            </section>
+        <?php endif; ?>
         <section class="<?php echo $product_section; ?> text-center product-lisiting margin_bottom_40 margin_top_80">
             <div class="container">
                 <div class="row">

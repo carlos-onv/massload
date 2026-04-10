@@ -1142,4 +1142,16 @@ function massload_ywraq_send_copy($args) {
     }
 }
 add_action('ywraq_process_request_quote', 'massload_ywraq_send_copy');
+
+/**
+ * Allow .stp and .rar files to be uploaded to the Media Library
+ */
+function massload_add_upload_mimes($mimes) {
+    $mimes['stp']  = 'application/octet-stream';
+    $mimes['step'] = 'application/octet-stream';
+    $mimes['rar']  = 'application/x-rar-compressed';
+    return $mimes;
+}
+add_filter('upload_mimes', 'massload_add_upload_mimes');
+
 ?>
