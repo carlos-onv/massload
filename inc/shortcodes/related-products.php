@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Related Industries Shortcode
+ * Related Products Shortcode
  *
  * @package    Massload
  * @subpackage inc/shortcodes
@@ -12,12 +12,12 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * Related Industries Shortcode Class.
+ * Related Products Shortcode Class.
  */
-class Core_Related_Industries_Shortcode
+class Core_Related_Products_Shortcode
 {
 
-    protected $shortcode_name = 'related_industries';
+    protected $shortcode_name = 'related_products';
 
     public function __construct()
     {
@@ -26,7 +26,7 @@ class Core_Related_Industries_Shortcode
 
     public function register_shortcode_tag()
     {
-        add_shortcode('massload_related_industries', array($this, 'register_shortcode'));
+        add_shortcode('massload_related_products', array($this, 'register_shortcode'));
     }
 
     /**
@@ -36,11 +36,11 @@ class Core_Related_Industries_Shortcode
     {
         $atts = shortcode_atts(
             array(
-                'title' => 'RELATED INDUSTRIES',
+                'title' => 'RELATED PRODUCTS',
                 'show_title' => 'true',
             ),
             $atts,
-            'massload_related_industries'
+            'massload_related_products'
         );
         return $this->display($atts);
     }
@@ -50,15 +50,16 @@ class Core_Related_Industries_Shortcode
      */
     public function display($atts, $content = null)
     {
-        $industries = get_field('associated_industries');
+        $post_id = get_the_ID();
+        $products = get_field('associated_products', $post_id);
 
-        if (empty($industries)) {
+        if (empty($products)) {
             return '';
         }
 
         ob_start();
-        ?>
-        <section class="related-industries-shortcode mb-5 mt-4">
+?>
+        <section class="related-products-shortcode mb-5 mt-4">
             <div class="shortcode-container">
                 <?php if (strtolower($atts['show_title']) === 'true'): ?>
                     <div class="text-center mb-4">
@@ -71,29 +72,29 @@ class Core_Related_Industries_Shortcode
                 <div class="row justify-content-center">
                     <?php
                     $count = 0;
-                    foreach ($industries as $industry):
+                    foreach ($products as $product):
                         $count++;
-                        $industry_id = $industry->ID;
-                        $industry_link = get_permalink($industry_id);
-                        $industry_name = get_the_title($industry_id);
-                        $industry_img = get_the_post_thumbnail_url($industry_id, 'medium');
+                        $product_id = is_object($product) ? $product->ID : $product;
+                        $product_link = get_permalink($product_id);
+                        $product_name = get_the_title($product_id);
+                        $product_img = get_the_post_thumbnail_url($product_id, 'medium');
 
                         // Handle visibility for "Show More" logic
-                        $item_class = ($count > 6) ? 'industry-hidden-item' : '';
+                        $item_class = ($count > 6) ? 'product-hidden-item' : '';
                         ?>
                         <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-4 <?php echo esc_attr($item_class); ?>">
-                            <div class="related-product-card industry-card shadow-sm h-100">
+                            <div class="related-product-card product-card shadow-sm h-100">
                                 <div class="related-product-img">
-                                    <a href="<?php echo esc_url($industry_link); ?>">
-                                        <img src="<?php echo esc_url($industry_img ?: CORE_DEFAULT_THUMBNAIL); ?>"
-                                            alt="<?php echo esc_attr($industry_name); ?>">
+                                    <a href="<?php echo esc_url($product_link); ?>">
+                                        <img src="<?php echo esc_url($product_img ?: CORE_DEFAULT_THUMBNAIL); ?>"
+                                            alt="<?php echo esc_attr($product_name); ?>">
                                     </a>
                                 </div>
                                 <div class="related-product-title">
-                                    <?php echo esc_html($industry_name); ?>
+                                    <?php echo esc_html($product_name); ?>
                                 </div>
-                                <a href="<?php echo esc_url($industry_link); ?>" class="related-product-link">
-                                    VIEW INDUSTRY <span>›</span>
+                                <a href="<?php echo esc_url($product_link); ?>" class="related-product-link">
+                                    VIEW PRODUCT <span>›</span>
                                 </a>
                             </div>
                         </div>
@@ -102,16 +103,16 @@ class Core_Related_Industries_Shortcode
 
                 <?php if ($count > 6): ?>
                     <div class="text-center mt-3">
-                        <button id="show-all-industries-btn" class="theme-btn" style="min-width: 250px;">SHOW ALL
-                            INDUSTRIES</button>
+                        <button id="show-all-products-btn" class="theme-btn" style="min-width: 250px;">SHOW ALL
+                            PRODUCTS</button>
                     </div>
                     <script>
                         document.addEventListener('DOMContentLoaded', function () {
-                            var btn = document.getElementById('show-all-industries-btn');
+                            var btn = document.getElementById('show-all-products-btn');
                             if (btn) {
                                 btn.addEventListener('click', function () {
-                                    document.querySelectorAll('.industry-hidden-item').forEach(function (el) {
-                                        el.classList.remove('industry-hidden-item');
+                                    document.querySelectorAll('.product-hidden-item').forEach(function (el) {
+                                        el.classList.remove('product-hidden-item');
                                         el.style.display = 'block';
                                     });
                                     this.parentElement.style.display = 'none';
@@ -123,18 +124,18 @@ class Core_Related_Industries_Shortcode
             </div>
 
             <style>
-                .industry-hidden-item {
+                .product-hidden-item {
                     display: none;
                 }
 
-                .related-product-card.industry-card {
+                .related-product-card.product-card {
                     background: #fff;
                     display: flex;
                     flex-direction: column;
                     transition: transform 0.3s ease;
                 }
 
-                .related-product-card.industry-card:hover {
+                .related-product-card.product-card:hover {
                     transform: translateY(-5px);
                 }
 
@@ -191,4 +192,4 @@ class Core_Related_Industries_Shortcode
 
 }
 
-new Core_Related_Industries_Shortcode();
+new Core_Related_Products_Shortcode();
