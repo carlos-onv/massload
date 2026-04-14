@@ -11,6 +11,9 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
     // Product Post Type
     require get_template_directory() . '/inc/acf/post-types/product.php';
 
+    // Blog Post Type
+    require get_template_directory() . '/inc/acf/post-types/blog-post.php';
+
 
     
     /**
