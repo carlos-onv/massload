@@ -20,14 +20,15 @@ $banner_image = get_field('banner_image', $acf_id);
 
 <div id="pagebanner" class="pagebanner">
     <div class="inner-banner" style="background-color:#f1f2f1;">
-        <?php
-        echo '<h3 class="breadcrumb-nav">';
-        echo '<a href="' . esc_url(home_url('/')) . '">Home</a>';
-        echo ' / ';
-        echo '<span>' . esc_html(single_term_title('', false)) . '</span>';
-        echo '</h3>';
-        ?>
+
         <div class="container">
+            <?php
+            echo '<h3 class="breadcrumb-nav">';
+            echo '<a href="' . esc_url(home_url('/')) . '">Home</a>';
+            echo ' / ';
+            echo '<span>' . esc_html(single_term_title('', false)) . '</span>';
+            echo '</h3>';
+            ?>
             <div class="category-banner-row">
                 <div class="category-title-col">
                     <?php
@@ -57,14 +58,17 @@ $banner_image = get_field('banner_image', $acf_id);
             <div class="product-block">
                 <div class="row">
                     <?php
+                    $counter = 0;
                     if (have_posts()):
                         while (have_posts()):
                             the_post();
+                            $counter++;
+                            $hidden_class = ($counter > 6) ? 'product-hidden' : '';
                             global $product;
                             // Grab native WooCommerce thumbnail
                             $thumb_url = get_the_post_thumbnail_url($product->get_id(), 'full');
                             ?>
-                            <div class="col-md-6 col-lg-4">
+                            <div class="col-md-6 col-lg-4 <?php echo esc_attr($hidden_class); ?>">
                                 <div class="productblock childProduct">
                                     <a href="<?php the_permalink(); ?>">
                                         <?php if ($thumb_url): ?>
@@ -91,8 +95,39 @@ $banner_image = get_field('banner_image', $acf_id);
 
 
                 </div>
+
+                <?php if ($counter > 6): ?>
+                    <div class="show-all-btn-wrap mt-5 mb-4 text-center">
+                        <button id="show-all-products" class="theme-btn" style="min-width: 250px;">SHOW ALL
+                            PRODUCTS</button>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
+
+        <style>
+            .product-hidden {
+                display: none !important;
+            }
+
+            #show-all-products {
+                cursor: pointer;
+            }
+        </style>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var showBtn = document.getElementById('show-all-products');
+                if (showBtn) {
+                    showBtn.addEventListener('click', function () {
+                        document.querySelectorAll('.product-hidden').forEach(function (el) {
+                            el.classList.remove('product-hidden');
+                        });
+                        this.parentElement.style.display = 'none';
+                    });
+                }
+            });
+        </script>
     </section>
 
     <!-- Solutions CTA Boxes -->

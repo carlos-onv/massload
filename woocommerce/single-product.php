@@ -12,20 +12,23 @@ if (!defined('ABSPATH')) {
 
 get_header();
 
-// Fetch ACF Data
-$specification = get_field('specification');
-$specifications = get_field('specifications');
-$options = get_field('options'); // Related Products
-$document_content = get_field('document_content');
-
-$highlights_content = get_field('highlights_content');
-$product_print_image = get_field('hi_left_image');
-
-$images_list = get_field('images_list');
-
 // We are inside the Loop
 while (have_posts()):
     the_post();
+
+    global $product;
+    $product = wc_get_product(get_the_ID());
+
+    // Fetch ACF Data
+    $specification = get_field('specification');
+    $specifications = get_field('specifications');
+    $document_content = get_field('document_content');
+    $show_related = get_field('show_related');
+
+    $highlights_content = get_field('highlights_content');
+    $product_print_image = get_field('hi_left_image');
+
+    $images_list = get_field('images_list');
     ?>
 
 
@@ -35,50 +38,50 @@ while (have_posts()):
     <!-- End Pageheader (opened in global header) if applicable, but usually closed there. Let's stick to the content structure -->
 
     <div id="pagecontent" class="pagecontent single-product-custom-layout">
-        <!-- BREADCRUMBS (Top-Left) -->
-        <div class="row">
-            <div class="col-md-12">
-                <style>
-                    .core-breadcrumbs {
-                        margin-bottom: 30px;
-                        text-align: left;
-                        padding: 20px 0 0 20px;
-                    }
 
-                    .core-breadcrumbs ul {
-                        list-style: none;
-                        padding: 0;
-                        margin: 0;
-                        display: flex;
-                        justify-content: flex-start;
-                        flex-wrap: wrap;
-                    }
-
-                    .core-breadcrumbs li {
-                        font-size: 10px;
-                        text-transform: capitalize;
-                        font-weight: 400;
-                        color: #404040;
-                        letter-spacing: 0.5px;
-                    }
-
-                    .core-breadcrumbs li a {
-                        color: #404040 !important;
-                        text-decoration: none;
-                        border-bottom: none !important;
-                    }
-
-                    .core-breadcrumbs li.separator {
-                        margin: 0 2px;
-                        padding: 0 !important;
-                        color: #404040;
-                    }
-                </style>
-                <?php core_breadcrumbs(); ?>
-            </div>
-        </div>
         <div class="container pt-3">
+            <!-- BREADCRUMBS (Top-Left) -->
+            <div class="row">
+                <div class="col-md-12">
+                    <style>
+                        .core-breadcrumbs {
+                            margin-bottom: 30px;
+                            text-align: left;
+                            padding: 20px 0 0 20px;
+                        }
 
+                        .core-breadcrumbs ul {
+                            list-style: none;
+                            padding: 0;
+                            margin: 0;
+                            display: flex;
+                            justify-content: flex-start;
+                            flex-wrap: wrap;
+                        }
+
+                        .core-breadcrumbs li {
+                            font-size: 12px;
+                            text-transform: capitalize;
+                            font-weight: 400;
+                            color: #404040;
+                            letter-spacing: 0.5px;
+                        }
+
+                        .core-breadcrumbs li a {
+                            color: #404040 !important;
+                            text-decoration: none;
+                            border-bottom: none !important;
+                        }
+
+                        .core-breadcrumbs li.separator {
+                            margin: 0 2px;
+                            padding: 0 !important;
+                            color: #404040;
+                        }
+                    </style>
+                    <?php core_breadcrumbs(); ?>
+                </div>
+            </div>
 
 
             <!-- SECTION 1: TITLE -->
@@ -262,15 +265,11 @@ while (have_posts()):
                                     <h2><?php esc_html_e('Highlights', 'massload'); ?></h2>
                                     <?php echo wp_kses_post($highlights_content); ?>
                                 </div>
-                                <?php if (!empty($product_print_image)) { ?>
-                                    <div class="product-print-image text-center mt-3">
-                                        <img src="<?php echo esc_url($product_print_image); ?>" class="print-image img-fluid"
-                                            alt="Highlight Reference">
-                                    </div>
-                                <?php } ?>
+
                             </div>
                         </div>
                     <?php } ?>
+
 
                     <!-- Request Quote Button (YITH) -->
                     <div class="mt-4 text-center yith-quote-btn-wrap">
@@ -297,7 +296,7 @@ while (have_posts()):
         </div> <!-- End Container -->
 
         <!-- SECTION 3: PRODUCT SPECIFICATIONS -->
-        <?php if (!empty($specifications) || !empty($document_content)): ?>
+        <?php if (!empty($specifications) || !empty($specification) || !empty($document_content) || have_rows('document_list')): ?>
             <section id="specifications-section" class="additional-info mb-5 bg-light pt-5 pb-5">
                 <div class="container">
                     <div class="dark_blk text-center mb-4 heading-block">
@@ -306,47 +305,74 @@ while (have_posts()):
 
                     <div id="additional-info-tab" class="tabPlugin">
                         <ul class="nav nav-tabs mb-4 justify-content-center" style="border-bottom: 2px solid #e30913;">
-                            <?php if ($specifications): ?>
+                            <?php if (!empty($specifications) || !empty($specification)): ?>
                                 <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="tab" href="#tab-1"
+                                    <a class="nav-link" data-toggle="tab" href="#tab-1"
                                         style="color:#333; font-weight:bold; font-size:18px; padding:15px 30px; border-radius:0;"><?php esc_html_e(' Specifications ', 'massload'); ?></a>
                                 </li>
                             <?php endif; ?>
-                            <?php if ($document_content): ?>
+                            <?php if (!empty($document_content) || have_rows('document_list')): ?>
                                 <li class="nav-item">
-                                    <a class="nav-link <?php echo !$specifications ? 'active' : ''; ?>" data-toggle="tab"
-                                        href="#tab-2"
+                                    <a class="nav-link"
+                                        data-toggle="tab" href="#tab-2"
                                         style="color:#333; font-weight:bold; font-size:18px; padding:15px 30px; border-radius:0;"><?php esc_html_e(' Documents ', 'massload'); ?></a>
                                 </li>
                             <?php endif; ?>
                         </ul>
 
-                        <div class="tab-content bg-white p-4 shadow-sm">
-                            <?php if ($specifications) { ?>
-                                <div id="tab-1" class="tab-pane active">
-                                    <div class="table-responsive">
-                                        <table class="specifications-table">
-                                            <tbody>
-                                                <?php foreach ($specifications as $key => $specification) {
-                                                    $spec_title = core_isset_array($specification, 'title', '');
-                                                    $spec_desc = core_isset_array($specification, 'description', '');
+                        <div class="tab-content dynamic-tab-content">
+                            <style>
+                                .dynamic-tab-content {
+                                    display: none;
+                                    background: #fff;
+                                    padding: 25px;
+                                    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+                                    border: 1px solid #eee;
+                                    border-top: none;
+                                }
 
-                                                    if (!empty($spec_title) || !empty($spec_desc)) {
-                                                        echo '<tr>';
-                                                        echo '<th>' . esc_html($spec_title) . '</th>';
-                                                        echo '<td>' . wp_kses_post($spec_desc) . '</td>';
-                                                        echo '</tr>';
-                                                    }
-                                                } ?>
-                                            </tbody>
-                                        </table>
+                                .dynamic-tab-content.is-visible {
+                                    display: block;
+                                }
+                            </style>
+                            <script>
+                                jQuery(document).ready(function ($) {
+                                    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                                        $('.dynamic-tab-content').addClass('is-visible');
+                                    });
+                                });
+                            </script>
+                            <?php if (!empty($specifications) || get_field('specification')) { ?>
+                                <div id="tab-1" class="tab-pane fade">
+                                    <div class="table-responsive">
+                                        <?php if (!empty($specifications)): ?>
+                                            <table class="specifications-table">
+                                                <tbody>
+                                                    <?php foreach ($specifications as $key => $specification) {
+                                                        $spec_title = core_isset_array($specification, 'title', '');
+                                                        $spec_desc = core_isset_array($specification, 'description', '');
+
+                                                        if (!empty($spec_title) || !empty($spec_desc)) {
+                                                            echo '<tr>';
+                                                            echo '<th>' . esc_html($spec_title) . '</th>';
+                                                            echo '<td>' . wp_kses_post($spec_desc) . '</td>';
+                                                            echo '</tr>';
+                                                        }
+                                                    } ?>
+                                                </tbody>
+                                            </table>
+                                        <?php elseif (get_field('specification')): ?>
+                                            <?php the_field('specification'); ?>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             <?php } ?>
 
-                            <?php if ($document_content): ?>
-                                <div id="tab-2" class="tab-pane fade <?php echo !$specifications ? 'show active' : ''; ?>">
-                                    <?php echo wp_kses_post($document_content); ?>
+                            <?php if (!empty($document_content) || have_rows('document_list')): ?>
+                                <div id="tab-2"
+                                    class="tab-pane fade">
+                                    <?php if ($document_content)
+                                        echo wp_kses_post($document_content); ?>
                                     <!-- Optional Document List -->
                                     <?php if (have_rows('document_list')): ?>
                                         <ul class="list-unstyled mt-3">
@@ -383,23 +409,24 @@ while (have_posts()):
 
         <!-- SECTION 4: RELATED PRODUCTS -->
         <?php
-        $related_source = get_post_meta(get_the_ID(), '_related_products_source', true);
-        if (empty($related_source))
-            $related_source = 'custom';
-
-        // Get WooCommerce upsell products
-        $woo_upsell_ids = [];
-        if ($related_source === 'woocommerce' && function_exists('wc_get_product')) {
-            $wc_product = wc_get_product(get_the_ID());
-            if ($wc_product) {
-                $woo_upsell_ids = $wc_product->get_upsell_ids();
-            }
+        global $product;
+        if (!$product) {
+            $product = wc_get_product(get_the_ID());
         }
 
-        $show_related = ($related_source === 'custom' && $options) || ($related_source === 'woocommerce' && !empty($woo_upsell_ids));
+        // 1. Prioritize Upsells (manually linked) fallback to Category-based
+        $display_ids = [];
+        if ($product) {
+            $display_ids = $product->get_upsell_ids();
+            if (empty($display_ids)) {
+                $display_ids = wc_get_related_products($product->get_id(), 3);
+            } else {
+                $display_ids = array_slice($display_ids, 0, 3);
+            }
+        }
         ?>
 
-        <?php if ($show_related): ?>
+        <?php if (!empty($display_ids)): ?>
             <section class="related-products mb-5 pt-5 pb-5">
                 <div class="container">
                     <div class="text-center mb-5">
@@ -410,74 +437,32 @@ while (have_posts()):
 
                     <div class="row">
 
-                        <?php if ($related_source === 'custom'): ?>
-                            <!-- Custom ACF Options -->
-                            <?php if (have_rows('options')): ?>
-                                <?php while (have_rows('options')):
-                                    the_row();
-                                    $linked_product_id = get_sub_field('option_product_link');
-                                    $product_url = $linked_product_id ? get_permalink($linked_product_id) : '';
-                                    $option_content = get_sub_field('option_content');
-                                    $h3_title = '';
-                                    if (preg_match('/<h3[^>]*>(.*?)<\/h3>/si', $option_content, $m)) {
-                                        $h3_title = trim(strip_tags($m[1]));
-                                    }
-                                    ?>
-                                    <div class="col-md-4 mb-4">
-                                        <div class="related-product-card">
-                                            <?php if (get_sub_field('option_image')): ?>
-                                                <div class="related-product-img">
-                                                    <?php if ($product_url): ?>
-                                                        <a href="<?php echo esc_url($product_url); ?>">
-                                                        <?php endif; ?>
-                                                        <img src="<?php the_sub_field('option_image'); ?>"
-                                                            alt="<?php echo esc_attr(get_sub_field('alt_text') ?: $h3_title); ?>">
-                                                        <?php if ($product_url): ?>
-                                                        </a>
-                                                    <?php endif; ?>
-                                                </div>
-                                            <?php endif; ?>
-                                            <div class="related-product-title">
-                                                <?php echo esc_html($h3_title ?: 'Related Product'); ?>
-                                            </div>
-                                            <?php if ($product_url): ?>
-                                                <a href="<?php echo esc_url($product_url); ?>" class="related-product-link">
-                                                    VIEW PRODUCT <span>›</span>
-                                                </a>
-                                            <?php endif; ?>
-                                        </div>
-                                    </div>
-                                <?php endwhile; ?>
-                            <?php endif; ?>
-
-                        <?php else: ?>
-                            <!-- WooCommerce Upsells -->
-                            <?php foreach ($woo_upsell_ids as $upsell_id):
-                                $upsell_product = wc_get_product($upsell_id);
-                                if (!$upsell_product)
-                                    continue;
-                                $upsell_url = get_permalink($upsell_id);
-                                $upsell_img = get_the_post_thumbnail_url($upsell_id, 'medium');
-                                $upsell_title = $upsell_product->get_name();
-                                ?>
-                                <div class="col-md-4 mb-4">
-                                    <div class="related-product-card">
-                                        <div class="related-product-img">
-                                            <a href="<?php echo esc_url($upsell_url); ?>">
-                                                <img src="<?php echo esc_url($upsell_img ?: wc_placeholder_img_src()); ?>"
-                                                    alt="<?php echo esc_attr($upsell_title); ?>">
-                                            </a>
-                                        </div>
-                                        <div class="related-product-title">
-                                            <?php echo esc_html($upsell_title); ?>
-                                        </div>
-                                        <a href="<?php echo esc_url($upsell_url); ?>" class="related-product-link">
-                                            VIEW PRODUCT <span>›</span>
+                        <?php
+                        foreach ($display_ids as $p_id):
+                            $p_obj = wc_get_product($p_id);
+                            if (!$p_obj)
+                                continue;
+                            $p_url = get_permalink($p_id);
+                            $p_img = get_the_post_thumbnail_url($p_id, 'medium');
+                            $p_title = $p_obj->get_name();
+                            ?>
+                            <div class="col-md-4 mb-4">
+                                <div class="related-product-card bg-light">
+                                    <div class="related-product-img">
+                                        <a href="<?php echo esc_url($p_url); ?>">
+                                            <img src="<?php echo esc_url($p_img ?: wc_placeholder_img_src()); ?>"
+                                                alt="<?php echo esc_attr($p_title); ?>">
                                         </a>
                                     </div>
+                                    <div class="related-product-title">
+                                        <?php echo esc_html($p_title); ?>
+                                    </div>
+                                    <a href="<?php echo esc_url($p_url); ?>" class="related-product-link">
+                                        VIEW PRODUCT <span>›</span>
+                                    </a>
                                 </div>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
+                            </div>
+                        <?php endforeach; ?>
 
                     </div>
                 </div>
@@ -493,21 +478,27 @@ while (have_posts()):
                     }
 
                     .related-product-img {
-                        height: 250px;
+                        flex-grow: 1;
+                        min-height: 235px;
+                        height: auto;
                         overflow: hidden;
+
                     }
 
                     .related-product-img a {
                         display: block;
-                        width: 100%;
-                        height: 100%;
+                        width: 350px;
+                        min-height: 235px;
+                        max-height: 274px;
+                        height: stretch;
                     }
 
                     .related-product-img img {
-                        width: 100%;
+                        width: 350px;
                         height: 100%;
                         object-fit: cover;
                         display: block;
+                        max-height: 274px;
                         transition: transform 0.3s ease;
                     }
 
@@ -560,7 +551,7 @@ while (have_posts()):
                 </style>
             </section>
         <?php endif; ?>
-        
+
         <!-- SECTION 4.5: RELATED INDUSTRIES / APPLICATIONS -->
         <?php
         $associated_industries = get_field('associated_industries');
@@ -573,14 +564,14 @@ while (have_posts()):
                         </h2>
                     </div>
                     <div class="row justify-content-center">
-                        <?php foreach ($associated_industries as $industry): 
+                        <?php foreach ($associated_industries as $industry):
                             $industry_id = $industry->ID;
                             $industry_link = get_permalink($industry_id);
                             $industry_name = get_the_title($industry_id);
                             $industry_img = get_the_post_thumbnail_url($industry_id, 'medium');
                             ?>
                             <div class="col-md-3 mb-4">
-                                <div class="related-product-card industry-card">
+                                <div class="related-product-card industry-card ">
                                     <div class="related-product-img">
                                         <a href="<?php echo esc_url($industry_link); ?>">
                                             <img src="<?php echo esc_url($industry_img ?: CORE_DEFAULT_THUMBNAIL); ?>"
