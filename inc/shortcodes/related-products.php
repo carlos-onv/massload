@@ -64,7 +64,18 @@ class Core_Related_Products_Shortcode
                 <?php if (strtolower($atts['show_title']) === 'true'): ?>
                     <div class="text-center mb-4">
                         <h2 class="massload-title" style="font-size:32px; font-weight:700; text-transform:uppercase;">
-                            <?php echo esc_html($atts['title']); ?>
+                            <?php 
+                                $title_words = explode(' ', $atts['title']);
+                                if (count($title_words) >= 2) {
+                                    $title_words[1] = '<span style="color:#e30913;">' . esc_html($title_words[1]) . '</span>';
+                                    echo esc_html($title_words[0]) . ' ' . $title_words[1];
+                                    if (count($title_words) > 2) {
+                                        echo ' ' . esc_html(implode(' ', array_slice($title_words, 2)));
+                                    }
+                                } else {
+                                    echo esc_html($atts['title']);
+                                } 
+                            ?>
                         </h2>
                     </div>
                 <?php endif; ?>

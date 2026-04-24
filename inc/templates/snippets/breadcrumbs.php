@@ -211,6 +211,36 @@ function core_breadcrumbs( $args = array() ) {
                                 $output .= $separator_ui;
                             }
 
+                            // Massload: Add Product Categories to Breadcrumbs
+                            if ( 'product' === $post_type ) {
+                                $terms = get_the_terms( $object_id, 'product_cat' );
+                                if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+                                    // Get the first category
+                                    $main_term = $terms[0];
+                                    $ancestors = get_ancestors( $main_term->term_id, 'product_cat' );
+                                    $ancestors = array_reverse( $ancestors );
+
+                                    foreach ( $ancestors as $ancestor ) {
+                                        $ancestor_term = get_term( $ancestor, 'product_cat' );
+                                        if ( ! is_wp_error( $ancestor_term ) && ! empty( $ancestor_term ) ) {
+                                            $output .= '<li>';
+                                                $output .= '<a href="' . esc_url( get_term_link( $ancestor_term ) ) . '">';
+                                                    $output .= esc_html( $ancestor_term->name );
+                                                $output .= '</a>';
+                                            $output .= '</li>';
+                                            $output .= $separator_ui;
+                                        }
+                                    }
+
+                                    $output .= '<li>';
+                                        $output .= '<a href="' . esc_url( get_term_link( $main_term ) ) . '">';
+                                            $output .= esc_html( $main_term->name );
+                                        $output .= '</a>';
+                                    $output .= '</li>';
+                                    $output .= $separator_ui;
+                                }
+                            }
+
                             $output .= '<li>';
                                 $output .= esc_html( $title );
                             $output .= '</li>';

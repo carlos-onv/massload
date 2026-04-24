@@ -23,15 +23,19 @@ if (function_exists('acf_add_local_field_group')) {
                     'class' => '',
                     'id' => '',
                 ),
-                'message' => 'Use these shortcodes in your content to display the linked items:
-<br><br><b>Industries:</b>
-<br>• Default: <code>[massload_related_industries]</code>
-<br>• Custom Title: <code>[massload_related_industries title="Your Custom Title"]</code>
-<br>• Hide Title: <code>[massload_related_industries show_title="false"]</code>
-<br><br><b>Products:</b>
-<br>• Default: <code>[massload_related_products]</code>
-<br>• Custom Title: <code>[massload_related_products title="Your Custom Title"]</code>
-<br>• Hide Title: <code>[massload_related_products show_title="false"]</code>',
+                'message' => '<details style="cursor:pointer; background:#f9f9f9; padding:10px; border:1px solid #ddd; border-radius:4px;">
+<summary><b>View Usage Instructions (+)</b></summary>
+<div style="margin-top:15px;">
+    <b>Industries:</b>
+    <br>• Default: <code>[massload_related_industries]</code>
+    <br>• Custom Title: <code>[massload_related_industries title="Your Custom Title"]</code>
+    <br>• Hide Title: <code>[massload_related_industries show_title="false"]</code>
+    <br><br><b>Products:</b>
+    <br>• Default: <code>[massload_related_products]</code>
+    <br>• Custom Title: <code>[massload_related_products title="Your Custom Title"]</code>
+    <br>• Hide Title: <code>[massload_related_products show_title="false"]</code>
+</div>
+</details>',
                 'new_lines' => 'wpautop',
                 'esc_html' => 0,
             ),

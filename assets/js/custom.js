@@ -835,11 +835,11 @@ jQuery(document).ready(function ($) {
     }
 
     var bannerHTML = '<div class="mega-menu-banner">' +
-        '<a href="/custom-solutions" class="banner-red">Custom Load Cell</a>' +
+        '<a href="/products/load-cells/custom-load-cell/" class="banner-red">Custom Load Cell</a>' +
         '<div class="banner-dot-wrapper"><span class="banner-dot-separator"></span></div>' +
-        '<a href="/custom-solutions/" class="banner-red">Custom Tension Link</a>' +
+        '<a href="/products/load-cells/custom-tension-links-2-2/" class="banner-red">Custom Tension Link</a>' +
         '<div class="banner-dot-wrapper black-bg"><span class="banner-dot-separator"></span></div>' +
-        '<a href="/custom-solutions" class="banner-black">Custom Load Pin</a>' +
+        '<a href="/products/crane-scales-lifting-wireline/custom-load-pin/" class="banner-black">Custom Load Pin</a>' +
         '</div>';
 
     if ($productsSubMenu.length) {

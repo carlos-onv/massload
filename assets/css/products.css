@@ -1,0 +1,131 @@
+/* ==========================================================================
+   Product Certifications
+   ========================================================================== */
+
+.product-certifications {
+    margin-top: 30px;
+}
+
+.certifications-label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.certifications-logos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+}
+
+.certifications-logos img {
+    max-width: 50px;
+    height: auto;
+    object-fit: contain;
+}
+
+.certifications-logos .cert-text-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #555;
+}
+
+/* ==========================================================================
+   Product Variations
+   ========================================================================== */
+
+.variations_form .label {
+    display: none !important;
+}
+
+.variations_form table {
+    margin-bottom: 0 !important;
+}
+
+.product-purchase-actions .variations_form {
+    flex: 1;
+}
+
+.quote-quantity-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    margin-top: 21px;
+}
+
+.qty-btn {
+    width: 20px;
+    height: 48px;
+    border: 1px solid #ddd;
+    background: #f5f5f5;
+    color: #333;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    padding: 0;
+    line-height: 1;
+}
+
+.qty-btn:hover {
+    background: #e30913;
+    color: #fff;
+    border-color: #e30913;
+}
+
+.qty-minus {
+    border-right: none;
+}
+
+.qty-plus {
+    border-left: none;
+}
+
+.quote-quantity-input {
+    width: 45px;
+    height: 48px;
+    border: 1px solid #ddd;
+    padding: 0;
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+.quote-quantity-input::-webkit-outer-spin-button,
+.quote-quantity-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.quote-quantity-input:focus {
+    border-color: #e30913;
+    outline: none;
+}
+
+.product-purchase-actions .variations-qty-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.yith-ywraq-add-button {
+    text-align: center;
+}
+
+.woocommerce .add-request-quote-button.button:hover {
+    border: 1px #c00710 solid !important;
+}

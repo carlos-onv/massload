@@ -26,6 +26,27 @@ $banner_image = get_field('banner_image', $acf_id);
             echo '<h3 class="breadcrumb-nav">';
             echo '<a href="' . esc_url(home_url('/')) . '">Home</a>';
             echo ' / ';
+
+            // Link to the main Products archive
+            $products_link = get_post_type_archive_link('product');
+            if (!$products_link) {
+                $products_link = home_url('/products/');
+            }
+            echo '<a href="' . esc_url($products_link) . '">Products</a>';
+
+            // Get ancestors of the current category
+            $ancestors = get_ancestors($current_term->term_id, 'product_cat');
+            $ancestors = array_reverse($ancestors); // Parent first
+            
+            foreach ($ancestors as $ancestor_id) {
+                $ancestor = get_term($ancestor_id, 'product_cat');
+                if ($ancestor && !is_wp_error($ancestor)) {
+                    echo ' / ';
+                    echo '<a href="' . esc_url(get_term_link($ancestor)) . '">' . esc_html($ancestor->name) . '</a>';
+                }
+            }
+
+            echo ' / ';
             echo '<span>' . esc_html(single_term_title('', false)) . '</span>';
             echo '</h3>';
             ?>
@@ -70,20 +91,17 @@ $banner_image = get_field('banner_image', $acf_id);
                             ?>
                             <div class="col-md-6 col-lg-4 <?php echo esc_attr($hidden_class); ?>">
                                 <div class="productblock childProduct">
+                                    <div class="product-content">
+                                        <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+
+                                    </div>
+
                                     <a href="<?php the_permalink(); ?>">
                                         <?php if ($thumb_url): ?>
                                             <img src="<?php echo esc_url($thumb_url); ?>" alt="<?php the_title_attribute(); ?>">
                                         <?php endif; ?>
                                     </a>
-                                    <div class="product-content">
-                                        <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 
-                                    </div>
-                                    <div class="productActions">
-                                        <a class="theme-btn"
-                                            href="<?php the_permalink(); ?>"><?php esc_html_e('VIEW PRODUCTS', 'massload'); ?></a>
-
-                                    </div>
                                 </div>
                             </div>
                             <?php

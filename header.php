@@ -213,12 +213,22 @@ gtag('js',new Date());gtag('config','AW-1049106410');</script>
 
                         <div class="side-buttons">
 
-                            <?php if (mmi_opts_get('show-quote-cart-cta', 0)): ?>
-                                <div class="callquote quote-cart-cta">
-                                    <i class="fa fa-shopping-cart"></i> <a class="quote_btn" href="/request-quote/">Quote
-                                        Cart</a>
+                            <?php if (mmi_opts_get('show-quote-cart-cta', 1)): ?>
+                                <div class="callquote quote-cart-cta" style="position: relative;">
+                                    <?php 
+                                    $quote_count = 0;
+                                    if( function_exists('YITH_Request_Quote') ) {
+                                        $quote_count = YITH_Request_Quote()->get_raq_item_number();
+                                    }
+                                    ?>
+                                    <span class="quote-cart-count" style="position: absolute; top: -5px; left: -10px; background: #e30913; color: white; border-radius: 50%; padding: 2px 6px; font-size: 11px; font-weight: bold; line-height: 1; z-index: 2; border: 2px solid #fff; min-width: 20px; text-align: center;"><?php echo esc_html($quote_count); ?></span>
+                                    <i class="fa fa-shopping-cart" style="position: relative; z-index: 1;"></i> <a class="quote_btn" href="/request-quote/">Quote Cart</a>
+                                    
+
                                 </div>
                             <?php endif; ?>
+
+
 
                             <?php if (mmi_opts_get('show-call-cta', 1)): ?>
                                 <div class="callquote">

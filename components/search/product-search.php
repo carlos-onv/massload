@@ -20,8 +20,8 @@
 
      $filter_args = array(
                             'placeholder'     => __( 'PRODUCT SEARCH', 'massload' ),
-                            'post_type'       => 'products',
-                            'taxonomy'        => 'related_tags',
+                            'post_type'       => 'product',
+                            'taxonomy'        => 'product_cat',
                             'search_type'     => 'product_search',
                             'set_taxonomy'    => false,
                             'set_terms'       => false,
@@ -57,8 +57,8 @@
                             's'                => $search_val,
                             'post_type'        => $s_post_type,
                             'posts_per_page'   => 12,
-                            'order'            => 'ASC',
-                            'orderby'          => 'date',
+                            'order'            => 'DESC',
+                            'orderby'          => 'relevance',
                             'post_status'      => 'publish',
                             'suppress_filters' => false,
                             'paged'          => $paged,

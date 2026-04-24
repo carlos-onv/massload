@@ -253,6 +253,7 @@ function massload_scripts()
     }
 
     wp_enqueue_style('massload-select2-style', get_template_directory_uri() . '/assets/css/select2.min.css', '1.1');
+    wp_enqueue_style('massload-products-style', get_template_directory_uri() . '/assets/css/products.css', array(), '1.0');
 
     wp_enqueue_script('massload-512de21213', get_template_directory_uri() . '/assets/js/512de21213.js', array('jquery'), '1.1', true);
 
@@ -1153,5 +1154,114 @@ function massload_add_upload_mimes($mimes) {
     return $mimes;
 }
 add_filter('upload_mimes', 'massload_add_upload_mimes');
+
+/**
+ * Quote Cart Counter - Update badge count via AJAX when items are added
+ */
+function massload_quote_cart_tracker_script() {
+    ?>
+    <script>
+    jQuery(function($) {
+        console.log('[QuoteCartTracker] Ready! Listening for quote cart additions.');
+        $(document).ajaxComplete(function(event, xhr, settings) {
+            if (settings.data && typeof settings.data === 'string') {
+                var $badge = $('.quote-cart-count');
+                if (!$badge.length) return;
+
+                // Item added
+                if (settings.data.indexOf('ywraq_action=add_item') !== -1) {
+                    if (xhr.responseJSON && (xhr.responseJSON.result === 'true' || xhr.responseJSON.result === true || xhr.responseJSON.result === 'exists')) {
+                        var currentCount = parseInt($badge.text() || '0');
+                        $badge.text(currentCount + 1).show();
+                    }
+                }
+
+                // Item removed
+                if (settings.data.indexOf('ywraq_action=remove_item') !== -1) {
+                    if (xhr.responseJSON === 1 || xhr.responseJSON === '1') {
+                        var currentCount = parseInt($badge.text() || '0');
+                        var newCount = Math.max(0, currentCount - 1);
+                        $badge.text(newCount);
+                        if (newCount === 0) $badge.hide(); else $badge.show();
+                    }
+                }
+            }
+        });
+    });
+    </script>
+    <?php
+}
+add_action('wp_footer', 'massload_quote_cart_tracker_script', 99);
+
+/**
+ * Product Certifications - Custom Taxonomy
+ */
+function massload_register_certification_taxonomy() {
+    $labels = array(
+        'name'              => 'Certifications',
+        'singular_name'     => 'Certification',
+        'search_items'      => 'Search Certifications',
+        'all_items'         => 'All Certifications',
+        'edit_item'         => 'Edit Certification',
+        'update_item'       => 'Update Certification',
+        'add_new_item'      => 'Add New Certification',
+        'new_item_name'     => 'New Certification Name',
+        'menu_name'         => 'Certifications',
+    );
+
+    register_taxonomy('certification', array('product'), array(
+        'hierarchical'      => true,
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'show_in_rest'      => true,
+        'query_var'         => true,
+        'rewrite'           => array('slug' => 'certification'),
+    ));
+}
+add_action('init', 'massload_register_certification_taxonomy');
+
+/**
+ * Product Certifications - ACF Field Group (Logo image on taxonomy terms)
+ */
+function massload_register_certification_acf_fields() {
+    if ( ! function_exists('acf_add_local_field_group') ) return;
+
+    acf_add_local_field_group(array(
+        'key'      => 'group_certification_logo',
+        'title'    => 'Certification Logo',
+        'fields'   => array(
+            array(
+                'key'           => 'field_certification_logo',
+                'label'         => 'Logo',
+                'name'          => 'certification_logo',
+                'type'          => 'image',
+                'return_format' => 'array',
+                'preview_size'  => 'thumbnail',
+                'instructions'  => 'Upload the certification logo (recommended: PNG with transparent background, ~200×200px).',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param'    => 'taxonomy',
+                    'operator' => '==',
+                    'value'    => 'certification',
+                ),
+            ),
+        ),
+    ));
+}
+add_action('acf/init', 'massload_register_certification_acf_fields');
+
+/**
+ * Product Variations - Custom dropdown placeholder "Choose a {Attribute Name}"
+ */
+function massload_variation_dropdown_placeholder($args) {
+    $attribute_name = wc_attribute_label($args['attribute']);
+    $args['show_option_none'] = sprintf('Choose a %s', $attribute_name);
+    return $args;
+}
+add_filter('woocommerce_dropdown_variation_attribute_options_args', 'massload_variation_dropdown_placeholder');
 
 ?>

@@ -47,7 +47,7 @@ while (have_posts()):
                         .core-breadcrumbs {
                             margin-bottom: 30px;
                             text-align: left;
-                            padding: 20px 0 0 20px;
+                            padding: 20px 0 0 0;
                         }
 
                         .core-breadcrumbs ul {
@@ -78,6 +78,171 @@ while (have_posts()):
                             padding: 0 !important;
                             color: #404040;
                         }
+
+                        /* Product Variations Styling */
+                        .variations_form {
+                            background: transparent;
+                            padding: 0;
+                            border: none;
+                        }
+
+                        .variations_form table,
+                        .variations_form tbody,
+                        .variations_form tr,
+                        .variations_form td {
+                            border: none !important;
+                            padding: 0 !important;
+                            background: transparent !important;
+                            color: #333;
+                        }
+
+                        .variations_form table {
+                            margin-bottom: 20px;
+                            width: 100%;
+                            border-spacing: 0 15px;
+                            border-collapse: separate;
+                        }
+
+                        .variations_form .label {
+                            text-align: left;
+                            width: 120px;
+                            font-size: 13px;
+                            color: #333;
+                            font-weight: 700 !important;
+                            text-transform: uppercase;
+                            background: transparent !important;
+                            padding: 15px 0 !important;
+                            vertical-align: middle;
+                        }
+
+                        .variations_form td.value {
+                            background: transparent !important;
+                            padding: 5px 0 !important;
+                            vertical-align: middle;
+                            position: relative;
+                        }
+
+                        .variations_form select {
+                            width: 100%;
+                            height: 50px;
+                            border: 1px solid #ddd;
+                            border-radius: 0;
+                            padding: 0 15px;
+                            font-size: 15px;
+                            color: #333;
+                            appearance: none;
+                            background-color: #fff !important;
+                            background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%3E%3Cpath%20fill%3D%22%23333%22%20d%3D%22M10.293%203.293L6%207.586%201.707%203.293A1%201%200%2000.293%204.707l5%205a1%201%200%20001.414%200l5-5a1%201%200%2010-1.414-1.414z%22%2F%3E%3C%2Fsvg%3E");
+                            background-repeat: no-repeat;
+                            background-position: right 15px center;
+                            background-size: 12px;
+                            cursor: pointer;
+                        }
+
+                        .variations_form select:focus {
+                            border-color: #e30913;
+                            outline: none;
+                        }
+
+                        .reset_variations {
+                            display: inline-block;
+                            margin-top: 5px !important;
+                            color: #e30913 !important;
+                            text-decoration: none !important;
+                            font-size: 12px;
+                            font-weight: 600;
+                            float: right;
+                        }
+
+                        /* Hide Quantity for Quotes */
+                        .variations_form .quantity,
+                        .variations_form .group_table .quantity {
+                            display: none !important;
+                        }
+
+                        .single_variation_wrap {
+                            margin-top: 30px;
+                            text-align: center;
+                        }
+
+                        .woocommerce-variation-price,
+                        .variations_form .single_variation_wrap .woocommerce-variation-add-to-cart,
+                        .variations_form .variations_button {
+                            display: none !important;
+                        }
+
+                        /* Button Styling to match cta-button-rfq */
+                        button.single_add_to_cart_button,
+                        .variations_button .button,
+                        .add-to-quote-button {
+                            background-color: #e30913 !important;
+                            color: #fff !important;
+                            border: none !important;
+                            padding: 15px 40px !important;
+                            font-size: 16px !important;
+                            font-weight: 700 !important;
+                            letter-spacing: 1px !important;
+                            border-radius: 0 !important;
+                            transition: all 0.3s ease !important;
+                            box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+                            cursor: pointer;
+                            display: inline-block !important;
+                            width: auto;
+                            min-width: 200px;
+                            text-decoration: none !important;
+                        }
+
+                        button.single_add_to_cart_button:hover,
+                        .variations_button .button:hover,
+                        .add-to-quote-button:hover {
+                            background-color: #333 !important;
+                            transform: translateY(-2px);
+                            color: #fff !important;
+                        }
+
+                        .woocommerce-variation-price {
+                            display: none !important;
+                            /* Hide price for quotes */
+                        }
+
+                        /* Responsive Tables for Highlights/Specs */
+                        .table-responsive-wrapper {
+                            width: 100%;
+                            overflow-x: auto;
+                            -webkit-overflow-scrolling: touch;
+                            margin-top: 20px;
+                            margin-bottom: 30px;
+
+                        }
+
+                        .specifications-table {
+                            width: 100% !important;
+                            border-collapse: collapse !important;
+                            min-width: 600px;
+                            /* Force scroll on mobile */
+                        }
+
+                        .specifications-table th {
+                            background: #eee;
+                            color: #333;
+                            font-weight: 700;
+                            text-align: center;
+                            padding: 12px 10px !important;
+                            font-size: 13px;
+                            border: 1px solid #ddd !important;
+                            text-transform: uppercase;
+                        }
+
+                        .specifications-table td {
+                            padding: 10px !important;
+                            text-align: center;
+                            border: 1px solid #ddd !important;
+                            font-size: 14px;
+                        }
+
+                        .specifications-table tr:nth-child(even) {
+                            background-color: #f9f9f9;
+                        }
                     </style>
                     <?php core_breadcrumbs(); ?>
                 </div>
@@ -105,6 +270,9 @@ while (have_posts()):
 
                 <!-- Column 1: Product Images Slider (ACF) -->
                 <div class="col-md-5 productImage-left">
+
+
+
                     <?php if (!empty($images_list)): ?>
                         <div class="slider-section-title">IMAGES</div>
                         <div class="thumbnail-slider">
@@ -190,72 +358,43 @@ while (have_posts()):
                             <?php woocommerce_show_product_images(); ?>
                         <?php endif; ?>
                     <?php endif; ?>
+                    <?php
+                    // Product Certifications
+                    $certifications = get_the_terms(get_the_ID(), 'certification');
+                    if (!empty($certifications) && !is_wp_error($certifications)): ?>
+                        <div class="product-certifications mb-3">
+
+                            <div class="certifications-logos">
+                                <?php foreach ($certifications as $cert):
+                                    $logo = get_field('certification_logo', 'certification_' . $cert->term_id);
+                                    if ($logo): ?>
+                                        <img src="<?php echo esc_url($logo['url']); ?>" alt="<?php echo esc_attr($cert->name); ?>"
+                                            title="<?php echo esc_attr($cert->name); ?>">
+                                    <?php else: ?>
+                                        <span class="cert-text-badge"><?php echo esc_html($cert->name); ?></span>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+
                 </div>
 
                 <!-- Column 2: Description, Highlights & Add to Quote Button -->
                 <div class="col-md-7 product-description">
 
-                    <!-- Product Description -->
-                    <div class="product-content-wrapper mb-4">
-                        <?php
-                        $content = apply_filters('the_content', get_the_content());
-                        echo $content;
-                        ?>
-                    </div>
 
-                    <!-- Product Details (ACF Repeater) -->
-                    <?php
-                    $product_details_title = get_field('product_details_title');
-                    $product_details = get_field('product_details');
-                    if (!empty($product_details)): ?>
-                        <div class="product-details mt-4">
-                            <?php if (!empty($product_details_title)): ?>
-                                <div class="row product-details-title-wrap">
-                                    <div class="col-md-12 inner-wrap">
-                                        <h2 class="product-details-title"><?php echo esc_html($product_details_title); ?></h2>
-                                    </div>
-                                </div>
-                            <?php endif; ?>
 
-                            <?php foreach ($product_details as $product_detail):
-                                $details = isset($product_detail['details']) && is_array($product_detail['details']) ? $product_detail['details'] : [];
-                                $total_details = count($details);
-                                if ($total_details === 0)
-                                    continue;
-                                ?>
-                                <div class="row row-details">
-                                    <?php foreach ($details as $detail):
-                                        $content_type = isset($detail['content_type']) ? $detail['content_type'] : 'Content';
-                                        $content_title = isset($detail['title']) ? $detail['title'] : '';
-                                        $content_text = isset($detail['content']) ? $detail['content'] : '';
-                                        $content_img = isset($detail['image']) ? $detail['image'] : '';
+                    <!-- Short Description -->
+                    <?php if (has_excerpt()): ?>
+                        <div class="product-short-description-wrapper mb-4">
 
-                                        // All items full width
-                                        $col_class = 'details-column col-md-12';
-
-                                        if ($content_type === 'Content')
-                                            $col_class .= ' content-column';
-                                        if ($content_type === 'Image')
-                                            $col_class .= ' image-column';
-                                        ?>
-                                        <div class="<?php echo esc_attr($col_class); ?>">
-                                            <?php if ($content_type === 'Content'): ?>
-                                                <?php if (!empty($content_title)): ?>
-                                                    <h4 class="detail-title"><?php echo esc_html($content_title); ?></h4>
-                                                <?php endif; ?>
-                                                <?php if (!empty($content_text)): ?>
-                                                    <?php echo wp_kses_post($content_text); ?>
-                                                <?php endif; ?>
-                                            <?php elseif ($content_type === 'Image' && !empty($content_img)): ?>
-                                                <img src="<?php echo esc_url($content_img); ?>"
-                                                    alt="<?php echo esc_attr($product_details_title); ?>" class="img-fluid">
-                                            <?php endif; ?>
-                                        </div>
-                                    <?php endforeach; ?>
-                                </div>
-                            <?php endforeach; ?>
+                            <div class="short-description-content">
+                                <?php echo apply_filters('woocommerce_short_description', get_the_excerpt()); ?>
+                            </div>
                         </div>
                     <?php endif; ?>
+
 
                     <!-- Product Highlights -->
                     <?php if (!empty($highlights_content) || !empty($product_print_image)) { ?>
@@ -263,7 +402,9 @@ while (have_posts()):
                             <div class="wwr-right-inner1">
                                 <div class="product-highlights">
                                     <h2><?php esc_html_e('Highlights', 'massload'); ?></h2>
-                                    <?php echo wp_kses_post($highlights_content); ?>
+                                    <div class="table-responsive-wrapper">
+                                        <?php echo wp_kses_post($highlights_content); ?>
+                                    </div>
                                 </div>
 
                             </div>
@@ -271,21 +412,27 @@ while (have_posts()):
                     <?php } ?>
 
 
-                    <!-- Request Quote Button (YITH) -->
-                    <div class="mt-4 text-center yith-quote-btn-wrap">
-                        <?php
-                        if (function_exists('yith_ywraq_render_button')) {
-                            // Use YITH's native add-to-quote button
-                            echo do_shortcode('[yith_ywraq_button_quote]');
-                        } else {
-                            // Fallback if YITH is not active
-                            ?>
-                            <a href="javascript:void(0);"
-                                onclick="document.getElementById('req-quote').scrollIntoView({behavior:'smooth'});"
-                                class="cta-button-rfq shadow-sm">
-                                ADD TO QUOTE
-                            </a>
+                    <!-- Product Variations / Add to Quote -->
+                    <div class="mt-4 product-purchase-actions">
+                        <div class="variations-qty-row">
                             <?php
+                            if ($product->is_type('variable')) {
+                                woocommerce_variable_add_to_cart();
+                            }
+                            ?>
+                            <div class="quote-quantity-wrapper">
+                                <button type="button" class="qty-btn qty-minus" onclick="var input=document.getElementById('quote-quantity');var val=parseInt(input.value)||1;if(val>1)input.value=val-1;">−</button>
+                                <input type="number" id="quote-quantity" class="quote-quantity-input" name="quantity" value="1" min="1" step="1">
+                                <button type="button" class="qty-btn qty-plus" onclick="var input=document.getElementById('quote-quantity');input.value=parseInt(input.value||1)+1;">+</button>
+                            </div>
+                        </div>
+                        <?php
+                        if ($product->is_type('variable')) {
+                            if (class_exists('YITH_YWRAQ_Frontend')) {
+                                YITH_YWRAQ_Frontend::get_instance()->print_button($product);
+                            }
+                        } else {
+                            echo do_shortcode('[yith_ywraq_button_quote]');
                         }
                         ?>
                     </div>
@@ -294,33 +441,104 @@ while (have_posts()):
             </div> <!-- End Section 2 Row -->
 
         </div> <!-- End Container -->
+        <!-- Product long Description -->
+        <section class="product-long-desc pt-5 pb-5">
+            <div class="container">
+                <!-- Product Description -->
+                <div class="product-content-wrapper mb-4">
+                    <?php
+                    $content = apply_filters('the_content', get_the_content());
+                    echo $content;
+                    ?>
+                </div>
+                <!-- Product Details (ACF Repeater) -->
+                <?php
+                $product_details_title = get_field('product_details_title');
+                $product_details = get_field('product_details');
+                if (!empty($product_details)): ?>
+                    <div class="product-details mt-4">
+                        <?php if (!empty($product_details_title)): ?>
+                            <!-- <div class="row product-details-title-wrap">
+                                <div class="col-md-12 inner-wrap">
+                                    <h2 class="product-details-title">
+                                        <?php //echo esc_html($product_details_title); ?>
+                                    </h2>
+                                </div>
+                            </div> -->
+                        <?php endif; ?>
 
+                        <?php foreach ($product_details as $product_detail):
+                            $details = isset($product_detail['details']) && is_array($product_detail['details']) ? $product_detail['details'] : [];
+                            $total_details = count($details);
+                            if ($total_details === 0)
+                                continue;
+                            ?>
+                            <div class="row row-details">
+                                <?php foreach ($details as $detail):
+                                    $content_type = isset($detail['content_type']) ? $detail['content_type'] : 'Content';
+                                    $content_title = isset($detail['title']) ? $detail['title'] : '';
+                                    $content_text = isset($detail['content']) ? $detail['content'] : '';
+                                    $content_img = isset($detail['image']) ? $detail['image'] : '';
+
+                                    // All items full width
+                                    $col_class = 'details-column col-md-12';
+
+                                    if ($content_type === 'Content')
+                                        $col_class .= ' content-column';
+                                    if ($content_type === 'Image')
+                                        $col_class .= ' image-column';
+                                    ?>
+                                    <div class="<?php echo esc_attr($col_class); ?>">
+                                        <?php if ($content_type === 'Content'): ?>
+                                            <?php if (!empty($content_title)): ?>
+
+                                            <?php endif; ?>
+                                            <?php if (!empty($content_text)): ?>
+                                                <?php echo wp_kses_post($content_text); ?>
+                                            <?php endif; ?>
+                                        <?php elseif ($content_type === 'Image' && !empty($content_img)): ?>
+                                            <!-- <img src="<?php //echo esc_url($content_img); ?>"
+                                                alt="<?php //echo esc_attr($product_details_title); ?>" class="img-fluid"> -->
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+
+            </div>
+        </section>
         <!-- SECTION 3: PRODUCT SPECIFICATIONS -->
         <?php if (!empty($specifications) || !empty($specification) || !empty($document_content) || have_rows('document_list')): ?>
             <section id="specifications-section" class="additional-info mb-5 bg-light pt-5 pb-5">
                 <div class="container">
-                    <div class="dark_blk text-center mb-4 heading-block">
-                        <h2><span>PRODUCT</span> SPECIFICATIONS</h2>
-                    </div>
 
+
+                    <?php
+                    $has_specs = (!empty($specifications) || !empty($specification));
+                    $has_docs = (!empty($document_content) || have_rows('document_list'));
+                    $active_tab = $has_specs ? 'spec' : ($has_docs ? 'doc' : '');
+                    ?>
                     <div id="additional-info-tab" class="tabPlugin">
                         <ul class="nav nav-tabs mb-4 justify-content-center" style="border-bottom: 2px solid #e30913;">
-                            <?php if (!empty($specifications) || !empty($specification)): ?>
+                            <?php if ($has_specs): ?>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#tab-1"
+                                    <a class="nav-link <?php echo ($active_tab === 'spec') ? 'active' : ''; ?>" data-toggle="tab"
+                                        href="#tab-1"
                                         style="color:#333; font-weight:bold; font-size:18px; padding:15px 30px; border-radius:0;"><?php esc_html_e(' Specifications ', 'massload'); ?></a>
                                 </li>
                             <?php endif; ?>
-                            <?php if (!empty($document_content) || have_rows('document_list')): ?>
+                            <?php if ($has_docs): ?>
                                 <li class="nav-item">
-                                    <a class="nav-link"
-                                        data-toggle="tab" href="#tab-2"
-                                        style="color:#333; font-weight:bold; font-size:18px; padding:15px 30px; border-radius:0;"><?php esc_html_e(' Documents ', 'massload'); ?></a>
+                                    <a class="nav-link <?php echo ($active_tab === 'doc') ? 'active' : ''; ?>" data-toggle="tab"
+                                        href="#tab-2"
+                                        style="color:#333; font-weight:bold; font-size:18px; padding:15px 30px; border-radius:0;"><?php esc_html_e(' Documents & Drawings ', 'massload'); ?></a>
                                 </li>
                             <?php endif; ?>
                         </ul>
 
-                        <div class="tab-content dynamic-tab-content">
+                        <div class="tab-content dynamic-tab-content is-visible">
                             <style>
                                 .dynamic-tab-content {
                                     display: none;
@@ -342,8 +560,8 @@ while (have_posts()):
                                     });
                                 });
                             </script>
-                            <?php if (!empty($specifications) || get_field('specification')) { ?>
-                                <div id="tab-1" class="tab-pane fade">
+                            <?php if ($has_specs) { ?>
+                                <div id="tab-1" class="tab-pane fade <?php echo ($active_tab === 'spec') ? 'show active' : ''; ?>">
                                     <div class="table-responsive">
                                         <?php if (!empty($specifications)): ?>
                                             <table class="specifications-table">
@@ -368,9 +586,8 @@ while (have_posts()):
                                 </div>
                             <?php } ?>
 
-                            <?php if (!empty($document_content) || have_rows('document_list')): ?>
-                                <div id="tab-2"
-                                    class="tab-pane fade">
+                            <?php if ($has_docs): ?>
+                                <div id="tab-2" class="tab-pane fade <?php echo ($active_tab === 'doc') ? 'show active' : ''; ?>">
                                     <?php if ($document_content)
                                         echo wp_kses_post($document_content); ?>
                                     <!-- Optional Document List -->

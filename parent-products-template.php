@@ -40,8 +40,8 @@ get_header(); ?>
                 <?php
                 $filter_args = array(
                     'placeholder'     => __('PRODUCT SEARCH', 'massload'),
-                    'post_type'       => 'products',
-                    'taxonomy'        => 'related_tags',
+                    'post_type'       => 'product',
+                    'taxonomy'        => 'product_cat',
                     'search_type'     => 'product_search',
                     'set_taxonomy'    => false,
                     'set_terms'       => false,

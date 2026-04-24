@@ -103,8 +103,12 @@ function core_search_by_taxonomy( $query ) {
             if ( ! empty( $post_type ) ) {
                 $query->set( 's', $search );
                 $query->set( 'post_type', $post_type );
-                $query->set( 'orderby', 'publish_date' );
-                $query->set( 'order', 'DESC' );
+                if ( 'product' === $post_type ) {
+                    $query->set( 'orderby', 'relevance' );
+                } else {
+                    $query->set( 'orderby', 'publish_date' );
+                    $query->set( 'order', 'DESC' );
+                }
             }
 
             if ( ! empty( $term ) ) {
@@ -127,6 +131,29 @@ function core_search_by_taxonomy( $query ) {
 
 }
 add_action( 'pre_get_posts', 'core_search_by_taxonomy' );
+
+/**
+ * Prioritize products that have the search term in their title.
+ */
+function massload_search_title_priority( $orderby, $query ) {
+    if ( !is_admin() && $query->is_main_query() && $query->is_search() ) {
+        $post_type = $query->get( 'post_type' );
+        if ( 'product' === $post_type || ( is_array( $post_type ) && in_array( 'product', $post_type ) ) ) {
+            global $wpdb;
+            $search_term = $query->get( 's' );
+            if ( !empty( $search_term ) ) {
+                $search_term = $wpdb->esc_like( $search_term );
+                // Prepend a CASE statement to weigh title matches higher (Priority 0)
+                $orderby = "CASE 
+                    WHEN {$wpdb->posts}.post_title LIKE '%" . esc_sql( $search_term ) . "%' THEN 0 
+                    ELSE 1 
+                END, " . $orderby;
+            }
+        }
+    }
+    return $orderby;
+}
+add_filter( 'posts_orderby', 'massload_search_title_priority', 10, 2 );
 
 function core_post_search_by_taxonomy( $query ) {
     if ( !is_admin() && $query->is_main_query() ) {
