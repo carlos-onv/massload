@@ -23,10 +23,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
             ),
             array(
                 'key' => 'field_homepage_selected_categories',
-                'label' => 'Select Categories',
+                'label' => 'Select Featured Categories',
                 'name' => 'selected_categories',
-                'type' => 'taxonomy',
-                'instructions' => 'Select the WooCommerce categories to display on the home page.',
+                'type' => 'relationship',
+                'instructions' => 'Browse products on the left and add them to the right. One product from each category you want to show is enough.',
                 'required' => 0,
                 'conditional_logic' => 0,
                 'wrapper' => array(
@@ -34,14 +34,19 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
                     'class' => '',
                     'id' => '',
                 ),
-                'taxonomy' => 'product_cat',
-                'field_type' => 'multi_select',
-                'add_term' => 0,
-                'save_terms' => 0,
-                'load_terms' => 0,
+                'post_type' => array(
+                    0 => 'product',
+                ),
+                'taxonomy' => array(
+                ),
+                'filters' => array(
+                    0 => 'search',
+                    1 => 'taxonomy',
+                ),
+                'elements' => '',
+                'min' => '',
+                'max' => '',
                 'return_format' => 'id',
-                'multiple' => 1,
-                'allow_null' => 1,
             ),
         ),
         'location' => array(
