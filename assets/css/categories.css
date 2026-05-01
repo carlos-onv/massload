@@ -227,15 +227,18 @@ span.theme-btn:hover {
     align-items: stretch;
     justify-content: center;
     overflow: hidden;
+    height: 288px;
     min-height: 288px;
+    max-height: 288px;
     background: #fff;
     width: 100%;
 }
 
 .productblock.childProduct>a img {
     width: 100%;
-    height: 100%;
+    height: 288px;
     min-height: 288px;
+    max-height: 288px;
     object-fit: cover;
     display: block;
 }
