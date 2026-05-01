@@ -16,154 +16,83 @@ get_header(); ?>
             <div class="container">
 
                 <div class="heading-block">
-
-                    <h1><?php the_field('our_products'); ?></h1>
-
-                    <p><?php the_field('our_products_description'); ?></p>
-
+                    <h1><?php echo get_field('our_products') ?: 'OUR PRODUCTS'; ?></h1>
+                    <p><?php echo get_field('our_products_description') ?: 'Select from our wide range of high-quality weighing solutions.'; ?></p>
                 </div>
 
                 <div class="product-block">
-
                     <div class="row">
-                    <?php
-                            $output            = '';
-                            $post_type         = 'products';
-                            $taxonomy          = 'related_tags';
-                            $related_tags      = core_get_terms( $taxonomy, 'term_id' );
-                            $product_thumbnail = '';
+                        <?php
+                        $taxonomy = 'product_cat';
+                        $cat_args = array(
+                            'taxonomy'   => $taxonomy,
+                            'parent'     => 0,
+                            'hide_empty' => true,
+                            'orderby'    => 'name',
+                            'order'      => 'ASC',
+                            'exclude'    => array(get_option('default_product_cat')),
+                        );
 
-                            $parent_args       = array(
-                                'post_parent'      => 0,
-                                'posts_per_page'   => -1,
-                                'post_type'        => $post_type,
-                                'order'            => 'ASC',
-                                'orderby'          => 'menu_order',
-                                'suppress_filters' => false,
-                                // 'tax_query'        => array(
-                                //     array(
-                                //         'taxonomy' => $taxonomy,
-                                //         'field'    => 'term_id',
-                                //         'terms'    => $related_tags,
-                                //     )
-                                // ),
-                            );
+                        $top_categories = get_terms($cat_args);
 
-                            $parents           = get_posts( $parent_args );
-                            $parent_id         = '';
-                            $parent_title      = '';
-                            $parent_link       = '';
-                            $parent_desc       = '';
-
-                            $children_args     = array();
-                            $children          = array();
-                            $child_id          = '';
-                            $child_title       = '';
-                            $child_link        = '';
-
-                            $parent_class      = 'product-parent ';
-
-
-                            ob_start();
-
-
-                                foreach ( $parents as $parent ) {
-
-                                    $parent_id         = $parent->ID;
-                                    $parent_title      = $parent->post_title;
-                                    $parent_link       = get_the_permalink( $parent_id );
-                                    $parent_desc       = get_field( 'short_content', $parent_id );
-                                    $product_thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $parent_id ), "full"  )[ 0 ];
-
-                                    $product_thumbnail_alt =  get_post_thumbnail_id( $parent_id );
-                                    
-                                    if($product_thumbnail_alt){
-                                  		  $img_alt = get_post_meta($product_thumbnail_alt , '_wp_attachment_image_alt', true);
- 									}
-		                         
-
-                                    if ( empty( $product_thumbnail ) ) {
-                                        $product_thumbnail = CORE_DEFAULT_THUMBNAIL;
-                                        $parent_class      = 'default-thumbnail';
-                                    }
-
-                                    $output .= '<div class="col-md-6 col-lg-4 ' . esc_attr( $parent_class ) . '">';
-                                        $output .= '<div class="productblock childProduct">';
-                                            $output .= '<a class="" href="' . esc_url( $parent_link ) . '">';
-
-                                            if($img_alt){
-                                                $output .= '<img src="' . esc_url( $product_thumbnail ) . '" alt="' . $img_alt . '" height="230" width="350">';
-                                            }else{
-                                                 $output .= '<img src="' . esc_url( $product_thumbnail ) . '" alt="' . $parent_title . '" height="230" width="350">';
-                                             }
-                                            $output .= '</a>';
-                                            $output .= '<div class="product-content">';
-                                                $output .= '<h3>';
-                                                    $output .= '<a class="" href="' . esc_url( $parent_link ) . '">';
-                                                        $output .= esc_html( $parent_title );
-                                                    $output .= '</a>';
-                                                $output .= '</h3>';
-                                                $output .= '<p class="short-desc">';
-                                                    $output .= esc_html( $parent_desc );
-                                                $output .= '</p>';
-                                            $output .= '</div>';
-                                            $output .= '<div class="productActions">';
-                                                $output .= '<ul class="product-child-list">';
-
-                                                    $output .= '<li class="product-parent-link">';
-                                                        $output .= '<a class="theme-btn" href="' . esc_url( $parent_link ) . '">';
-                                                            $output .= __( 'PRODUCTS', 'massload' ) ;
-                                                            $output .= '<i class="fa fa-angle-down"></i>';
-                                                        $output .= '</a>';
-
-                                                        $children_args     = array(
-                                                            'post_type'        => $post_type,
-                                                            'post_parent'      => $parent_id,
-                                                            'posts_per_page'   => -1,
-                                                            'orderby'          => 'menu_order',
-                                                            'order'            => 'ASC',
-                                                            'suppress_filters' => false,
-                                                            // 'tax_query'        => array(
-                                                            //     array(
-                                                            //         'taxonomy' => $taxonomy,
-                                                            //         'field'    => 'term_id',
-                                                            //         'terms'    => $related_tags,
-                                                            //     )
-                                                            // ),
-                                                        );
-
-                                                        $children = get_posts( $children_args );
-
-                                                        $output .= '<ul class="product-children-list">';
-                                                            foreach ( $children as $child ) {
-                                                                $child_id         = $child->ID;
-                                                                $child_title      = $child->post_title;
-                                                                $child_link       = get_the_permalink( $child_id );
-
-                                                                if ( $child->post_type != 'attachment') {
-                                                                    $output .= '<li class="product-child-link">';
-                                                                        $output .= '<a href="' . esc_url( $child_link ) . '">';
-                                                                            $output .= esc_html( $child_title );
-                                                                        $output .= '</a>';
-                                                                    $output .= '</li>';
-                                                                }
-                                                            } 
-                                                        $output .=  '</ul>';
-                                                    $output .= '</li>';
-
-                                                $output .= '</ul>';
-                                            $output .= '</div>';
-                                        $output .= '</div>';
-                                    $output .= '</div>';
+                        if (!is_wp_error($top_categories) && !empty($top_categories)):
+                            foreach ($top_categories as $cat):
+                                $cat_id = $cat->term_id;
+                                $acf_id = 'product_cat_' . $cat_id;
+                                $cat_link = get_term_link($cat);
+                                $cat_desc = get_field('short_content', $acf_id) ?: $cat->description;
+                                
+                                // Get WooCommerce Category Image
+                                $thumbnail_id = get_term_meta($cat_id, 'thumbnail_id', true);
+                                $cat_img = wp_get_attachment_image_url($thumbnail_id, 'full');
+                                if (!$cat_img) {
+                                    $cat_img = CORE_DEFAULT_THUMBNAIL;
                                 }
-                            $output .= ob_get_clean();
-                            
-                            echo $output;
 
-                        ?>
+                                // Apply red span to first word of title
+                                $cat_name = $cat->name;
+                                $words = explode(' ', $cat_name);
+                                if (count($words) > 0) {
+                                    $words[0] = '<span style="color: #e30913;">' . $words[0] . '</span>';
+                                    $display_name = implode(' ', $words);
+                                } else {
+                                    $display_name = $cat_name;
+                                }
+                                ?>
+                                <div class="col-md-6 col-lg-4 product-parent">
+                                    <div class="productblock childProduct">
+                                        <div class="product-content">
+                                            <h3>
+                                                <a href="<?php echo esc_url($cat_link); ?>">
+                                                    <?php echo $display_name; ?>
+                                                </a>
+                                            </h3>
+                                            <?php if ($cat_desc): ?>
+                                                <p class="short-desc">
+                                                    <?php echo wp_trim_words($cat_desc, 15); ?>
+                                                </p>
+                                            <?php endif; ?>
+                                        </div>
 
+                                        <a href="<?php echo esc_url($cat_link); ?>">
+                                            <img src="<?php echo esc_url($cat_img); ?>" alt="<?php echo esc_attr($cat->name); ?>">
+                                        </a>
+
+                                        <div class="productActions">
+                                            <ul class="product-child-list">
+                                                <li class="product-parent-link">
+                                                    <a class="theme-btn" href="<?php echo esc_url($cat_link); ?>">
+                                                        <?php esc_html_e('EXPLORE MODELS', 'massload'); ?>
+                                                        <i class="fa fa-angle-right"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </div>
-
                 </div>
 
             </div>
