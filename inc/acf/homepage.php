@@ -7,6 +7,21 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
         'title' => 'Homepage Categories',
         'fields' => array(
             array(
+                'key' => 'field_homepage_tab_our_product',
+                'label' => 'Our Product',
+                'type' => 'tab',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'placement' => 'top',
+                'endpoint' => 0,
+            ),
+            array(
                 'key' => 'field_homepage_selected_categories',
                 'label' => 'Select Categories',
                 'name' => 'selected_categories',
