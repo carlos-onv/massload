@@ -71,27 +71,11 @@ get_header(); ?>
                                                     <?php echo esc_html($display_name); ?>
                                                 </a>
                                             </h3>
-                                            <?php if ($cat_desc): ?>
-                                                <p class="short-desc">
-                                                    <?php echo wp_trim_words($cat_desc, 15); ?>
-                                                </p>
-                                            <?php endif; ?>
                                         </div>
 
                                         <a href="<?php echo esc_url($cat_link); ?>">
                                             <img src="<?php echo esc_url($cat_img); ?>" alt="<?php echo esc_attr($cat->name); ?>">
                                         </a>
-
-                                        <div class="productActions">
-                                            <ul class="product-child-list">
-                                                <li class="product-parent-link">
-                                                    <a class="theme-btn" href="<?php echo esc_url($cat_link); ?>">
-                                                        <?php esc_html_e('EXPLORE MODELS', 'massload'); ?>
-                                                        <i class="fa fa-angle-right"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
