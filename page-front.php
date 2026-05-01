@@ -24,23 +24,11 @@ get_header(); ?>
                     <div class="row">
                         <?php
                         $taxonomy = 'product_cat';
-                        $selected_product_ids = get_field('selected_categories');
+                        $selected_cats = get_field('selected_categories');
 
-                        if (!empty($selected_product_ids)) {
-                            $category_ids = array();
-                            foreach ($selected_product_ids as $p_id) {
-                                $terms = get_the_terms($p_id, $taxonomy);
-                                if ($terms && !is_wp_error($terms)) {
-                                    foreach ($terms as $term) {
-                                        // Only include top-level categories if desired, or all selected
-                                        $category_ids[] = $term->term_id;
-                                    }
-                                }
-                            }
-                            $category_ids = array_unique($category_ids);
-                            
+                        if (!empty($selected_cats)) {
                             $top_categories = array();
-                            foreach ($category_ids as $cat_id) {
+                            foreach ($selected_cats as $cat_id) {
                                 $term = get_term($cat_id, $taxonomy);
                                 if ($term && !is_wp_error($term)) {
                                     $top_categories[] = $term;

@@ -1272,3 +1272,20 @@ add_filter('woocommerce_dropdown_variation_attribute_options_args', 'massload_va
 add_filter('acf/prepare_field/key=field_5e7b7f61f99b7', function($field) {
     return false;
 });
+
+/**
+ * Get WooCommerce categories for ACF picker
+ */
+function massload_get_product_categories_for_acf() {
+    $terms = get_terms(array(
+        'taxonomy' => 'product_cat',
+        'hide_empty' => false,
+    ));
+    $choices = array();
+    if (!is_wp_error($terms) && !empty($terms)) {
+        foreach ($terms as $term) {
+            $choices[$term->term_id] = $term->name;
+        }
+    }
+    return $choices;
+}

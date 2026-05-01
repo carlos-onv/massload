@@ -25,8 +25,9 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
                 'key' => 'field_homepage_selected_categories',
                 'label' => 'Select Featured Categories',
                 'name' => 'selected_categories',
-                'type' => 'relationship',
-                'instructions' => 'Browse products on the left and add them to the right. One product from each category you want to show is enough.',
+                'type' => 'select',
+                'choices' => massload_get_product_categories_for_acf(),
+                'instructions' => 'Search and select the categories you want to display on the homepage.',
                 'required' => 0,
                 'conditional_logic' => 0,
                 'wrapper' => array(
@@ -34,19 +35,12 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
                     'class' => '',
                     'id' => '',
                 ),
-                'post_type' => array(
-                    0 => 'product',
-                ),
-                'taxonomy' => array(
-                ),
-                'filters' => array(
-                    0 => 'search',
-                    1 => 'taxonomy',
-                ),
-                'elements' => '',
-                'min' => '',
-                'max' => '',
-                'return_format' => 'id',
+                'ui' => 1,
+                'ajax' => 1,
+                'multiple' => 1,
+                'allow_null' => 1,
+                'placeholder' => 'Search for categories...',
+                'return_format' => 'value',
             ),
         ),
         'location' => array(
