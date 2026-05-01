@@ -240,10 +240,11 @@ span.theme-btn:hover {
 
 .productblock.childProduct .product-content {
     flex-shrink: 0;
-    min-height: 80px; /* Ensure consistent title area */
+    min-height: 90px; /* Space for at least 2 lines of text */
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 15px;
 }
 
 .productblock.childProduct .productActions {
