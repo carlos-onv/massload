@@ -254,6 +254,7 @@ function massload_scripts()
 
     wp_enqueue_style('massload-select2-style', get_template_directory_uri() . '/assets/css/select2.min.css', '1.1');
     wp_enqueue_style('massload-products-style', get_template_directory_uri() . '/assets/css/products.css', array(), '1.0');
+    wp_enqueue_style('massload-categories-style', get_template_directory_uri() . '/assets/css/categories.css', array(), '1.0');
 
     wp_enqueue_script('massload-512de21213', get_template_directory_uri() . '/assets/js/512de21213.js', array('jquery'), '1.1', true);
 

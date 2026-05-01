@@ -54,7 +54,13 @@ $banner_image = get_field('banner_image', $acf_id);
                 <div class="category-title-col">
                     <?php
                     $custom_title = get_field('custom_title', $acf_id);
-                    echo '<h1 class="mass-category-title">' . ($custom_title ? wp_kses_post($custom_title) : esc_html(single_term_title('', false))) . '</h1>';
+                    $title = ($custom_title ? wp_kses_post($custom_title) : esc_html(single_term_title('', false)));
+                    $words = explode(' ', $title);
+                    if (count($words) > 0) {
+                        $words[0] = '<span style="color: #e30913;">' . $words[0] . '</span>';
+                        $title = implode(' ', $words);
+                    }
+                    echo '<h1 class="mass-category-title">' . $title . '</h1>';
                     ?>
                 </div>
                 <?php $cat_description = term_description(); ?>
@@ -238,78 +244,39 @@ $banner_image = get_field('banner_image', $acf_id);
             </div>
             <div class="theme_form">
                 <?php
-                if ($slug == 'truck-axle-scales') { ?>
+                // Mapping of category slugs to their respective SharpSpring Form IDs
+                $form_mapping = [
+                    'truck-axle-scales'                         => 'SzRPNjE1S7LQNTAyT9Y1STI21rVMSzLUNTdKNE8zSktNNjE3BwA',
+                    'traffic-solutions'                         => 'MzMzMTIyTLXUtTSwNNA1SUpO1E0yT7HUTTKyTDI0NTRMNEo2BAA',
+                    'load-cells'                                => 's0w0ME1OTUzVTTI0TtI1MTe21E0yN0jVNUwxtDSyNLGwTLa0AAA',
+                    'crane-scales-lifting-wireline'             => 'S7U0SjY3TrHQNTIzNtU1SUpM1bVMSTTVTbNISrUwNTOwMDIxBAA',
+                    'weigh-modules-vessel-weighing'             => 'MzC3tDBOTTPSNbJMNNA1MTY01020NEzStUw1TzRPNUk0tUhNAgA',
+                    'process-controls-amplifiers'               => 'MzY1Mrc0S0nWNUlLTtE1MTNM1U0ySjPWTU4xN7A0sUiyTDI0AAA',
+                    'load-cell-indicators-remote-displays-printers' => 'M7I0STY1MLPQTTQ2NdU1MUhO07VINUvSNTMxSkw0MTBNMTdJAwA',
+                    'wireless'                                  => 'MzExtjBMNDPUTU0zStY1MU9K1U0yMgayUlJNkozTzIwNDQ0B',
+                    'interconnection-hardware'                  => 'SzY2TjJPNLPQNbcwTtI1STEy002ysLTUTTEzM0o2MbZMNEhMBQA',
+                ];
+
+                // Default form ID used for new or unmapped categories
+                $default_form_id = 'M042SjZKSknWNU41S9E1MTRP0rU0TzbWNTOxMDQ2SbKwNDRLBQA';
+
+                // Determine which form ID to use
+                $current_form_id = isset($form_mapping[$slug]) ? $form_mapping[$slug] : $default_form_id;
+
+                if ($current_form_id): ?>
                     <script type="text/javascript">
-                        var ss_form = { 'account': 'MzawMLEwMbUwBAA', 'formID': 'SzRPNjE1S7LQNTAyT9Y1STI21rVMSzLUNTdKNE8zSktNNjE3BwA' };
-                        ss_form.width = '100%'; ss_form.domain = 'app-3QNNZZKOIE.marketingautomation.services'; ss_form.hidden = { '_usePlaceholders': true };
+                        var ss_form = {
+                            'account': 'MzawMLEwMbUwBAA',
+                            'formID': '<?php echo esc_js($current_form_id); ?>'
+                        };
+                        ss_form.width = '100%';
+                        ss_form.domain = 'app-3QNNZZKOIE.marketingautomation.services';
+                        ss_form.hidden = {
+                            '_usePlaceholders': true
+                        };
                     </script>
-                    <script type="text/javascript"
-                        src="https://koi-3QNNZZKOIE.marketingautomation.services/client/form.js?ver=2.0.1"></script>
-                <?php }
-                if ($slug == 'traffic-solutions') { ?>
-                    <script type='text/javascript'>
-                        var ss_form = { 'account': 'MzawMLEwMbUwBAA', 'formID': 'MzMzMTIyTLXUtTSwNNA1SUpO1E0yT7HUTTKyTDI0NTRMNEo2BAA' };
-                        ss_form.width = '100%'; ss_form.domain = 'app-3QNNZZKOIE.marketingautomation.services'; ss_form.hidden = { '_usePlaceholders': true };
-                    </script>
-                    <script type='text/javascript'
-                        src='https://koi-3QNNZZKOIE.marketingautomation.services/client/form.js?ver=2.0.1'></script>
-                <?php }
-                if ($slug == 'load-cells') { ?>
-                    <script type='text/javascript'>
-                        var ss_form = { 'account': 'MzawMLEwMbUwBAA', 'formID': 's0w0ME1OTUzVTTI0TtI1MTe21E0yN0jVNUwxtDSyNLGwTLa0AAA' };
-                        ss_form.width = '100%'; ss_form.domain = 'app-3QNNZZKOIE.marketingautomation.services'; ss_form.hidden = { '_usePlaceholders': true };
-                    </script>
-                    <script type='text/javascript'
-                        src='https://koi-3QNNZZKOIE.marketingautomation.services/client/form.js?ver=2.0.1'></script>
-                <?php }
-                if ($slug == 'crane-scales-lifting-wireline') { ?>
-                    <script type='text/javascript'>
-                        var ss_form = { 'account': 'MzawMLEwMbUwBAA', 'formID': 'S7U0SjY3TrHQNTIzNtU1SUpM1bVMSTTVTbNISrUwNTOwMDIxBAA' };
-                        ss_form.width = '100%'; ss_form.domain = 'app-3QNNZZKOIE.marketingautomation.services'; ss_form.hidden = { '_usePlaceholders': true };
-                    </script>
-                    <script type='text/javascript'
-                        src='https://koi-3QNNZZKOIE.marketingautomation.services/client/form.js?ver=2.0.1'></script>
-                <?php }
-                if ($slug == 'weigh-modules-vessel-weighing') { ?>
-                    <script type='text/javascript'>
-                        var ss_form = { 'account': 'MzawMLEwMbUwBAA', 'formID': 'MzC3tDBOTTPSNbJMNNA1MTY01020NEzStUw1TzRPNUk0tUhNAgA' };
-                        ss_form.width = '100%'; ss_form.domain = 'app-3QNNZZKOIE.marketingautomation.services'; ss_form.hidden = { '_usePlaceholders': true };
-                    </script>
-                    <script type='text/javascript'
-                        src='https://koi-3QNNZZKOIE.marketingautomation.services/client/form.js?ver=2.0.1'></script>
-                <?php }
-                if ($slug == 'process-controls-amplifiers') { ?>
-                    <script type='text/javascript'>
-                        var ss_form = { 'account': 'MzawMLEwMbUwBAA', 'formID': 'MzY1Mrc0S0nWNUlLTtE1MTNM1U0ySjPWTU4xN7A0sUiyTDI0AAA' };
-                        ss_form.width = '100%'; ss_form.domain = 'app-3QNNZZKOIE.marketingautomation.services'; ss_form.hidden = { '_usePlaceholders': true };
-                    </script>
-                    <script type='text/javascript'
-                        src='https://koi-3QNNZZKOIE.marketingautomation.services/client/form.js?ver=2.0.1'></script>
-                <?php }
-                if ($slug == 'load-cell-indicators-remote-displays-printers') { ?>
-                    <script type='text/javascript'>
-                        var ss_form = { 'account': 'MzawMLEwMbUwBAA', 'formID': 'M7I0STY1MLPQTTQ2NdU1MUhO07VINUvSNTMxSkw0MTBNMTdJAwA' };
-                        ss_form.width = '100%'; ss_form.domain = 'app-3QNNZZKOIE.marketingautomation.services'; ss_form.hidden = { '_usePlaceholders': true };
-                    </script>
-                    <script type='text/javascript'
-                        src='https://koi-3QNNZZKOIE.marketingautomation.services/client/form.js?ver=2.0.1'></script>
-                <?php }
-                if ($slug == 'wireless') { ?>
-                    <script type='text/javascript'>
-                        var ss_form = { 'account': 'MzawMLEwMbUwBAA', 'formID': 'MzExtjBMNDPUTU0zStY1MU9K1U0yMgayUlJNkozTzIwNDQ0B' };
-                        ss_form.width = '100%'; ss_form.domain = 'app-3QNNZZKOIE.marketingautomation.services'; ss_form.hidden = { '_usePlaceholders': true };
-                    </script>
-                    <script type='text/javascript'
-                        src='https://koi-3QNNZZKOIE.marketingautomation.services/client/form.js?ver=2.0.1'></script>
-                <?php }
-                if ($slug == 'interconnection-hardware') { ?>
-                    <script type='text/javascript'>
-                        var ss_form = { 'account': 'MzawMLEwMbUwBAA', 'formID': 'SzY2TjJPNLPQNbcwTtI1STEy002ysLTUTTEzM0o2MbZMNEhMBQA' };
-                        ss_form.width = '100%'; ss_form.domain = 'app-3QNNZZKOIE.marketingautomation.services'; ss_form.hidden = { '_usePlaceholders': true };
-                    </script>
-                    <script type='text/javascript'
-                        src='https://koi-3QNNZZKOIE.marketingautomation.services/client/form.js?ver=2.0.1'></script>
-                <?php } ?>
+                    <script type="text/javascript" src="https://koi-3QNNZZKOIE.marketingautomation.services/client/form.js?ver=2.0.1"></script>
+                <?php endif; ?>
             </div>
         </div>
     </section>

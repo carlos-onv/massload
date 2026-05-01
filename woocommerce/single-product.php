@@ -644,7 +644,7 @@ while (have_posts()):
         ?>
 
         <?php if (!empty($display_ids)): ?>
-            <section class="related-products mb-5 pt-5 pb-5">
+            <section class="related-products product-lisiting mb-5 pt-5 pb-5">
                 <div class="container">
                     <div class="text-center mb-5">
                         <h2 class="massload-title" style="font-size:32px; font-weight:700; text-transform:uppercase;">RELATED
@@ -652,158 +652,76 @@ while (have_posts()):
                         </h2>
                     </div>
 
-                    <div class="row">
+                    <div class="product-block">
+                        <div class="row">
 
-                        <?php
-                        foreach ($display_ids as $p_id):
-                            $p_obj = wc_get_product($p_id);
-                            if (!$p_obj)
-                                continue;
-                            $p_url = get_permalink($p_id);
-                            $p_img = get_the_post_thumbnail_url($p_id, 'medium');
-                            $p_title = $p_obj->get_name();
-                            ?>
-                            <div class="col-md-4 mb-4">
-                                <div class="related-product-card bg-light">
-                                    <div class="related-product-img">
+                            <?php
+                            foreach ($display_ids as $p_id):
+                                $p_obj = wc_get_product($p_id);
+                                if (!$p_obj)
+                                    continue;
+                                $p_url = get_permalink($p_id);
+                                $p_img = get_the_post_thumbnail_url($p_id, 'full');
+                                $p_title = $p_obj->get_name();
+                                ?>
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="productblock childProduct">
+                                        <div class="product-content">
+                                            <h3><a href="<?php echo esc_url($p_url); ?>"><?php echo esc_html($p_title); ?></a></h3>
+                                        </div>
+
                                         <a href="<?php echo esc_url($p_url); ?>">
-                                            <img src="<?php echo esc_url($p_img ?: wc_placeholder_img_src()); ?>"
-                                                alt="<?php echo esc_attr($p_title); ?>">
+                                            <?php if ($p_img): ?>
+                                                <img src="<?php echo esc_url($p_img); ?>" alt="<?php echo esc_attr($p_title); ?>">
+                                            <?php else: ?>
+                                                <?php echo wc_placeholder_img('full'); ?>
+                                            <?php endif; ?>
                                         </a>
                                     </div>
-                                    <div class="related-product-title">
-                                        <?php echo esc_html($p_title); ?>
-                                    </div>
-                                    <a href="<?php echo esc_url($p_url); ?>" class="related-product-link">
-                                        VIEW PRODUCT <span>›</span>
-                                    </a>
                                 </div>
-                            </div>
-                        <?php endforeach; ?>
+                            <?php endforeach; ?>
 
+                        </div>
                     </div>
                 </div>
-
-                <style>
-                    .related-product-card {
-                        background: #fff;
-                        overflow: hidden;
-                        height: 100%;
-                        display: flex;
-                        flex-direction: column;
-                        width: 100%;
-                    }
-
-                    .related-product-img {
-                        flex-grow: 1;
-                        min-height: 235px;
-                        height: auto;
-                        overflow: hidden;
-
-                    }
-
-                    .related-product-img a {
-                        display: block;
-                        width: 350px;
-                        min-height: 235px;
-                        max-height: 274px;
-                        height: stretch;
-                    }
-
-                    .related-product-img img {
-                        width: 350px;
-                        height: 100%;
-                        object-fit: cover;
-                        display: block;
-                        max-height: 274px;
-                        transition: transform 0.3s ease;
-                    }
-
-                    .related-product-card:hover .related-product-img img {
-                        transform: scale(1.03);
-                    }
-
-                    .related-product-title {
-                        background: #000;
-                        color: #fff;
-                        font-size: 16px;
-                        font-weight: 700;
-                        text-transform: uppercase;
-                        padding: 12px 15px;
-                    }
-
-                    .related-product-link {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        background: #4c4c4c;
-                        color: #ccc;
-                        font-size: 13px;
-                        font-weight: 600;
-                        text-transform: uppercase;
-                        padding: 10px 15px;
-                        text-decoration: none;
-                        transition: background 0.3s ease;
-                        letter-spacing: 0.5px;
-                    }
-
-                    .related-product-link:hover {
-                        background: #333;
-                        color: #fff;
-                        text-decoration: none;
-                    }
-
-                    .related-product-link span {
-                        font-size: 18px;
-                    }
-
-                    .related-products .row {
-                        display: flex;
-                        flex-wrap: wrap;
-                    }
-
-                    .related-products .row>[class*="col-"] {
-                        display: flex;
-                    }
-                </style>
             </section>
         <?php endif; ?>
 
         <!-- SECTION 4.5: RELATED INDUSTRIES / APPLICATIONS -->
-        <?php
-        $associated_industries = get_field('associated_industries');
-        if ($associated_industries): ?>
-            <section class="related-industries mb-5 pt-5 pb-5 bg-light">
+        <?php if ($associated_industries): ?>
+            <section class="related-industries product-lisiting mb-5 pt-5 pb-5 bg-light">
                 <div class="container">
                     <div class="text-center mb-5">
                         <h2 class="massload-title" style="font-size:32px; font-weight:700; text-transform:uppercase;">RELATED
                             <span style="text-underline-offset:8px;">INDUSTRIES</span>
                         </h2>
                     </div>
-                    <div class="row justify-content-center">
-                        <?php foreach ($associated_industries as $industry):
-                            $industry_id = $industry->ID;
-                            $industry_link = get_permalink($industry_id);
-                            $industry_name = get_the_title($industry_id);
-                            $industry_img = get_the_post_thumbnail_url($industry_id, 'medium');
-                            ?>
-                            <div class="col-md-3 mb-4">
-                                <div class="related-product-card industry-card ">
-                                    <div class="related-product-img">
+
+                    <div class="product-block">
+                        <div class="row justify-content-center">
+                            <?php foreach ($associated_industries as $industry):
+                                $industry_id = $industry->ID;
+                                $industry_link = get_permalink($industry_id);
+                                $industry_name = get_the_title($industry_id);
+                                $industry_img = get_the_post_thumbnail_url($industry_id, 'medium');
+                                ?>
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="productblock childProduct">
+                                        <div class="product-content">
+                                            <h3><a href="<?php echo esc_url($industry_link); ?>"><?php echo esc_html($industry_name); ?></a></h3>
+                                        </div>
+
                                         <a href="<?php echo esc_url($industry_link); ?>">
-                                            <img src="<?php echo esc_url($industry_img ?: CORE_DEFAULT_THUMBNAIL); ?>"
-                                                alt="<?php echo esc_attr($industry_name); ?>">
+                                            <?php if ($industry_img): ?>
+                                                <img src="<?php echo esc_url($industry_img); ?>" alt="<?php echo esc_attr($industry_name); ?>">
+                                            <?php else: ?>
+                                                <img src="<?php echo esc_url(CORE_DEFAULT_THUMBNAIL); ?>" alt="<?php echo esc_attr($industry_name); ?>">
+                                            <?php endif; ?>
                                         </a>
                                     </div>
-                                    <div class="related-product-title">
-                                        <?php echo esc_html($industry_name); ?>
-                                    </div>
-                                    <a href="<?php echo esc_url($industry_link); ?>" class="related-product-link">
-                                        VIEW INDUSTRY <span>›</span>
-                                    </a>
                                 </div>
-                            </div>
-                        <?php endforeach; ?>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
                 </div>
             </section>
