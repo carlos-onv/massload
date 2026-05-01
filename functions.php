@@ -1266,3 +1266,9 @@ function massload_variation_dropdown_placeholder($args) {
 add_filter('woocommerce_dropdown_variation_attribute_options_args', 'massload_variation_dropdown_placeholder');
 
 ?>
+/**
+ * Hide legacy "Our Products List" field from homepage admin
+ */
+add_filter('acf/prepare_field/key=field_5e7b7f61f99b7', function($field) {
+    return false;
+});
