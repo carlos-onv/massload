@@ -31,4 +31,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 
     // Company & Values 
     // require get_template_directory() . '/inc/acf/page-templates/company-values.php';
+
+    // Homepage Categories
+    require get_template_directory() . '/inc/acf/homepage.php';
 }

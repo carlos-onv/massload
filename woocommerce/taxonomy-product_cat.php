@@ -55,11 +55,6 @@ $banner_image = get_field('banner_image', $acf_id);
                     <?php
                     $custom_title = get_field('custom_title', $acf_id);
                     $title = ($custom_title ? wp_kses_post($custom_title) : esc_html(single_term_title('', false)));
-                    $words = explode(' ', $title);
-                    if (count($words) > 0) {
-                        $words[0] = '<span style="color: #e30913;">' . $words[0] . '</span>';
-                        $title = implode(' ', $words);
-                    }
                     echo '<h1 class="mass-category-title">' . $title . '</h1>';
                     ?>
                 </div>

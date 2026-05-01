@@ -24,16 +24,27 @@ get_header(); ?>
                     <div class="row">
                         <?php
                         $taxonomy = 'product_cat';
-                        $cat_args = array(
-                            'taxonomy'   => $taxonomy,
-                            'parent'     => 0,
-                            'hide_empty' => true,
-                            'orderby'    => 'name',
-                            'order'      => 'ASC',
-                            'exclude'    => array(get_option('default_product_cat')),
-                        );
+                        $selected_cats = get_field('selected_categories');
 
-                        $top_categories = get_terms($cat_args);
+                        if (!empty($selected_cats)) {
+                            $top_categories = array();
+                            foreach ($selected_cats as $cat_id) {
+                                $term = get_term($cat_id, $taxonomy);
+                                if ($term && !is_wp_error($term)) {
+                                    $top_categories[] = $term;
+                                }
+                            }
+                        } else {
+                            $cat_args = array(
+                                'taxonomy'   => $taxonomy,
+                                'parent'     => 0,
+                                'hide_empty' => true,
+                                'orderby'    => 'name',
+                                'order'      => 'ASC',
+                                'exclude'    => array(get_option('default_product_cat')),
+                            );
+                            $top_categories = get_terms($cat_args);
+                        }
 
                         if (!is_wp_error($top_categories) && !empty($top_categories)):
                             foreach ($top_categories as $cat):
@@ -49,22 +60,15 @@ get_header(); ?>
                                     $cat_img = CORE_DEFAULT_THUMBNAIL;
                                 }
 
-                                // Apply red span to first word of title
-                                $cat_name = $cat->name;
-                                $words = explode(' ', $cat_name);
-                                if (count($words) > 0) {
-                                    $words[0] = '<span style="color: #e30913;">' . $words[0] . '</span>';
-                                    $display_name = implode(' ', $words);
-                                } else {
-                                    $display_name = $cat_name;
-                                }
+                                // Category name logic (without red span)
+                                $display_name = $cat->name;
                                 ?>
                                 <div class="col-md-6 col-lg-4 product-parent">
                                     <div class="productblock childProduct">
                                         <div class="product-content">
                                             <h3>
                                                 <a href="<?php echo esc_url($cat_link); ?>">
-                                                    <?php echo $display_name; ?>
+                                                    <?php echo esc_html($display_name); ?>
                                                 </a>
                                             </h3>
                                             <?php if ($cat_desc): ?>
