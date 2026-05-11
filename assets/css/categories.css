@@ -1,7 +1,7 @@
 /* ==========================================================================
    Product Category Page
    ========================================================================== */
-body.tax-product_cat {
+body.tax-product_cat, body.page-template-template-products {
     .inner-banner {
         flex-direction: column;
         align-items: flex-start;
@@ -104,10 +104,7 @@ body.tax-product_cat {
         background-color: transparent;
     }
 
-    .product-lisiting h2 {
-        font-size: 38px;
-        font-weight: normal;
-    }
+
 
     .product-category-how-it-work .container {
         padding-bottom: 5px;
@@ -163,9 +160,10 @@ body.tax-product_cat {
 }
 
 .product-content h3 a {
-    font-size: 16px;
+    font-size: 14px;
     color: #fff !important;
     text-decoration: none;
+    line-height: 1;
 }
 
 .childProduct .productActions {
@@ -216,11 +214,12 @@ span.theme-btn:hover {
     border: 1px solid #ddd;
     height: 100%;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
 }
 
 .productblock.childProduct:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .productblock.childProduct>a {
@@ -229,9 +228,9 @@ span.theme-btn:hover {
     align-items: stretch;
     justify-content: center;
     overflow: hidden;
-    height: 288px;
-    min-height: 288px;
-    max-height: 288px;
+    height: 193px;
+    min-height: 193px;
+    max-height: 193px;
     background: #fff;
     width: 100%;
 }
@@ -300,4 +299,35 @@ span.theme-btn:hover {
     .category-banner-row .category-title-col {
         text-align: center;
     }
+}
+
+/* Brand Group Headers */
+.brand-group-header {
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+h2.brand-group-title {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    font-size: 28px;
+    font-weight: 400;
+    color: #333;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.brand-group-title:before {
+    content: "";
+    position: absolute;
+    background-color: #000;
+    height: 3px;
+    border-right: 15px solid #e30913;
+    max-width: 75px;
+    width: 100%;
+    left: 0;
+    bottom: -3px;
 }

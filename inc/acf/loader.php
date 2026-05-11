@@ -34,4 +34,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 
     // Homepage Categories
     require get_template_directory() . '/inc/acf/homepage.php';
+
+    // Products Template
+    require get_template_directory() . '/inc/acf/page-templates/products-template.php';
 }

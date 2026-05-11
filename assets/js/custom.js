@@ -839,7 +839,7 @@ jQuery(document).ready(function ($) {
         '<div class="banner-dot-wrapper"><span class="banner-dot-separator"></span></div>' +
         '<a href="/products/load-cells/custom-tension-links-2-2/" class="banner-red">Custom Tension Link</a>' +
         '<div class="banner-dot-wrapper black-bg"><span class="banner-dot-separator"></span></div>' +
-        '<a href="/products/crane-scales-lifting-wireline/custom-load-pin/" class="banner-black">Custom Load Pin</a>' +
+        '<a href="/products/crane-scales-lifting-wireline/custom-load-pin/" class="banner-red">Custom Load Pin</a>' +
         '</div>';
 
     if ($productsSubMenu.length) {

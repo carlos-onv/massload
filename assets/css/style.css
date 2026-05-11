@@ -658,8 +658,8 @@ body.home .childProduct .productActions a i {
 .navbar-nav li a {
   font-family: "Roboto", sans-serif;
   color: #fff !important;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -3618,7 +3618,7 @@ div.wpcf7-validation-errors {
     line-height: 35px;
   }
 
-  .navbar-nav li.nav-item ul.sub-menu {
+  .navbar-nav li.products-mega-menu ul.sub-menu {
     left: 23px;
     display: none;
     position: absolute;
@@ -3627,7 +3627,20 @@ div.wpcf7-validation-errors {
     min-width: 360px;
     padding: 0;
     z-index: 10;
-    background: #282828;
+    background: #fff;
+  }
+
+  .navbar-nav li.nav-item ul.sub-menu {
+    left: 23px;
+    display: none;
+    position: absolute;
+    top: 100%;
+    width: max-content;
+    min-width: 180px;
+    max-width: 300px;
+    padding: 0;
+    z-index: 10;
+    background: #fff;
   }
 
   .navbar-nav li.nav-item ul.sub-menu .sub-menu {
@@ -3650,14 +3663,23 @@ div.wpcf7-validation-errors {
     position: static;
   }
 
+  .navbar-nav li.nav-item ul.sub-menu li a {
+    color: #555 !important;
+  }
+
   .navbar-nav li.nav-item ul.sub-menu li a:hover,
   .navbar-nav li.nav-item ul.sub-menu li.current-menu-item>a,
   .navbar-nav li li.current-menu-parent>a {
     background: #e30913;
+
   }
 
+  .navbar-nav li.nav-item:hover>ul>li:hover {}
+
   .navbar-nav li.nav-item:hover>ul>li:hover>a {
+    color: #fff !important;
     background: #e30913;
+
   }
 
   .navbar-nav li.nav-item ul ul.sub-menu {
@@ -6650,8 +6672,9 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
     /* Required to let mega menu span 100% width of container */
   }
 
-  .menubar .menu-item-object-product,
-  .menubar .nav-item {
+  .menubar .menu-item-object-product {}
+
+  .menubar .products-mega-menu .nav-item {
     max-width: 210px;
   }
 
@@ -6675,6 +6698,10 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
     column-count: 5;
     column-gap: 30px;
     z-index: 1000;
+    box-shadow: -3px 15px 19px 7px #404040;
+  }
+
+  .menubar .navbar-nav>li:hover>ul.sub-menu {
     box-shadow: -3px 15px 19px 7px #404040;
   }
 
@@ -6793,6 +6820,10 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
   background: #e30913;
 }
 
+.mega-menu-banner a.banner-red:hover {
+  background: #000;
+}
+
 .mega-menu-banner a.banner-black {
   background: #000;
 }
@@ -6805,7 +6836,7 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
 
 .mega-menu-banner .banner-dot-wrapper.black-bg {
   background: #e30913;
-  padding: 17px 10px 17px 0px;
+  padding: 0px;
 }
 
 .banner-dot-separator {

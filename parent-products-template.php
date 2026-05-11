@@ -107,45 +107,18 @@ get_header(); ?>
                                 'order'      => 'ASC',
                             ));
                             ?>
-                            <div class="col-md-6 col-lg-4 product-parent product-cat-<?php echo esc_attr($cat_id); ?>">
+                            <div class="col-md-6 col-lg-3 product-parent product-cat-<?php echo esc_attr($cat_id); ?>">
                                 <div class="productblock childProduct">
-                                    <a href="<?php echo esc_url($cat_link); ?>">
-                                        <img src="<?php echo esc_url($cat_img); ?>" alt="<?php echo esc_attr($cat->name); ?>">
-                                    </a>
                                     <div class="product-content">
                                         <h3>
                                             <a href="<?php echo esc_url($cat_link); ?>">
                                                 <?php echo wp_kses_post($cat_title); ?>
                                             </a>
                                         </h3>
-                                        <?php if ($cat_desc): ?>
-                                            <p class="short-desc">
-                                                <?php echo wp_trim_words($cat_desc, 20); ?>
-                                            </p>
-                                        <?php endif; ?>
                                     </div>
-                                    <div class="productActions">
-                                        <ul class="product-child-list">
-                                            <li class="product-parent-link">
-                                                <a class="theme-btn" href="<?php echo esc_url($cat_link); ?>">
-                                                    <?php esc_html_e('EXPLORE MODELS', 'massload'); ?>
-                                                    <i class="fa fa-angle-down"></i>
-                                                </a>
-
-                                                <?php if (!is_wp_error($sub_cats) && !empty($sub_cats)): ?>
-                                                    <ul class="product-children-list">
-                                                        <?php foreach ($sub_cats as $sub): ?>
-                                                            <li class="product-child-link">
-                                                                <a href="<?php echo esc_url(get_term_link($sub)); ?>">
-                                                                    <?php echo esc_html($sub->name); ?>
-                                                                </a>
-                                                            </li>
-                                                        <?php endforeach; ?>
-                                                    </ul>
-                                                <?php endif; ?>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <a href="<?php echo esc_url($cat_link); ?>">
+                                        <img src="<?php echo esc_url($cat_img); ?>" alt="<?php echo esc_attr($cat->name); ?>" loading="lazy">
+                                    </a>
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -154,8 +127,6 @@ get_header(); ?>
                             <p><?php esc_html_e('No product categories found.', 'massload'); ?></p>
                         </div>
                     <?php endif; ?>
-
-                    ?>
 
                 </div>
             </div>

@@ -44,205 +44,7 @@ while (have_posts()):
             <div class="row">
                 <div class="col-md-12">
                     <style>
-                        .core-breadcrumbs {
-                            margin-bottom: 30px;
-                            text-align: left;
-                            padding: 20px 0 0 0;
-                        }
 
-                        .core-breadcrumbs ul {
-                            list-style: none;
-                            padding: 0;
-                            margin: 0;
-                            display: flex;
-                            justify-content: flex-start;
-                            flex-wrap: wrap;
-                        }
-
-                        .core-breadcrumbs li {
-                            font-size: 12px;
-                            text-transform: capitalize;
-                            font-weight: 400;
-                            color: #404040;
-                            letter-spacing: 0.5px;
-                        }
-
-                        .core-breadcrumbs li a {
-                            color: #404040 !important;
-                            text-decoration: none;
-                            border-bottom: none !important;
-                        }
-
-                        .core-breadcrumbs li.separator {
-                            margin: 0 2px;
-                            padding: 0 !important;
-                            color: #404040;
-                        }
-
-                        /* Product Variations Styling */
-                        .variations_form {
-                            background: transparent;
-                            padding: 0;
-                            border: none;
-                        }
-
-                        .variations_form table,
-                        .variations_form tbody,
-                        .variations_form tr,
-                        .variations_form td {
-                            border: none !important;
-                            padding: 0 !important;
-                            background: transparent !important;
-                            color: #333;
-                        }
-
-                        .variations_form table {
-                            margin-bottom: 20px;
-                            width: 100%;
-                            border-spacing: 0 15px;
-                            border-collapse: separate;
-                        }
-
-                        .variations_form .label {
-                            text-align: left;
-                            width: 120px;
-                            font-size: 13px;
-                            color: #333;
-                            font-weight: 700 !important;
-                            text-transform: uppercase;
-                            background: transparent !important;
-                            padding: 15px 0 !important;
-                            vertical-align: middle;
-                        }
-
-                        .variations_form td.value {
-                            background: transparent !important;
-                            padding: 5px 0 !important;
-                            vertical-align: middle;
-                            position: relative;
-                        }
-
-                        .variations_form select {
-                            width: 100%;
-                            height: 50px;
-                            border: 1px solid #ddd;
-                            border-radius: 0;
-                            padding: 0 15px;
-                            font-size: 15px;
-                            color: #333;
-                            appearance: none;
-                            background-color: #fff !important;
-                            background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%3E%3Cpath%20fill%3D%22%23333%22%20d%3D%22M10.293%203.293L6%207.586%201.707%203.293A1%201%200%2000.293%204.707l5%205a1%201%200%20001.414%200l5-5a1%201%200%2010-1.414-1.414z%22%2F%3E%3C%2Fsvg%3E");
-                            background-repeat: no-repeat;
-                            background-position: right 15px center;
-                            background-size: 12px;
-                            cursor: pointer;
-                        }
-
-                        .variations_form select:focus {
-                            border-color: #e30913;
-                            outline: none;
-                        }
-
-                        .reset_variations {
-                            display: inline-block;
-                            margin-top: 5px !important;
-                            color: #e30913 !important;
-                            text-decoration: none !important;
-                            font-size: 12px;
-                            font-weight: 600;
-                            float: right;
-                        }
-
-                        /* Hide Quantity for Quotes */
-                        .variations_form .quantity,
-                        .variations_form .group_table .quantity {
-                            display: none !important;
-                        }
-
-                        .single_variation_wrap {
-                            margin-top: 30px;
-                            text-align: center;
-                        }
-
-                        .woocommerce-variation-price,
-                        .variations_form .single_variation_wrap .woocommerce-variation-add-to-cart,
-                        .variations_form .variations_button {
-                            display: none !important;
-                        }
-
-                        /* Button Styling to match cta-button-rfq */
-                        button.single_add_to_cart_button,
-                        .variations_button .button,
-                        .add-to-quote-button {
-                            background-color: #e30913 !important;
-                            color: #fff !important;
-                            border: none !important;
-                            padding: 15px 40px !important;
-                            font-size: 16px !important;
-                            font-weight: 700 !important;
-                            letter-spacing: 1px !important;
-                            border-radius: 0 !important;
-                            transition: all 0.3s ease !important;
-                            box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
-                            cursor: pointer;
-                            display: inline-block !important;
-                            width: auto;
-                            min-width: 200px;
-                            text-decoration: none !important;
-                        }
-
-                        button.single_add_to_cart_button:hover,
-                        .variations_button .button:hover,
-                        .add-to-quote-button:hover {
-                            background-color: #333 !important;
-                            transform: translateY(-2px);
-                            color: #fff !important;
-                        }
-
-                        .woocommerce-variation-price {
-                            display: none !important;
-                            /* Hide price for quotes */
-                        }
-
-                        /* Responsive Tables for Highlights/Specs */
-                        .table-responsive-wrapper {
-                            width: 100%;
-                            overflow-x: auto;
-                            -webkit-overflow-scrolling: touch;
-                            margin-top: 20px;
-                            margin-bottom: 30px;
-
-                        }
-
-                        .specifications-table {
-                            width: 100% !important;
-                            border-collapse: collapse !important;
-                            min-width: 600px;
-                            /* Force scroll on mobile */
-                        }
-
-                        .specifications-table th {
-                            background: #eee;
-                            color: #333;
-                            font-weight: 700;
-                            text-align: center;
-                            padding: 12px 10px !important;
-                            font-size: 13px;
-                            border: 1px solid #ddd !important;
-                            text-transform: uppercase;
-                        }
-
-                        .specifications-table td {
-                            padding: 10px !important;
-                            text-align: center;
-                            border: 1px solid #ddd !important;
-                            font-size: 14px;
-                        }
-
-                        .specifications-table tr:nth-child(even) {
-                            background-color: #f9f9f9;
-                        }
                     </style>
                     <?php core_breadcrumbs(); ?>
                 </div>
@@ -403,7 +205,11 @@ while (have_posts()):
                                 <div class="product-highlights">
                                     <h2><?php esc_html_e('Highlights', 'massload'); ?></h2>
                                     <div class="table-responsive-wrapper">
-                                        <?php echo wp_kses_post($highlights_content); ?>
+                                        <?php
+                                        // Remove any <table> elements and their contents
+                                        $clean_highlights = preg_replace('#<table\b[^>]*>.*?</table>#is', '', $highlights_content);
+                                        echo wp_kses_post($clean_highlights);
+                                        ?>
                                     </div>
                                 </div>
 
@@ -421,9 +227,12 @@ while (have_posts()):
                             }
                             ?>
                             <div class="quote-quantity-wrapper">
-                                <button type="button" class="qty-btn qty-minus" onclick="var input=document.getElementById('quote-quantity');var val=parseInt(input.value)||1;if(val>1)input.value=val-1;">−</button>
-                                <input type="number" id="quote-quantity" class="quote-quantity-input" name="quantity" value="1" min="1" step="1">
-                                <button type="button" class="qty-btn qty-plus" onclick="var input=document.getElementById('quote-quantity');input.value=parseInt(input.value||1)+1;">+</button>
+                                <button type="button" class="qty-btn qty-minus"
+                                    onclick="var input=document.getElementById('quote-quantity');var val=parseInt(input.value)||1;if(val>1)input.value=val-1;">−</button>
+                                <input type="number" id="quote-quantity" class="quote-quantity-input" name="quantity"
+                                    value="1" min="1" step="1">
+                                <button type="button" class="qty-btn qty-plus"
+                                    onclick="var input=document.getElementById('quote-quantity');input.value=parseInt(input.value||1)+1;">+</button>
                             </div>
                         </div>
                         <?php
@@ -442,10 +251,11 @@ while (have_posts()):
 
         </div> <!-- End Container -->
         <!-- Product long Description -->
-        <section class="product-long-desc pt-5 pb-5">
+        <section class="product-long-desc pt-5">
             <div class="container">
                 <!-- Product Description -->
                 <div class="product-content-wrapper mb-4">
+                    <h2 class="product-details-title">PRODUCT DETAILS</h2>
                     <?php
                     $content = apply_filters('the_content', get_the_content());
                     echo $content;
@@ -511,7 +321,7 @@ while (have_posts()):
         </section>
         <!-- SECTION 3: PRODUCT SPECIFICATIONS -->
         <?php if (!empty($specifications) || !empty($specification) || !empty($document_content) || have_rows('document_list')): ?>
-            <section id="specifications-section" class="additional-info mb-5 bg-light pt-5 pb-5">
+            <section id="specifications-section" class="additional-info">
                 <div class="container">
 
 
@@ -521,7 +331,7 @@ while (have_posts()):
                     $active_tab = $has_specs ? 'spec' : ($has_docs ? 'doc' : '');
                     ?>
                     <div id="additional-info-tab" class="tabPlugin">
-                        <ul class="nav nav-tabs mb-4 justify-content-center" style="border-bottom: 2px solid #e30913;">
+                        <ul class="nav nav-tabs justify-content-center" style="border-bottom: 2px solid #e30913;">
                             <?php if ($has_specs): ?>
                                 <li class="nav-item">
                                     <a class="nav-link <?php echo ($active_tab === 'spec') ? 'active' : ''; ?>" data-toggle="tab"
@@ -540,18 +350,7 @@ while (have_posts()):
 
                         <div class="tab-content dynamic-tab-content is-visible">
                             <style>
-                                .dynamic-tab-content {
-                                    display: none;
-                                    background: #fff;
-                                    padding: 25px;
-                                    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-                                    border: 1px solid #eee;
-                                    border-top: none;
-                                }
 
-                                .dynamic-tab-content.is-visible {
-                                    display: block;
-                                }
                             </style>
                             <script>
                                 jQuery(document).ready(function ($) {
@@ -708,14 +507,18 @@ while (have_posts()):
                                 <div class="col-md-6 col-lg-3">
                                     <div class="productblock childProduct">
                                         <div class="product-content">
-                                            <h3><a href="<?php echo esc_url($industry_link); ?>"><?php echo esc_html($industry_name); ?></a></h3>
+                                            <h3><a
+                                                    href="<?php echo esc_url($industry_link); ?>"><?php echo esc_html($industry_name); ?></a>
+                                            </h3>
                                         </div>
 
                                         <a href="<?php echo esc_url($industry_link); ?>">
                                             <?php if ($industry_img): ?>
-                                                <img src="<?php echo esc_url($industry_img); ?>" alt="<?php echo esc_attr($industry_name); ?>">
+                                                <img src="<?php echo esc_url($industry_img); ?>"
+                                                    alt="<?php echo esc_attr($industry_name); ?>">
                                             <?php else: ?>
-                                                <img src="<?php echo esc_url(CORE_DEFAULT_THUMBNAIL); ?>" alt="<?php echo esc_attr($industry_name); ?>">
+                                                <img src="<?php echo esc_url(CORE_DEFAULT_THUMBNAIL); ?>"
+                                                    alt="<?php echo esc_attr($industry_name); ?>">
                                             <?php endif; ?>
                                         </a>
                                     </div>

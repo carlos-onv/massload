@@ -75,7 +75,8 @@ $user_mail = (!empty($ywraq_current_user)) ? $ywraq_current_user->user_email : '
 	}
 
 	.ywraq-form-grid .form-field input,
-	.ywraq-form-grid .form-field select {
+	.ywraq-form-grid .form-field select,
+	.ywraq-form-grid .form-field textarea {
 		padding: 10px 12px;
 		border: 1px solid #ccc;
 		border-radius: 4px;
@@ -87,7 +88,8 @@ $user_mail = (!empty($ywraq_current_user)) ? $ywraq_current_user->user_email : '
 	}
 
 	.ywraq-form-grid .form-field input:focus,
-	.ywraq-form-grid .form-field select:focus {
+	.ywraq-form-grid .form-field select:focus,
+	.ywraq-form-grid .form-field textarea:focus {
 		border-color: #e30913;
 		outline: none;
 		box-shadow: 0 0 0 2px rgba(227, 9, 19, 0.1);
@@ -252,6 +254,18 @@ $user_mail = (!empty($ywraq_current_user)) ? $ywraq_current_user->user_email : '
 					<option value="Word of mouth">Word of mouth</option>
 					<option value="Other">Other</option>
 				</select>
+			</div>
+
+			<!-- Application Description -->
+			<div class="form-field ywraq-form-full">
+				<label for="rqa-application">Can you describe your application?</label>
+				<input type="text" name="rqa_application" id="rqa-application">
+			</div>
+
+			<!-- Message -->
+			<div class="form-field ywraq-form-full">
+				<label for="rqa-message">Message</label>
+				<textarea name="rqa_message" id="rqa-message" rows="4"></textarea>
 			</div>
 
 			<!-- Checkboxes -->

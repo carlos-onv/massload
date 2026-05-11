@@ -86,75 +86,95 @@ $banner_image = get_field('banner_image', $acf_id);
     <section class="product-section_wf text-center product-lisiting">
         <div class="container">
             <div class="product-block">
-                <div class="row">
-                    <?php
-                    $counter = 0;
-                    if (have_posts()):
-                        while (have_posts()):
-                            the_post();
-                            $counter++;
-                            $hidden_class = ($counter > 6) ? 'product-hidden' : '';
-                            global $product;
-                            // Grab native WooCommerce thumbnail
-                            $thumb_url = get_the_post_thumbnail_url($product->get_id(), 'full');
+                <?php
+                if (have_posts()):
+                    $grouped_products = array();
+                    $unbranded = array();
+
+                    // 1. Group products
+                    while (have_posts()):
+                        the_post();
+                        global $post;
+                        $brands = wp_get_post_terms( $post->ID, 'product_brand' );
+                        if ( ! empty( $brands ) && ! is_wp_error( $brands ) ) {
+                            $brand_name = $brands[0]->name;
+                            if (!isset($grouped_products[$brand_name])) {
+                                $grouped_products[$brand_name] = array();
+                            }
+                            $grouped_products[$brand_name][] = $post;
+                        } else {
+                            $unbranded[] = $post;
+                        }
+                    endwhile;
+
+                    // Sort brand names alphabetically
+                    ksort($grouped_products);
+
+                    // 2. Display grouped products
+                    foreach ($grouped_products as $brand_name => $brand_posts) {
+                        echo '<div class="brand-group-header">';
+                        echo '<h2 class="brand-group-title">' . esc_html($brand_name) . '</h2>';
+                        echo '</div>';
+                        echo '<div class="row brand-group-row">';
+                        
+                        foreach ($brand_posts as $post) {
+                            setup_postdata($post);
+                            $thumb_url = get_the_post_thumbnail_url($post->ID, 'full');
                             ?>
-                            <div class="col-md-6 col-lg-4 <?php echo esc_attr($hidden_class); ?>">
+                            <div class="col-md-6 col-lg-3">
                                 <div class="productblock childProduct">
                                     <div class="product-content">
                                         <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-
                                     </div>
-
                                     <a href="<?php the_permalink(); ?>">
                                         <?php if ($thumb_url): ?>
-                                            <img src="<?php echo esc_url($thumb_url); ?>" alt="<?php the_title_attribute(); ?>">
+                                            <img src="<?php echo esc_url($thumb_url); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy">
                                         <?php endif; ?>
                                     </a>
-
                                 </div>
                             </div>
                             <?php
-                        endwhile;
-                    else:
-                        echo '<p>No products found.</p>';
-                    endif;
-                    ?>
+                        }
+                        echo '</div>'; // close row
+                    }
+                    
+                    // 3. Display unbranded products
+                    if (!empty($unbranded)) {
+                        if (!empty($grouped_products)) {
+                            echo '<div class="brand-group-header">';
+                            echo '<h2 class="brand-group-title">Other Products</h2>';
+                            echo '</div>';
+                        }
+                        echo '<div class="row brand-group-row">';
+                        foreach ($unbranded as $post) {
+                            setup_postdata($post);
+                            $thumb_url = get_the_post_thumbnail_url($post->ID, 'full');
+                            ?>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="productblock childProduct">
+                                    <div class="product-content">
+                                        <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                                    </div>
+                                    <a href="<?php the_permalink(); ?>">
+                                        <?php if ($thumb_url): ?>
+                                            <img src="<?php echo esc_url($thumb_url); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy">
+                                        <?php endif; ?>
+                                    </a>
+                                </div>
+                            </div>
+                            <?php
+                        }
+                        echo '</div>'; // close row
+                    }
 
+                    wp_reset_postdata();
 
-                </div>
-
-                <?php if ($counter > 6): ?>
-                    <div class="show-all-btn-wrap mt-5 mb-4 text-center">
-                        <button id="show-all-products" class="theme-btn" style="min-width: 250px;">SHOW ALL
-                            PRODUCTS</button>
-                    </div>
-                <?php endif; ?>
+                else:
+                    echo '<p>No products found.</p>';
+                endif;
+                ?>
             </div>
         </div>
-
-        <style>
-            .product-hidden {
-                display: none !important;
-            }
-
-            #show-all-products {
-                cursor: pointer;
-            }
-        </style>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                var showBtn = document.getElementById('show-all-products');
-                if (showBtn) {
-                    showBtn.addEventListener('click', function () {
-                        document.querySelectorAll('.product-hidden').forEach(function (el) {
-                            el.classList.remove('product-hidden');
-                        });
-                        this.parentElement.style.display = 'none';
-                    });
-                }
-            });
-        </script>
     </section>
 
     <!-- Solutions CTA Boxes -->
