@@ -90,18 +90,24 @@ $banner_image = get_field('banner_image', $acf_id);
                 if (have_posts()):
                     $grouped_products = array();
                     $unbranded = array();
+                    $is_subcategory = (isset($current_term->parent) && $current_term->parent > 0);
 
                     // 1. Group products
                     while (have_posts()):
                         the_post();
                         global $post;
-                        $brands = wp_get_post_terms( $post->ID, 'product_brand' );
-                        if ( ! empty( $brands ) && ! is_wp_error( $brands ) ) {
-                            $brand_name = $brands[0]->name;
-                            if (!isset($grouped_products[$brand_name])) {
-                                $grouped_products[$brand_name] = array();
+                        
+                        if ($is_subcategory) {
+                            $brands = wp_get_post_terms( $post->ID, 'product_brand' );
+                            if ( ! empty( $brands ) && ! is_wp_error( $brands ) ) {
+                                $brand_name = $brands[0]->name;
+                                if (!isset($grouped_products[$brand_name])) {
+                                    $grouped_products[$brand_name] = array();
+                                }
+                                $grouped_products[$brand_name][] = $post;
+                            } else {
+                                $unbranded[] = $post;
                             }
-                            $grouped_products[$brand_name][] = $post;
                         } else {
                             $unbranded[] = $post;
                         }
@@ -109,6 +115,21 @@ $banner_image = get_field('banner_image', $acf_id);
 
                     // Sort brand names alphabetically
                     ksort($grouped_products);
+                    
+                    // Ensure 'Massload' is the first brand
+                    $massload_key = null;
+                    foreach (array_keys($grouped_products) as $brand_key) {
+                        if (strcasecmp($brand_key, 'Massload') === 0) {
+                            $massload_key = $brand_key;
+                            break;
+                        }
+                    }
+                    
+                    if ($massload_key) {
+                        $massload_products = $grouped_products[$massload_key];
+                        unset($grouped_products[$massload_key]);
+                        $grouped_products = array($massload_key => $massload_products) + $grouped_products;
+                    }
 
                     // 2. Display grouped products
                     foreach ($grouped_products as $brand_name => $brand_posts) {

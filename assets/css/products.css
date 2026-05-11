@@ -535,14 +535,24 @@ body.single-product {
     }
 
     .single_variation_wrap {
-        margin-top: 30px;
+        margin-top: 0px !important;
         text-align: center;
+        display: none !important;
     }
 
     .woocommerce-variation-price,
     .variations_form .single_variation_wrap .woocommerce-variation-add-to-cart,
     .variations_form .variations_button {
         display: none !important;
+    }
+
+    /* Prevent Add to Quote button from disappearing during variation selection */
+    .yith-ywraq-add-to-quote,
+    .yith-ywraq-add-button,
+    .ywraq-wrapper {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
 
     /* Button Styling to match cta-button-rfq */
@@ -600,7 +610,7 @@ body.single-product {
         background: #eee;
         color: #333;
         font-weight: 700;
-        text-align: center;
+        text-align: left;
         padding: 12px 10px !important;
         font-size: 13px;
         border: 1px solid #ddd !important;
@@ -609,7 +619,7 @@ body.single-product {
 
     .specifications-table td {
         padding: 10px !important;
-        text-align: center;
+        text-align: left;
         border: 1px solid #ddd !important;
         font-size: 14px;
     }

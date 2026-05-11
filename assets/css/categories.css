@@ -1,7 +1,8 @@
 /* ==========================================================================
    Product Category Page
    ========================================================================== */
-body.tax-product_cat, body.page-template-template-products {
+body.tax-product_cat,
+body.page-template-template-products {
     .inner-banner {
         flex-direction: column;
         align-items: flex-start;
@@ -69,6 +70,11 @@ body.tax-product_cat, body.page-template-template-products {
         font-weight: 400;
         color: #333;
         line-height: 1.2;
+    }
+
+    .category-banner-row .category-description {
+        margin-inline: auto;
+        max-width: 800px;
     }
 
     .category-banner-row .category-description p {

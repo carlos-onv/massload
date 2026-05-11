@@ -158,9 +158,7 @@ $user_mail = (!empty($ywraq_current_user)) ? $ywraq_current_user->user_email : '
 
 <div class="yith-ywraq-mail-form-wrapper ywraq-mail-form-wrapper">
 	<div class="heading-block text-center mb-4">
-		<h2 class="font-weight-normal"><span style="color:#e30913;">Request A</span> Solution</h2>
-		<p class="text-center mt-3" style="color:#303030;">Review the products in your Quote Cart above, and fill the
-			form below.</br>Our team will review your request and get back to you shortly.</p>
+
 	</div>
 
 
@@ -256,15 +254,9 @@ $user_mail = (!empty($ywraq_current_user)) ? $ywraq_current_user->user_email : '
 				</select>
 			</div>
 
-			<!-- Application Description -->
+			<!-- Project / Application Information -->
 			<div class="form-field ywraq-form-full">
-				<label for="rqa-application">Can you describe your application?</label>
-				<input type="text" name="rqa_application" id="rqa-application">
-			</div>
-
-			<!-- Message -->
-			<div class="form-field ywraq-form-full">
-				<label for="rqa-message">Message</label>
+				<label for="rqa-message">Share more information about your project / application</label>
 				<textarea name="rqa_message" id="rqa-message" rows="4"></textarea>
 			</div>
 
