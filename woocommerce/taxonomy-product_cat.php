@@ -54,13 +54,23 @@ $banner_image = get_field('banner_image', $acf_id);
                 <div class="category-title-col">
                     <?php
                     $custom_title = get_field('custom_title', $acf_id);
-                    $title = ($custom_title ? wp_kses_post($custom_title) : esc_html(single_term_title('', false)));
-                    
-                    // Apply red span to the first word
-                    $words = explode(' ', $title);
-                    if (count($words) > 0) {
-                        $words[0] = '<span style="color: #e30913;">' . $words[0] . '</span>';
-                        $title = implode(' ', $words);
+                    if ($custom_title) {
+                        $title = wp_kses_post($custom_title);
+                        // Apply red span to the first word only if it doesn't already contain HTML tags
+                        if (strip_tags($title) === $title) {
+                            $words = explode(' ', $title);
+                            if (count($words) > 0) {
+                                $words[0] = '<span style="color: #e30913;">' . $words[0] . '</span>';
+                                $title = implode(' ', $words);
+                            }
+                        }
+                    } else {
+                        $title = esc_html(single_term_title('', false));
+                        $words = explode(' ', $title);
+                        if (count($words) > 0) {
+                            $words[0] = '<span style="color: #e30913;">' . $words[0] . '</span>';
+                            $title = implode(' ', $words);
+                        }
                     }
                     
                     echo '<h1 class="mass-category-title">' . $title . '</h1>';
