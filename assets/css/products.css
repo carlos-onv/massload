@@ -50,15 +50,18 @@ body.single-product {
         bottom: 8px
     }
 
-    .product-highlights ul {
+    .product-highlights ul,
+    .product-highlights-appended ul {
         list-style-type: "›";
     }
 
-    .product-highlights ul li {
+    .product-highlights ul li,
+    .product-highlights-appended ul li {
         padding-left: 5px;
     }
 
-    .product-highlights ul li::marker {
+    .product-highlights ul li::marker,
+    .product-highlights-appended ul li::marker {
         color: #e30913;
         font-size: 20px;
     }
@@ -70,7 +73,7 @@ body.single-product {
     /* Slider Custom Styling */
     .slider.common-content img {
         width: 100%;
-        height: 260px;
+        height: 340px;
         object-fit: contain;
     }
 

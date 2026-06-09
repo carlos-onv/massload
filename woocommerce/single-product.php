@@ -198,24 +198,7 @@ while (have_posts()):
                     <?php endif; ?>
 
 
-                    <!-- Product Highlights -->
-                    <?php if (!empty($highlights_content) || !empty($product_print_image)) { ?>
-                        <div class="wwr-right red-title headingsecondary-block mt-5">
-                            <div class="wwr-right-inner1">
-                                <div class="product-highlights">
-                                    <h2><?php esc_html_e('Highlights', 'massload'); ?></h2>
-                                    <div class="table-responsive-wrapper">
-                                        <?php
-                                        // Remove any <table> elements and their contents
-                                        $clean_highlights = preg_replace('#<table\b[^>]*>.*?</table>#is', '', $highlights_content);
-                                        echo wp_kses_post($clean_highlights);
-                                        ?>
-                                    </div>
-                                </div>
 
-                            </div>
-                        </div>
-                    <?php } ?>
 
 
                     <!-- Product Variations / Add to Quote -->
@@ -259,6 +242,12 @@ while (have_posts()):
                     <?php
                     $content = apply_filters('the_content', get_the_content());
                     echo $content;
+                    if (!empty($highlights_content)) {
+                        echo '<div class="product-highlights-appended mt-4">';
+                        $clean_highlights = preg_replace('#<table\b[^>]*>.*?</table>#is', '', $highlights_content);
+                        echo wp_kses_post($clean_highlights);
+                        echo '</div>';
+                    }
                     ?>
                 </div>
                 <!-- Product Details (ACF Repeater) -->
