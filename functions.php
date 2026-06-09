@@ -1267,6 +1267,116 @@ add_filter('woocommerce_dropdown_variation_attribute_options_args', 'massload_va
 
 
 /**
+ * Sort WooCommerce variation dropdown options numerically for pa_capacity
+ */
+function massload_sort_variation_dropdown_options($args) {
+    if ($args['attribute'] === 'pa_capacity' && !empty($args['options'])) {
+        $sorted_options = [];
+        foreach ($args['options'] as $option) {
+            $term = get_term_by('slug', $option, 'pa_capacity');
+            if ($term) {
+                $name = $term->name;
+                // Extract leading decimal/integer number
+                preg_match('/^([0-9.,\s]+)/', $name, $matches);
+                $num_str = isset($matches[1]) ? trim($matches[1]) : '0';
+                $num_str = str_replace(',', '', $num_str);
+                $num = (float) $num_str;
+
+                // Normalize weight units to kg for correct comparative sorting
+                $unit = '';
+                if (preg_match('/\b(kg|lb|t|ton|g|oz|lbs|grams)\b/i', $name, $unit_matches)) {
+                    $unit = strtolower($unit_matches[1]);
+                }
+                
+                $normalized = $num;
+                if ($unit === 'lb' || $unit === 'lbs') {
+                    $normalized = $num * 0.45359237; // lbs to kg
+                } elseif ($unit === 't' || $unit === 'ton') {
+                    $normalized = $num * 1000.0; // ton to kg
+                } elseif ($unit === 'g' || $unit === 'grams') {
+                    $normalized = $num / 1000.0; // g to kg
+                }
+                
+                $sorted_options[] = [
+                    'val' => $option,
+                    'weight' => $normalized
+                ];
+            } else {
+                $sorted_options[] = [
+                    'val' => $option,
+                    'weight' => 0.0
+                ];
+            }
+        }
+
+        // Sort by normalized weight
+        usort($sorted_options, function($a, $b) {
+            if ($a['weight'] == $b['weight']) {
+                return 0;
+            }
+            return ($a['weight'] < $b['weight']) ? -1 : 1;
+        });
+
+        // Reassign the sorted values
+        $args['options'] = array_column($sorted_options, 'val');
+    }
+    return $args;
+}
+add_filter('woocommerce_dropdown_variation_attribute_options_args', 'massload_sort_variation_dropdown_options', 20);
+
+
+/**
+ * Sort product terms numerically for pa_capacity to ensure select dropdown sorting
+ */
+function massload_sort_product_terms($terms, $product_id, $taxonomy, $args) {
+    if ($taxonomy === 'pa_capacity' && !empty($terms) && !is_wp_error($terms)) {
+        $sorted_terms = [];
+        foreach ($terms as $term) {
+            $name = $term->name;
+            // Extract leading decimal/integer number
+            preg_match('/^([0-9.,\s]+)/', $name, $matches);
+            $num_str = isset($matches[1]) ? trim($matches[1]) : '0';
+            $num_str = str_replace(',', '', $num_str);
+            $num = (float) $num_str;
+
+            // Normalize weight units to kg for correct comparative sorting
+            $unit = '';
+            if (preg_match('/\b(kg|lb|t|ton|g|oz|lbs|grams)\b/i', $name, $unit_matches)) {
+                $unit = strtolower($unit_matches[1]);
+            }
+            
+            $normalized = $num;
+            if ($unit === 'lb' || $unit === 'lbs') {
+                $normalized = $num * 0.45359237; // lbs to kg
+            } elseif ($unit === 't' || $unit === 'ton') {
+                $normalized = $num * 1000.0; // ton to kg
+            } elseif ($unit === 'g' || $unit === 'grams') {
+                $normalized = $num / 1000.0; // g to kg
+            }
+            
+            $sorted_terms[] = [
+                'term' => $term,
+                'weight' => $normalized
+            ];
+        }
+
+        // Sort by normalized weight
+        usort($sorted_terms, function($a, $b) {
+            if ($a['weight'] == $b['weight']) {
+                return 0;
+            }
+            return ($a['weight'] < $b['weight']) ? -1 : 1;
+        });
+
+        // Reassign the sorted values
+        $terms = array_column($sorted_terms, 'term');
+    }
+    return $terms;
+}
+add_filter('woocommerce_get_product_terms', 'massload_sort_product_terms', 20, 4);
+
+
+/**
  * Hide legacy "Our Products List" field from homepage admin
  */
 add_filter('acf/prepare_field/key=field_5e7b7f61f99b7', function($field) {
