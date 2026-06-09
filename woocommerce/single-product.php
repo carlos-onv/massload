@@ -389,13 +389,9 @@ while (have_posts()):
                                                     <li class="mb-2">
                                                         <i class="fa fa-file-pdf-o" style="color:#e30913; margin-right:8px;"
                                                             aria-hidden="true"></i>
-                                                        <strong>
-                                                            <?php if (get_sub_field('document_label')) {
-                                                                the_sub_field('document_label');
-                                                            } else {
-                                                                esc_html_e('Brochure: ', 'massload');
-                                                            } ?>
-                                                        </strong>
+                                                         <?php if (get_sub_field('document_label')): ?>
+                                                             <strong><?php the_sub_field('document_label'); ?>: </strong>
+                                                         <?php endif; ?>
                                                         <a class="text-danger font-weight-bold" href="<?php echo esc_url($link1['url']); ?>"
                                                             target="<?php echo esc_attr($link1['target'] ? $link1['target'] : '_self'); ?>">
                                                             <?php echo esc_html($link1['title']); ?>
