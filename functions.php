@@ -253,8 +253,8 @@ function massload_scripts()
     }
 
     wp_enqueue_style('massload-select2-style', get_template_directory_uri() . '/assets/css/select2.min.css', '1.1');
-    wp_enqueue_style('massload-products-style', get_template_directory_uri() . '/assets/css/products.css', array(), '1.0');
-    wp_enqueue_style('massload-categories-style', get_template_directory_uri() . '/assets/css/categories.css', array(), '1.0');
+    wp_enqueue_style('massload-products-style', get_template_directory_uri() . '/assets/css/products.css', array(), '1.0.3');
+    wp_enqueue_style('massload-categories-style', get_template_directory_uri() . '/assets/css/categories.css', array(), '1.0.3');
 
     wp_enqueue_script('massload-512de21213', get_template_directory_uri() . '/assets/js/512de21213.js', array('jquery'), '1.1', true);
 
@@ -1399,3 +1399,168 @@ function massload_get_product_categories_for_acf() {
     }
     return $choices;
 }
+
+/**
+ * Format product titles for single product layout, wrapping full model names in red style
+ */
+function massload_get_formatted_title($title) {
+    if (empty($title)) {
+        return '';
+    }
+    // If the title already contains HTML tags, return it unmodified
+    if (strip_tags($title) !== $title) {
+        return $title;
+    }
+    
+    $words = explode(' ', $title);
+    if (count($words) > 0) {
+        // Case 1: "Model / Model" (slash separated by spaces)
+        if (isset($words[1]) && $words[1] === '/' && isset($words[2])) {
+            $model_part = $words[0] . ' ' . $words[1] . ' ' . $words[2];
+            $words[0] = '<span style="color: #e30913;">' . $model_part . '</span>';
+            unset($words[1]);
+            unset($words[2]);
+            $title = implode(' ', $words);
+        }
+        // Case 2: First word contains a slash, or just fallback to first word
+        else {
+            $words[0] = '<span style="color: #e30913;">' . $words[0] . '</span>';
+            $title = implode(' ', $words);
+        }
+    }
+    return $title;
+}
+
+/**
+ * Split a product title into model name and description.
+ */
+function massload_split_title($title) {
+    if (empty($title)) {
+        return array('model' => '', 'description' => '');
+    }
+    
+    // Trim title and replace double spaces
+    $title = trim(preg_replace('/\s+/', ' ', $title));
+    
+    // List of common uppercase words that belong to the description
+    $desc_keywords = array(
+        'WIRELESS', 'LOAD', 'SHACKLE', 'SHACKLES', 'CELL', 'CELLS', 'TENSION', 'COMPRESSION',
+        'SHEAR', 'BEAM', 'WAGON', 'HITCH', 'SINGLE-ENDED', 'DOUBLE-ENDED', 'LOW', 'PROFILE',
+        'S-TYPE', 'CUSTOM', 'LEVELLING', 'SLOW', 'SPEED', 'PORTABLE', 'TRAILER', 'MINING',
+        'FARM', 'TRUCK', 'AXLE', 'PAD', 'HANGING', 'CRANE', 'SCALE', 'SCALES', 'REMOTE',
+        'DISPLAY', 'DIGITAL', 'INDICATOR', 'WEIGHT', 'PROCESSOR', 'PRINTER', 'PRINTERS',
+        'AMPLIFIER', 'TRANSMITTER', 'INTERFACE', 'CABLE', 'SOFTWARE', 'DATA', 'LOGGING',
+        'BARS', 'ANIMAL', 'FLOOR', 'TANK', 'HOPPER', 'WHEEL', 'VEHICLE', 'IN-GROUND', 'WEIGH-IN-MOTION'
+    );
+    
+    $words = explode(' ', $title);
+    $model_words = array();
+    $desc_words = array();
+    $found_desc = false;
+    
+    foreach ($words as $word) {
+        if ($found_desc) {
+            $desc_words[] = $word;
+            continue;
+        }
+        
+        // Count lowercase letters to determine if it's a regular word or model number
+        preg_match_all('/[a-z]/', $word, $matches);
+        $lowercase_count = isset($matches[0]) ? count($matches[0]) : 0;
+        
+        if ($lowercase_count >= 2) {
+            $found_desc = true;
+            $desc_words[] = $word;
+            continue;
+        }
+        
+        // Remove common punctuation for keyword comparison
+        $clean_word = strtoupper(trim($word, " \t\n\r\0\x0B.,;()\"'”“”"));
+        
+        if (in_array($clean_word, $desc_keywords)) {
+            $found_desc = true;
+            $desc_words[] = $word;
+            continue;
+        }
+        
+        $model_words[] = $word;
+    }
+    
+    if (empty($model_words) || empty($desc_words)) {
+        return array(
+            'model' => '',
+            'description' => $title
+        );
+    }
+    
+    return array(
+        'model' => implode(' ', $model_words),
+        'description' => implode(' ', $desc_words)
+    );
+}
+
+/**
+ * ACF filters for associated products & industries relationship fields in blog posts
+ */
+function massload_acf_relationship_query($args, $field, $post_id) {
+    if ($field['name'] === 'associated_products' || $field['name'] === 'associated_industries') {
+        $args['post_status'] = array('publish');
+    }
+    return $args;
+}
+add_filter('acf/fields/relationship/query', 'massload_acf_relationship_query', 10, 3);
+
+function massload_acf_relationship_result($text, $post, $field, $post_id) {
+    $post_status = get_post_status($post->ID);
+    if ($field['name'] === 'associated_products' || $field['name'] === 'associated_industries') {
+        if ($post_status === 'draft') {
+            $text .= ' <span style="background-color:#e30913; color:#ffffff; font-weight:bold; padding:2px 6px; border-radius:3px; font-size:10px; margin-left:10px; display:inline-block; vertical-align:middle; text-transform:uppercase; letter-spacing:0.5px;">Draft - Not Visible on Frontend</span>';
+        }
+    }
+    return $text;
+}
+add_filter('acf/fields/relationship/result', 'massload_acf_relationship_result', 10, 4);
+
+/**
+ * Automatically update Permalink Manager URI cache whenever a product category is created or updated
+ * (e.g. via WooCommerce CSV Importer or WP Admin).
+ */
+function massload_auto_update_pm_category_uri($term_id, $tt_id = 0) {
+    $term = get_term($term_id, 'product_cat');
+    if (!$term || is_wp_error($term)) {
+        return;
+    }
+
+    $path_segments = array($term->slug);
+    $parent_id = $term->parent;
+    while ($parent_id > 0) {
+        $parent_term = get_term($parent_id, 'product_cat');
+        if ($parent_term && !is_wp_error($parent_term)) {
+            array_unshift($path_segments, $parent_term->slug);
+            $parent_id = $parent_term->parent;
+        } else {
+            break;
+        }
+    }
+    $full_uri = 'products/' . implode('/', $path_segments);
+
+    $pm_tax_uris = get_option('permalink-manager-tax-uris');
+    if (!is_array($pm_tax_uris)) {
+        $pm_tax_uris = array();
+    }
+    $pm_tax_uris[$term_id] = ltrim($full_uri, '/');
+    update_option('permalink-manager-tax-uris', $pm_tax_uris);
+}
+add_action('created_product_cat', 'massload_auto_update_pm_category_uri', 10, 2);
+add_action('edited_product_cat', 'massload_auto_update_pm_category_uri', 10, 2);
+
+/**
+ * Show all products on WooCommerce product category archives
+ */
+function massload_product_cat_posts_per_page($query) {
+    if (!is_admin() && $query->is_main_query() && (is_product_category() || is_tax('product_cat'))) {
+        $query->set('posts_per_page', -1);
+    }
+}
+add_action('pre_get_posts', 'massload_product_cat_posts_per_page');
+
