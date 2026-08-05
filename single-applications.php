@@ -293,7 +293,7 @@ $get_the_ID = get_the_ID();
                                 
                                 // Category Pill
                                 $terms = get_the_terms($product_id, 'product_cat');
-                                $cat_name = (!empty($terms) && !is_wp_error($terms)) ? strtoupper($terms[0]->name) : 'SOLUTION';
+                                $cat_name = (!empty($terms) && !is_wp_error($terms)) ? strtoupper(html_entity_decode($terms[0]->name, ENT_QUOTES, 'UTF-8')) : 'SOLUTION';
 
                                 // Certifications
                                 $cert_terms = get_the_terms($product_id, 'certification');

@@ -6979,6 +6979,24 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
 }
 
 /* Industry Related Products Carousel (Option 3: Red Accent & Badges) */
+#related-products .product-carousel-slider .owl-stage {
+    display: flex !important;
+}
+
+#related-products .product-carousel-slider .owl-item {
+    display: flex !important;
+    flex-direction: column !important;
+    float: none !important;
+}
+
+#related-products .product-carousel-slider .owl-item > .item {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 0 auto !important;
+    height: 100% !important;
+    width: 100% !important;
+}
+
 #related-products .app-carousel-card {
     background-color: #ffffff !important;
     background: #ffffff !important;
@@ -6990,6 +7008,7 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
     flex-direction: column !important;
     align-items: center !important;
     text-align: center !important;
+    flex: 1 1 auto !important;
     height: 100% !important;
     position: relative !important;
     transition: transform 0.3s ease, box-shadow 0.3s ease !important;
@@ -7022,6 +7041,7 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
     background: #ffffff !important;
     margin-bottom: 15px !important;
     overflow: hidden !important;
+    flex-shrink: 0 !important;
 }
 
 #related-products .app-card-img-link img {
@@ -7031,15 +7051,16 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
 }
 
 #related-products .app-carousel-card .product-content {
-    flex-grow: 1 !important;
+    flex: 1 1 auto !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     background: transparent !important;
     background-color: transparent !important;
     padding: 0 !important;
-    min-height: auto !important;
+    min-height: 50px !important;
     margin-bottom: 10px !important;
+    width: 100% !important;
 }
 
 #related-products .app-carousel-card .product-content h3 {
@@ -7064,7 +7085,9 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
     flex-wrap: wrap !important;
     gap: 5px !important;
     justify-content: center !important;
-    margin-top: 8px !important;
+    margin-top: auto !important;
+    min-height: 24px !important;
+    width: 100% !important;
 }
 
 #related-products .app-card-certs .cert-tag {
