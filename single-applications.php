@@ -299,7 +299,7 @@ $get_the_ID = get_the_ID();
                                 $cert_terms = get_the_terms($product_id, 'certification');
                                 ?>
                                 <div class="item h-100">
-                                    <div class="productblock app-carousel-card">
+                                    <div class="app-carousel-card">
                                         <span class="app-card-cat-pill"><?php echo esc_html($cat_name); ?></span>
                                         <a href="<?php echo esc_url($product_url); ?>" class="app-card-img-link">
                                             <?php if ($product_img): ?>
