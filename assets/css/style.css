@@ -7035,7 +7035,7 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
     border-top: 4px solid #e30913 !important;
     border-bottom: 1px solid #e0e0e0 !important;
     border-radius: 8px !important;
-    padding: 20px 0 0 0 !important;
+    padding: 16px 14px 0 14px !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
@@ -7061,12 +7061,15 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
     color: #888888 !important;
     font-size: 11px !important;
     font-weight: 600 !important;
-    letter-spacing: 0.8px !important;
+    letter-spacing: 0.5px !important;
+    line-height: 1.35 !important;
     padding: 0 !important;
     border-radius: 0 !important;
     margin-bottom: 10px !important;
-    display: inline-block !important;
+    display: block !important;
+    width: 100% !important;
     text-transform: uppercase !important;
+    word-wrap: break-word !important;
     transition: color 0.3s ease !important;
 }
 
@@ -7078,11 +7081,11 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    height: 160px !important;
+    height: 140px !important;
     width: 100% !important;
     background: #ffffff !important;
-    padding: 0 15px !important;
-    margin-bottom: 15px !important;
+    padding: 0 !important;
+    margin-bottom: 12px !important;
     overflow: hidden !important;
     flex-shrink: 0 !important;
 }
