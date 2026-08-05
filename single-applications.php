@@ -313,8 +313,14 @@ $get_the_ID = get_the_ID();
                                         </div>
                                         <?php if (!empty($cert_terms) && !is_wp_error($cert_terms)): ?>
                                             <div class="app-card-certs">
-                                                <?php foreach ($cert_terms as $cert): ?>
-                                                    <span class="cert-tag"><?php echo esc_html($cert->name); ?></span>
+                                                <?php foreach ($cert_terms as $cert):
+                                                    $cert_logo = function_exists('get_field') ? get_field('certification_logo', 'certification_' . $cert->term_id) : null;
+                                                    $logo_src = is_array($cert_logo) ? $cert_logo['url'] : $cert_logo;
+                                                    if (!empty($logo_src)): ?>
+                                                        <img src="<?php echo esc_url($logo_src); ?>" alt="<?php echo esc_attr($cert->name); ?>" title="<?php echo esc_attr($cert->name); ?>" class="cert-logo-img">
+                                                    <?php else: ?>
+                                                        <span class="cert-tag"><?php echo esc_html($cert->name); ?></span>
+                                                    <?php endif; ?>
                                                 <?php endforeach; ?>
                                             </div>
                                         <?php endif; ?>

@@ -7083,11 +7083,21 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
 #related-products .app-card-certs {
     display: flex !important;
     flex-wrap: wrap !important;
-    gap: 5px !important;
+    gap: 8px !important;
+    align-items: center !important;
     justify-content: center !important;
     margin-top: auto !important;
-    min-height: 24px !important;
+    min-height: 28px !important;
     width: 100% !important;
+}
+
+#related-products .app-card-certs .cert-logo-img {
+    height: 24px !important;
+    width: auto !important;
+    max-width: 60px !important;
+    object-fit: contain !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
 }
 
 #related-products .app-card-certs .cert-tag {
