@@ -7009,7 +7009,7 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
     background: #ffffff !important;
     border: 1px solid #e0e0e0 !important;
     border-top: 4px solid #e30913 !important;
-    border-bottom: none !important;
+    border-bottom: 1px solid #e0e0e0 !important;
     border-radius: 8px !important;
     padding: 20px 0 0 0 !important;
     display: flex !important;
