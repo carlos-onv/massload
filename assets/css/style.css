@@ -6978,7 +6978,14 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
     }
 }
 
-/* Industry Related Products Carousel (Option 3: Red Accent & Badges) */
+/* Industry Related Products Carousel (Discreet Category + Top Red Border) */
+#related-products .product-carousel-slider .owl-stage-outer {
+    padding-top: 14px !important;
+    padding-bottom: 14px !important;
+    margin-top: -14px !important;
+    margin-bottom: -14px !important;
+}
+
 #related-products .product-carousel-slider .owl-stage {
     display: flex !important;
 }
@@ -7001,8 +7008,8 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
     background-color: #ffffff !important;
     background: #ffffff !important;
     border: 1px solid #e0e0e0 !important;
-    border-top: none !important;
-    border-bottom: 4px solid #e30913 !important;
+    border-top: 4px solid #e30913 !important;
+    border-bottom: none !important;
     border-radius: 8px !important;
     padding: 20px 0 0 0 !important;
     display: flex !important;
@@ -7019,6 +7026,7 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
 /* Variation 2 Hover Interaction: Red Outline Frame + Card Elevation + Zoom */
 #related-products .app-carousel-card:hover {
     border-color: #e30913 !important;
+    border-top-color: #e30913 !important;
     transform: translateY(-6px) !important;
     box-shadow: 0 14px 28px rgba(227, 9, 19, 0.15) !important;
 }
