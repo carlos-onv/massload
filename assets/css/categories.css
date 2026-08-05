@@ -89,7 +89,7 @@ body.page-template-template-products {
     }
 
     .breadcrumb-nav {
-        padding: 15px 20px;
+        padding: 15px 0 0;
         margin: 0;
         font-size: 14px;
         font-weight: 400;
@@ -141,6 +141,22 @@ body.page-template-template-products {
     #faqs-section .container {
         background-color: #f2f2f2;
         padding-top: 20px;
+    }
+
+    #faqs-section .faq h2,
+    #faqs-section .faq .dark_blk h2 {
+        background-color: #000;
+        color: #fff !important;
+        padding: 15px 20px;
+        margin-bottom: 20px;
+        margin-top: 0;
+        font-size: 28px;
+    }
+
+    #faqs-section .faq .dark_blk {
+        background-color: transparent;
+        padding: 0;
+        margin: 0;
     }
 
     .faq summary h3 {
@@ -231,7 +247,7 @@ span.theme-btn:hover {
 .productblock.childProduct>a {
     flex: 1;
     display: flex;
-    align-items: stretch;
+    align-items: center;
     justify-content: center;
     overflow: hidden;
     height: 193px;
@@ -239,14 +255,16 @@ span.theme-btn:hover {
     max-height: 193px;
     background: #fff;
     width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 .productblock.childProduct>a img {
-    width: 100%;
-    height: 288px;
-    min-height: 288px;
-    max-height: 288px;
-    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
     display: block;
     transition: transform 0.5s ease;
 }
@@ -264,6 +282,16 @@ span.theme-btn:hover {
     justify-content: center;
     padding: 15px;
     transition: background-color 0.3s ease;
+}
+
+.productblock.childProduct .product-content h3 {
+    font-size: 14px !important;
+    line-height: 1.2 !important;
+}
+
+.productblock.childProduct .product-content h3 a {
+    font-size: 14px !important;
+    line-height: 1.2 !important;
 }
 
 .productblock.childProduct:hover .product-content {

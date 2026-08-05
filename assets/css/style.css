@@ -1911,6 +1911,22 @@ a.navbar-brand img {
   font-size: 34px;
 }
 
+#faqs-section .faq h2,
+#faqs-section .faq .dark_blk h2 {
+  background-color: #000;
+  color: #fff !important;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  margin-top: 0;
+  font-size: 28px;
+}
+
+#faqs-section .faq .dark_blk {
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+}
+
 .additional-info table {
   border: 1px solid #000;
   width: 100%;
