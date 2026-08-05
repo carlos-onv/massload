@@ -79,7 +79,6 @@ h3 {
   font-family: "Roboto Condensed";
   font-size: 20px;
   font-weight: bold;
-  color: #fff;
   line-height: 22px;
   margin-bottom: 10px;
 }
@@ -1750,8 +1749,7 @@ a.navbar-brand img {
 }
 
 .inner-banner {
-  padding: 40px 0;
-  min-height: 345px;
+  padding: 16px 0 25px;
   align-items: center;
   background-position: center;
   background-size: cover;
@@ -1911,8 +1909,6 @@ a.navbar-brand img {
 
 .additional-info h2 {
   font-size: 34px;
-  background: #000;
-  padding: 15px;
 }
 
 .additional-info table {
@@ -6935,4 +6931,28 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
   right: 0;
   margin: auto;
   bottom: 0px;
+}
+
+.product-section_wf {
+    padding-top: 0px !important;
+}
+
+@media only screen and (min-width: 1921px) {
+    .product-section_wf {
+        padding-bottom: 0px !important;
+        padding-top: 0px !important;
+    }
+}
+@media only screen and (min-width: 321px) and (max-width: 480px) {
+    .product-section_wf {
+        padding-bottom: 0px !important;
+        padding-top: 0px !important;
+    }
+}
+
+@media only screen and (min-width: 1441px) and (max-width: 1920px) {
+    .product-section_wf {
+        padding-bottom: 0px !important;
+        padding-top: 0px !important;
+    }
 }
