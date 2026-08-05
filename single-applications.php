@@ -311,8 +311,8 @@ $get_the_ID = get_the_ID();
                                         <div class="product-content">
                                             <h3><a href="<?php echo esc_url($product_url); ?>"><?php echo esc_html($product_title); ?></a></h3>
                                         </div>
-                                        <?php if (!empty($cert_terms) && !is_wp_error($cert_terms)): ?>
-                                            <div class="app-card-certs">
+                                        <div class="app-card-certs">
+                                            <?php if (!empty($cert_terms) && !is_wp_error($cert_terms)): ?>
                                                 <?php foreach ($cert_terms as $cert):
                                                     $cert_logo = function_exists('get_field') ? get_field('certification_logo', 'certification_' . $cert->term_id) : null;
                                                     $logo_src = is_array($cert_logo) ? $cert_logo['url'] : $cert_logo;
@@ -322,8 +322,8 @@ $get_the_ID = get_the_ID();
                                                         <span class="cert-tag"><?php echo esc_html($cert->name); ?></span>
                                                     <?php endif; ?>
                                                 <?php endforeach; ?>
-                                            </div>
-                                        <?php endif; ?>
+                                            <?php endif; ?>
+                                        </div>
                                     </div>
                                 </div>
                             <?php endwhile;

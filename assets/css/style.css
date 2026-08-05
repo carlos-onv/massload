@@ -7003,8 +7003,8 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
     border: 1px solid #e0e0e0 !important;
     border-top: none !important;
     border-bottom: 4px solid #e30913 !important;
-    border-radius: 6px !important;
-    padding: 20px 15px 15px 15px !important;
+    border-radius: 8px !important;
+    padding: 20px 0 0 0 !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
@@ -7013,12 +7013,14 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
     height: 100% !important;
     position: relative !important;
     overflow: hidden !important;
-    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
 }
 
+/* Variation 2 Hover Interaction: Red Outline Frame + Card Elevation + Zoom */
 #related-products .app-carousel-card:hover {
-    transform: translateY(-5px) !important;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+    border-color: #e30913 !important;
+    transform: translateY(-6px) !important;
+    box-shadow: 0 14px 28px rgba(227, 9, 19, 0.15) !important;
 }
 
 #related-products .app-card-cat-pill {
@@ -7032,15 +7034,21 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
     margin-bottom: 12px !important;
     display: inline-block !important;
     text-transform: uppercase !important;
+    transition: transform 0.3s ease !important;
+}
+
+#related-products .app-carousel-card:hover .app-card-cat-pill {
+    transform: scale(1.05) !important;
 }
 
 #related-products .app-card-img-link {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    height: 170px !important;
+    height: 160px !important;
     width: 100% !important;
     background: #ffffff !important;
+    padding: 0 15px !important;
     margin-bottom: 15px !important;
     overflow: hidden !important;
     flex-shrink: 0 !important;
@@ -7050,6 +7058,11 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
     max-height: 100% !important;
     max-width: 100% !important;
     object-fit: contain !important;
+    transition: transform 0.3s ease !important;
+}
+
+#related-products .app-carousel-card:hover .app-card-img-link img {
+    transform: scale(1.06) !important;
 }
 
 #related-products .app-carousel-card .product-content {
@@ -7059,9 +7072,9 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
     justify-content: center !important;
     background: transparent !important;
     background-color: transparent !important;
-    padding: 0 !important;
+    padding: 0 15px !important;
     min-height: 50px !important;
-    margin-bottom: 10px !important;
+    margin-bottom: 15px !important;
     width: 100% !important;
 }
 
@@ -7082,15 +7095,19 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
     color: #e30913 !important;
 }
 
+/* Variation 1 Light Grey Footer Container */
 #related-products .app-card-certs {
     display: flex !important;
     flex-wrap: wrap !important;
-    gap: 6px !important;
+    gap: 8px !important;
     align-items: center !important;
     justify-content: center !important;
     margin-top: auto !important;
-    min-height: 24px !important;
+    min-height: 38px !important;
     width: 100% !important;
+    background: #f8f9fa !important;
+    border-top: 1px solid #eeeeee !important;
+    padding: 8px 10px !important;
     overflow: hidden !important;
 }
 
@@ -7108,7 +7125,7 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
 }
 
 #related-products .app-card-certs .cert-tag {
-    background: #f0f0f0 !important;
+    background: #ffffff !important;
     color: #555555 !important;
     font-size: 10px !important;
     font-weight: 600 !important;
