@@ -226,9 +226,12 @@ $get_the_ID = get_the_ID();
         <!-- SECTION: RELATED PRODUCTS -->
         <?php
         $current_app_id = get_the_ID();
-        $related_products_query = new WP_Query(array(
+        
+        // 1. Get products that have this application in associated_industries
+        $matching_products = get_posts(array(
             'post_type' => 'product',
             'posts_per_page' => -1,
+            'fields' => 'ids',
             'meta_query' => array(
                 array(
                     'key' => 'associated_industries',
@@ -238,108 +241,109 @@ $get_the_ID = get_the_ID();
             )
         ));
 
+        // 2. Get products explicitly linked via products_list or legacy assign_products
+        $explicit_product_ids = [];
+        $products_list_val = get_post_meta($current_app_id, 'products_list', true);
+        $assign_products_val = get_post_meta($current_app_id, 'assign_products', true);
+        
+        if ( ! empty($products_list_val) && is_array($products_list_val) ) {
+            foreach ($products_list_val as $val) {
+                $explicit_product_ids[] = is_object($val) ? $val->ID : intval($val);
+            }
+        }
+        if ( ! empty($assign_products_val) && is_array($assign_products_val) ) {
+            foreach ($assign_products_val as $val) {
+                $explicit_product_ids[] = is_object($val) ? $val->ID : intval($val);
+            }
+        }
+        
+        // Combine all IDs
+        $all_product_ids = array_unique(array_merge($matching_products, $explicit_product_ids));
+        $all_product_ids = array_filter($all_product_ids, function($id) {
+            return get_post_type($id) === 'product'; // Ensure only WooCommerce products
+        });
+
+        if (empty($all_product_ids)) {
+            $all_product_ids = array(0); // Prevents loading all products if empty
+        }
+
+        $related_products_query = new WP_Query(array(
+            'post_type' => 'product',
+            'posts_per_page' => -1,
+            'post__in' => $all_product_ids,
+        ));
+
         if ($related_products_query->have_posts()): ?>
-            <section id="related-products" class="related-products mb-5 pt-5 pb-5 bg-light">
+            <section id="related-products" class="related-products product-section_wf text-center product-lisiting mb-5 pt-5 pb-5 bg-light">
                 <div class="container">
                     <div class="text-center mb-5">
                         <h2 class="massload-title" style="font-size:32px; font-weight:700; text-transform:uppercase;">
                             RELATED
-                            <span style="text-underline-offset:8px;">PRODUCTS</span>
+                            <span style="color:#e30913; text-underline-offset:8px;">PRODUCTS</span>
                         </h2>
                     </div>
+                    <div class="product-block position-relative px-4">
+                        <div class="owl-carousel owl-theme product-carousel-slider">
+                            <?php while ($related_products_query->have_posts()):
+                                $related_products_query->the_post();
+                                $product_id = get_the_ID();
+                                $product_url = get_permalink();
+                                $product_title = get_the_title();
+                                $product_img = get_the_post_thumbnail_url($product_id, 'full');
+                                
+                                // Category Pill
+                                $terms = get_the_terms($product_id, 'product_cat');
+                                $cat_name = (!empty($terms) && !is_wp_error($terms)) ? strtoupper($terms[0]->name) : 'SOLUTION';
 
-                    <div class="row">
-                        <?php while ($related_products_query->have_posts()):
-                            $related_products_query->the_post();
-                            $product_url = get_permalink();
-                            $product_title = get_the_title();
-                            $product_img = get_the_post_thumbnail_url(get_the_ID(), 'medium');
-                            ?>
-                            <div class="col-md-3 mb-4">
-                                <div class="related-product-card">
-                                    <div class="related-product-img">
-                                        <a href="<?php echo esc_url($product_url); ?>">
-                                            <img src="<?php echo esc_url($product_img ?: wc_placeholder_img_src()); ?>"
-                                                alt="<?php echo esc_attr($product_title); ?>">
+                                // Certifications
+                                $cert_terms = get_the_terms($product_id, 'certification');
+                                ?>
+                                <div class="item h-100">
+                                    <div class="productblock app-carousel-card">
+                                        <span class="app-card-cat-pill"><?php echo esc_html($cat_name); ?></span>
+                                        <a href="<?php echo esc_url($product_url); ?>" class="app-card-img-link">
+                                            <?php if ($product_img): ?>
+                                                <img src="<?php echo esc_url($product_img); ?>" alt="<?php echo esc_attr($product_title); ?>" loading="lazy">
+                                            <?php else: ?>
+                                                <img src="<?php echo esc_url(wc_placeholder_img_src()); ?>" alt="<?php echo esc_attr($product_title); ?>" loading="lazy">
+                                            <?php endif; ?>
                                         </a>
+                                        <div class="product-content">
+                                            <h3><a href="<?php echo esc_url($product_url); ?>"><?php echo esc_html($product_title); ?></a></h3>
+                                        </div>
+                                        <?php if (!empty($cert_terms) && !is_wp_error($cert_terms)): ?>
+                                            <div class="app-card-certs">
+                                                <?php foreach ($cert_terms as $cert): ?>
+                                                    <span class="cert-tag"><?php echo esc_html($cert->name); ?></span>
+                                                <?php endforeach; ?>
+                                            </div>
+                                        <?php endif; ?>
                                     </div>
-                                    <div class="related-product-title">
-                                        <?php echo esc_html($product_title); ?>
-                                    </div>
-                                    <a href="<?php echo esc_url($product_url); ?>" class="related-product-link">
-                                        VIEW PRODUCT <span>›</span>
-                                    </a>
                                 </div>
-                            </div>
-                        <?php endwhile;
-                        wp_reset_postdata(); ?>
+                            <?php endwhile;
+                            wp_reset_postdata(); ?>
+                        </div>
                     </div>
                 </div>
-
-                <style>
-                    /* Reuse core styles for consistency */
-                    .related-product-card {
-                        background: #fff;
-                        overflow: hidden;
-                        height: 100%;
-                        display: flex;
-                        flex-direction: column;
-                        width: 100%;
-                        border: 1px solid #eee;
-                    }
-
-                    .related-product-img {
-                        height: 250px;
-                        overflow: hidden;
-                    }
-
-                    .related-product-img img {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                        /* Better for product detail visibility */
-                        padding: 0px;
-                        transition: transform 0.3s ease;
-                    }
-
-                    .related-product-card:hover .related-product-img img {
-                        transform: scale(1.03);
-                    }
-
-                    .related-product-title {
-                        background: #000;
-                        color: #fff;
-                        font-size: 16px;
-                        font-weight: 700;
-                        text-transform: uppercase;
-                        padding: 12px 15px;
-                        min-height: 50px;
-                        display: flex;
-                        align-items: center;
-                    }
-
-                    .related-product-link {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        background: #4c4c4c;
-                        color: #ccc;
-                        font-size: 13px;
-                        font-weight: 600;
-                        text-transform: uppercase;
-                        padding: 10px 15px;
-                        text-decoration: none;
-                        transition: background 0.3s ease;
-                        letter-spacing: 0.5px;
-                    }
-
-                    .related-product-link:hover {
-                        background: #333;
-                        color: #fff;
-                        text-decoration: none;
-                    }
-                </style>
             </section>
+
+            <script type="text/javascript">
+            jQuery(document).ready(function($) {
+                $('.product-carousel-slider').owlCarousel({
+                    loop: false,
+                    margin: 20,
+                    nav: true,
+                    dots: true,
+                    navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+                    responsive: {
+                        0: { items: 1 },
+                        576: { items: 2 },
+                        992: { items: 3 },
+                        1200: { items: 4 }
+                    }
+                });
+            });
+            </script>
         <?php endif; ?>
         <section class="<?php echo $product_section; ?> text-center product-lisiting margin_bottom_40 margin_top_80">
             <div class="container">
