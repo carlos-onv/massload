@@ -1911,6 +1911,11 @@ a.navbar-brand img {
   font-size: 34px;
 }
 
+#faqs-section .container {
+  background-color: #f9f9f9;
+  padding-top: 20px;
+}
+
 #faqs-section .faq h2,
 #faqs-section .faq .dark_blk h2 {
   background-color: #000;
