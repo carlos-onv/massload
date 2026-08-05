@@ -6978,7 +6978,31 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
     }
 }
 
-/* Industry Related Products Carousel (Discreet Category + Top Red Border) */
+/* Industry / Application Pages Only: Section #related-products Styling */
+.single-applications section#related-products {
+    padding-top: 25px !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    position: relative !important;
+}
+
+.single-applications section#related-products::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(248, 249, 250, 0.90) !important;
+    z-index: 1 !important;
+}
+
+.single-applications section#related-products > .container {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
 #related-products .product-carousel-slider .owl-stage-outer {
     padding-top: 14px !important;
     padding-bottom: 14px !important;

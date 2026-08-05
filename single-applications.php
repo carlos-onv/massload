@@ -273,8 +273,12 @@ $get_the_ID = get_the_ID();
             'post__in' => $all_product_ids,
         ));
 
-        if ($related_products_query->have_posts()): ?>
-            <section id="related-products" class="related-products product-section_wf text-center product-lisiting mb-5 pt-5 pb-5 bg-light">
+        if ($related_products_query->have_posts()):
+            $banner_img = get_field('banner_image', $get_the_ID);
+            $banner_img_url = is_array($banner_img) ? (isset($banner_img['url']) ? $banner_img['url'] : '') : $banner_img;
+            $bg_inline_style = !empty($banner_img_url) ? 'style="background-image: url(\'' . esc_url($banner_img_url) . '\');"' : '';
+            ?>
+            <section id="related-products" class="related-products product-section_wf text-center product-lisiting mb-5 pt-5 pb-5 bg-light" <?php echo $bg_inline_style; ?>>
                 <div class="container">
                     <div class="text-center mb-5">
                         <h2 class="massload-title" style="font-size:32px; font-weight:700; text-transform:uppercase;">
