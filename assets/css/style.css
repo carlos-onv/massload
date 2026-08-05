@@ -7023,22 +7023,23 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
     box-shadow: 0 14px 28px rgba(227, 9, 19, 0.15) !important;
 }
 
+/* Discreet Category Style (Muted Grey Label, No Red Fill) */
 #related-products .app-card-cat-pill {
-    background: #e30913 !important;
-    color: #ffffff !important;
+    background: transparent !important;
+    color: #888888 !important;
     font-size: 11px !important;
-    font-weight: 700 !important;
-    letter-spacing: 0.5px !important;
-    padding: 4px 14px !important;
-    border-radius: 12px !important;
-    margin-bottom: 12px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.8px !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    margin-bottom: 10px !important;
     display: inline-block !important;
     text-transform: uppercase !important;
-    transition: transform 0.3s ease !important;
+    transition: color 0.3s ease !important;
 }
 
 #related-products .app-carousel-card:hover .app-card-cat-pill {
-    transform: scale(1.05) !important;
+    color: #e30913 !important;
 }
 
 #related-products .app-card-img-link {
