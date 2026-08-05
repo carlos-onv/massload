@@ -7001,7 +7001,8 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
     background-color: #ffffff !important;
     background: #ffffff !important;
     border: 1px solid #e0e0e0 !important;
-    border-top: 4px solid #e30913 !important;
+    border-top: none !important;
+    border-bottom: 4px solid #e30913 !important;
     border-radius: 6px !important;
     padding: 20px 15px 15px 15px !important;
     display: flex !important;
@@ -7011,6 +7012,7 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
     flex: 1 1 auto !important;
     height: 100% !important;
     position: relative !important;
+    overflow: hidden !important;
     transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
 
@@ -7083,18 +7085,23 @@ body.products-template-products_child-php ul#menu-products li ul.bellows-submenu
 #related-products .app-card-certs {
     display: flex !important;
     flex-wrap: wrap !important;
-    gap: 8px !important;
+    gap: 6px !important;
     align-items: center !important;
     justify-content: center !important;
     margin-top: auto !important;
-    min-height: 28px !important;
+    min-height: 24px !important;
     width: 100% !important;
+    overflow: hidden !important;
 }
 
+#related-products .app-card-certs img,
+#related-products .app-card-certs picture,
+#related-products .app-card-certs picture img,
 #related-products .app-card-certs .cert-logo-img {
-    height: 24px !important;
+    height: 20px !important;
+    max-height: 20px !important;
     width: auto !important;
-    max-width: 60px !important;
+    max-width: 48px !important;
     object-fit: contain !important;
     display: inline-block !important;
     vertical-align: middle !important;
